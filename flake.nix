@@ -24,8 +24,8 @@
     let user = "calvo";
     in {
       nixosConfigurations = (import ./hosts {
-        inherit (nixpkgs) lib;
         inherit inputs nixpkgs home-manager user;
+        inherit (nixpkgs) lib;
       });
     };
 }

@@ -23,6 +23,9 @@ in {
   desktop = lib.nixosSystem {
     inherit system;
 
+    # This allows me to pass the variables to the modules
+    specialArgs = { inherit inputs user; };
+
     # Modules that are used
     modules = [
       # Main NixOS configuration
@@ -31,8 +34,12 @@ in {
       # Home Manager configuration
       home-manager.nixosModules.home-manager
       {
-        inherit user;
-        home-manager.users.${user} = { imports = ./desktop/hm/home.nix; };
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+
+        home-manager.users.${user} = {
+          imports = [ (import ./desktop/hm/home.nix) ];
+        };
       }
     ];
 
