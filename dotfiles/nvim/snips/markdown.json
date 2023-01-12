@@ -1,0 +1,41 @@
+{
+  "ReactO Diary Snippet": {
+    "prefix": "roDiary",
+    "body": [
+      "# ${CURRENT_DAY_NAME}, ${CURRENT_DATE} ${CURRENT_MONTH_NAME_SHORT} ${CURRENT_YEAR} ",
+      "## Tasks done",
+      "- ${1: Tasks done}",
+      "",
+      "## Commitments",
+      "- ${2: Commitments to other person}",
+      "",
+      "## Notes",
+      "${0}",
+      "",
+      "",
+      "",
+      "",
+      "## Time distribution",
+      "- 1h Example"
+    ],
+    "description": "Insert template for diary in ReactO's Wiki"
+  },
+  "Simple note snippet": {
+    "prefix": "note",
+    "body": [
+      "${CURRENT_DAY_NAME}, ${CURRENT_DATE} ${CURRENT_MONTH_NAME_SHORT} ${CURRENT_YEAR} ",
+      "Tags: ${1}",
+      "",
+      "---",
+      "# ${2: Title}",
+      "",
+      "${0}",
+      "",
+      "",
+      "---",
+      "# Bibliography",
+      "- 1h Example"
+    ],
+    "description": "Template for a simple note for vimwiki"
+  }
+}
