@@ -1,38 +1,31 @@
+# francocalvo - dev@francocalvo.ar
+# This is my Nix flake that build my current NixOS setup.
+# Most information can be found in the 3h tutorial on Nix and NixOS by Matthias
+# Benaets.
+# 
+# Referenced files:
+#  flake.nix *             
+#   └─ ./hosts
+#      └─ default.nix
+
 {
-  description = "A very basic flake";
+  description = "A poor attempt at a reproducible environment";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager }:
-    let
-      system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-      lib = nixpkgs.lib;
+  outputs = inputs@{ self, nixpkgs, home-manager }:
+    let user = "calvo";
     in {
-      nixosConfigurations = {
-        calvo = lib.nixosSystem {
-          inherit system;
-          modules = [
-            ./configuration.nix
-
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.calvo = { imports = [ ./hm/home.nix ]; };
-            }
-          ];
-        };
-      };
-
+      nixosConfigurations = (import ./hosts {
+        inherit (nixpkgs) lib;
+        inherit inputs nixpkgs home-manager user;
+      });
     };
 }
