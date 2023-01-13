@@ -11,6 +11,7 @@
     roboto
     source-code-pro
     material-icons
+    meslo-lgs-nf # Needed for OMZ+P10K
   ];
 
 }
