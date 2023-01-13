@@ -10,8 +10,9 @@
 configuration {
 	font:							"Jet Brains Nerd Font 10";
     show-icons:                     true;
-	icon-theme: 					"Papirus";
-    display-drun: 					"";
+	/* icon-theme: 					"Papirus"; */
+	icon-theme: 					"Nordzy-green";
+    display-drun: 					"";
     drun-display-format:            "{name}";
     disable-history:                false;
     fullscreen:                     false;
@@ -39,7 +40,7 @@ prompt {
 	padding: 						0px;
 	background-color: 				@bga;
 	text-color: 					@ac;
-	font:							"feather 12";
+	font:							"Jet Brains Nerd Font 10";
 }
 
 entry {

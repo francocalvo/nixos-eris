@@ -14,6 +14,8 @@
     material-icons
     material-design-icons
     meslo-lgs-nf # Needed for OMZ+P10K
+    # papirus-icon-theme  # Can be used for rofi
+    nordzy-icon-theme
   ];
 
 }
