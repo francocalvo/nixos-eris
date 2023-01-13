@@ -3,8 +3,8 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/desktop/system.nix # Defines locale, sound, etc
-    ../../modules/desktop/i3.nix # Defines Display and Windows manager.
+    ../../modules/general/system.nix # Defines locale, sound, etc
+    ../../modules/general/i3.nix # Defines Display and Windows manager.
   ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.

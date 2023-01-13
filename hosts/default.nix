@@ -38,7 +38,7 @@ in {
         home-manager.useUserPackages = true;
 
         home-manager.users.${user} = {
-          imports = [ (import ./desktop/hm/home.nix) ];
+          imports = [ (import ./desktop/home.nix) ];
         };
       }
     ];

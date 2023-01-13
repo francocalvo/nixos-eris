@@ -4,8 +4,13 @@
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [ alacritty ];
 
-  imports =
-    [ ./modules/i3 ./modules/fonts ./modules/neovim ./modules/programs ];
+  imports = [
+    ../../modules/dotfiles/i3
+    ../../modules/dotfiles/fonts
+    ../../modules/dotfiles/neovim
+    ../../modules/dotfiles/programs
+    ../../modules/dotfiles/shell
+  ];
 
   # Paths managed by Home Manager
   home.username = "calvo";
