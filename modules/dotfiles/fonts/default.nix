@@ -2,8 +2,9 @@
 
 {
   home.packages = with pkgs; [
-    dejavu_fonts
+    # dejavu_fonts
     font-awesome
+    font-awesome_5 # Used for polybar
     corefonts
     fira-code
     nerdfonts
@@ -11,6 +12,7 @@
     roboto
     source-code-pro
     material-icons
+    material-design-icons
     meslo-lgs-nf # Needed for OMZ+P10K
   ];
 
