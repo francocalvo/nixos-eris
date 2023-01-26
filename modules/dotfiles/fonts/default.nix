@@ -2,7 +2,6 @@
 
 {
   home.packages = with pkgs; [
-    # dejavu_fonts
     font-awesome
     font-awesome_5 # Used for polybar
     corefonts
@@ -14,7 +13,6 @@
     material-icons
     material-design-icons
     meslo-lgs-nf # Needed for OMZ+P10K
-    # papirus-icon-theme  # Can be used for rofi
     nordzy-icon-theme
   ];
 

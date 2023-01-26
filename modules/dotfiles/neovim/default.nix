@@ -23,6 +23,7 @@
       python3Full
       nodejs
       nodePackages_latest.npm
+      nodePackages_latest.prettier
       stylua
     ];
 
