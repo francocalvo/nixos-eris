@@ -9,12 +9,8 @@
     discord
     firefox
     nextcloud-client
-    vscodium
     spotify
     steam
-    teams
-    tree
-    thunderbird
     qbittorrent
     vlc
     unrar
@@ -31,3 +27,4 @@
     };
   };
 }
+

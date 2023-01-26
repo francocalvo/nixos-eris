@@ -5,11 +5,11 @@
   home.packages = with pkgs; [ alacritty ];
 
   imports = [
-    ../../modules/dotfiles/i3
-    ../../modules/dotfiles/fonts
-    ../../modules/dotfiles/neovim
-    ../../modules/dotfiles/programs
-    ../../modules/dotfiles/shell
+    ../../modules/i3
+    ../../modules/fonts
+    ../../modules/neovim
+    ../../modules/programs
+    ../../modules/shell
   ];
 
   # Paths managed by Home Manager

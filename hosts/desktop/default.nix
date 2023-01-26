@@ -3,7 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/system.nix # Defines locale, sound, etc
+    ../../modules/systemDesktop # Defines locale, sound, etc
   ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.

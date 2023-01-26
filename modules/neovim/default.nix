@@ -16,13 +16,7 @@
     extraPackages = with pkgs; [
       deadnix
       nixfmt
-      clang
       rustc
-      wget
-      cargo
-      python3Full
-      nodejs
-      nodePackages_latest.npm
       nodePackages_latest.prettier
       stylua
     ];
@@ -30,7 +24,7 @@
   };
 
   home.file.".config/nvim" = {
-    source = ../../../dotfiles/nvim;
+    source = ../../dotfiles/nvim;
     recursive = true;
   };
 
