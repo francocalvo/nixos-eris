@@ -8,6 +8,7 @@
     calibre
     discord
     firefox
+    # libreoffice-qt
     nextcloud-client
     spotify
     steam
