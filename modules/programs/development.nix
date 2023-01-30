@@ -10,6 +10,8 @@
     cargo
     nodejs
     python3Full
+    python310Packages.pip
+    pipenv
     nodePackages_latest.npm
     clang
   ];
