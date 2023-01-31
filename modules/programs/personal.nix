@@ -8,7 +8,8 @@
     calibre
     discord
     firefox
-    # libreoffice-qt
+    mdds # libreoffice fails to build without it
+    # libreoffice
     nextcloud-client
     spotify
     steam
@@ -29,4 +30,3 @@
     };
   };
 }
-
