@@ -30,6 +30,7 @@ require "user.navic"                      -- updated up to  5b240a9
 require "user.winbar"                     -- OK - updated up to 2022/09/12
 require "user.dap"
 require "user.cybu"
+require "user.vimtex"
 
 
 

@@ -21,6 +21,8 @@
     which
     git
     libsForQt5.kcalc
+    latexrun
+    texlive.combined.scheme-full
   ];
 
   services = {

@@ -125,9 +125,8 @@ return packer.startup(function(use)
   use 'fgheng/winbar.nvim'
   use "SmiteshP/nvim-navic"
 
-  -- Not used
-  -- use "akinsho/bufferline.nvim"
-  
+  -- LaTeX
+  use "lervag/vimtex"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
