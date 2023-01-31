@@ -19,6 +19,7 @@
     zip
     which
     git
+    libsForQt5.kcalc
   ];
 
   services = {
