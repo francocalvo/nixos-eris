@@ -16,6 +16,6 @@
     clang
     xclip # Allows me to access clipboard from Nvim
     ripgrep # Needed for Telescope in Nvim
-    zathura 
+    zathura
   ];
 }
