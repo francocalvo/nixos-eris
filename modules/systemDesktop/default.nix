@@ -87,4 +87,7 @@
     nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
+  # This allows to use MTP with Kindle, Android, etc.
+  services = { gvfs.enable = true; };
+
 }
