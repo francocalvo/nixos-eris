@@ -21,6 +21,7 @@ local servers = {
 	"tsserver",
 	"marksman",
   "nil_ls",
+  "prismals"
 }
 
 local settings = {
