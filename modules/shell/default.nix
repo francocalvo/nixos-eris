@@ -3,7 +3,9 @@
 {
   programs.alacritty = {
     enable = true;
-    settings = { font = { normal = { family = "MesloLGS NF"; }; }; }; # Used for P10K
+    settings = {
+      font = { normal = { family = "MesloLGS NF"; }; };
+    }; # Used for P10K
   };
 
   programs.zsh = {

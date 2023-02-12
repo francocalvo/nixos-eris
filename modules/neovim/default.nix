@@ -2,7 +2,6 @@
 
 {
   nixpkgs.config.allowUnfree = true;
-  # Most packages are used by cargo or null-ls
 
   programs.neovim = {
     enable = true;
@@ -14,6 +13,7 @@
     withPython3 = true;
 
     extraPackages = with pkgs; [
+      cargo # Used for packer
       deadnix
       nixfmt
       rustc
@@ -27,5 +27,10 @@
     source = ../../dotfiles/nvim;
     recursive = true;
   };
+
+  home.packages = with pkgs; [
+    xclip # Allows me to access clipboard from Nvim
+    ripgrep # Needed for Telescope in Nvim
+  ];
 
 }
