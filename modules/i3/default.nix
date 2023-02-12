@@ -29,7 +29,6 @@
     polybar = {
       enable = true;
       script = (builtins.readFile ../../dotfiles/polybar/launch.sh);
-
       package = pkgs.polybar.override {
         i3Support = true;
         pulseSupport = true;

@@ -16,7 +16,7 @@
 
     history = {
       expireDuplicatesFirst = true;
-      ignorePatterns = [ "cd*" "ls" "ls *" "tree" "git init" ];
+      ignorePatterns = [ "ls" "ls *" "tree" "git init" ];
       size = 10000;
     };
 
