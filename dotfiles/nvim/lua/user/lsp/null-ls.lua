@@ -23,6 +23,10 @@ null_ls.setup({
 		formatting.google_java_format,
 		diagnostics.shellcheck,
 
+    --# C++
+    diagnostics.cpplint,
+    formatting.clang_format,
+
 		--# NIX
 		formatting.nixfmt,
 		diagnostics.deadnix,
