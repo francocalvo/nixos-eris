@@ -19,4 +19,6 @@
   # This allows to use MTP with Kindle, Android, etc.
   services = { gvfs.enable = true; };
 
+  # This allows the global install of a keyring
+  services.gnome.gnome-keyring.enable = true;
 }
