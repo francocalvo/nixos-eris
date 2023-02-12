@@ -8,7 +8,8 @@
 #       ├─ default.nix *
 #       └─ ./desktop
 #            ├─ ./default.nix
-#            └─ ./home.nix 
+#            ├─ ./home.nix 
+#            └─ ./hardware-configuration.nix 
 
 { lib, inputs, nixpkgs, home-manager, user, ... }:
 let

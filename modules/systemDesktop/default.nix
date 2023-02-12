@@ -1,11 +1,11 @@
 { config, pkgs, lib, ... }: {
 
   imports = [
-    ./services.nix
+    ./bootloader.nix
+    ./docker.nix
+    ./meta.nix
     ./networking.nix
     ./video.nix
-    ./bootloader.nix
-    ./meta.nix
     ./sound.nix
   ];
 
