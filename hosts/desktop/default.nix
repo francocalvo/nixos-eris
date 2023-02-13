@@ -41,12 +41,30 @@
     xserver = {
       enable = true;
       displayManager = {
-        lightdm.enable = true;
+        lightdm = {
+          enable = true; # Wallpaper and GTK theme
+          background =
+            pkgs.nixos-artwork.wallpapers.nineish-dark-gray.gnomeFilePath;
+          greeters = {
+            gtk = {
+              theme = {
+                name = "Nordic";
+                package = pkgs.nordic;
+              };
+              cursorTheme = {
+                name = "Nordic-cursors";
+                package = pkgs.nordic;
+                size = 16;
+              };
+            };
+          };
+        };
+
         defaultSession = "none+i3";
       };
       windowManager.i3 = {
         enable = true;
-        #extraPackages = with pkgs; [ ];
+        extraPackages = with pkgs; [ nordic ];
       };
       layout = "latam";
       xkbOptions = "caps:escape"; # map caps to escape.

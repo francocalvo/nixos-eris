@@ -6,6 +6,7 @@
     feh
     flameshot
     cinnamon.nemo
+    dconf # Needed for GTK Theming
     networkmanagerapplet
     rofi
   ];
@@ -34,5 +35,28 @@
         pulseSupport = true;
       };
     };
+  };
+
+  home.pointerCursor =
+    { # This will set cursor system-wide so applications can not choose their own
+      gtk.enable = true;
+      name = "Nordzy-cursors";
+      package = pkgs.nordzy-cursor-theme;
+      size = 16;
+    };
+
+  gtk = { # Theming
+    enable = true;
+    theme = {
+      name = "Nordic";
+      package = pkgs.nordic;
+    };
+    iconTheme = {
+      name = "Nordzy-green";
+      package = pkgs.nordzy-icon-theme;
+    };
+    font = {
+      name = "FiraCode Nerd Font Mono Medium";
+    }; # Cursor is declared under home.pointerCursor
   };
 }
