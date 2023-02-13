@@ -6,6 +6,7 @@
 #  flake.nix 
 #   └─ ./hosts  
 #       ├─ default.nix *
+#       ├─ configuration.nix 
 #       └─ ./desktop
 #            ├─ ./default.nix
 #            ├─ ./home.nix 
@@ -29,6 +30,9 @@ in {
 
     # Modules that are used
     modules = [
+      # General configuration
+      ./configuration.nix
+
       # Main NixOS configuration
       ./desktop
 

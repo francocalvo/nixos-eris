@@ -22,7 +22,7 @@
   nixpkgs.config.allowUnfree = true;
 
   imports = [
-    ../../modules/i3
+    ../../modules/desktop-wm
     ../../modules/development
     ../../modules/fonts
     ../../modules/programs

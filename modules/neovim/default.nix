@@ -18,7 +18,7 @@
       rustc
       nodePackages_latest.prettier
       stylua
-
+      nil
       xclip # Allows me to access clipboard from Nvim
       ripgrep # Needed for Telescope in Nvim
     ];

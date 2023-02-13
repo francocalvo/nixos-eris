@@ -15,10 +15,7 @@
 { config, pkgs, user, ... }:
 
 {
-  imports = [
-    ./hardware-configuration.nix
-    ../../modules/systemDesktop # Defines locale, sound, etc
-  ];
+  imports = [ ./hardware-configuration.nix ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${user} = {
@@ -27,10 +24,10 @@
     shell = pkgs.zsh;
   };
 
-  system.stateVersion = "22.11";
-
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = "experimental-features = nix-command flakes";
   };
+
+  system.stateVersion = "22.11";
 }
