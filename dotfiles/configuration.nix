@@ -1,10 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ 
-      ./hardware-configuration.nix
-    ];
+  imports = [ ./hardware-configuration.nix ];
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
@@ -20,19 +17,19 @@
   };
 
   # Keep the system clean
-  nix = { 
+  nix = {
     settings.auto-optimise-store = true;
-    gc = { 
+    gc = {
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 14d";
     };
-   }; 
+  };
 
   # Networking with NetworkManager 
-  networking.hostName = "nixos"; # Define your hostname.   
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-
+  networking.hostName = "nixos"; # Define your hostname.
+  networking.networkmanager.enable =
+    true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
   time.timeZone = "America/Argentina/Cordoba";
@@ -40,14 +37,11 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "es_AR.UTF-8";
 
-  # Unfree Software
-  nixpkgs.config.allowUnfree = true;
-
   # Enable the X11 windowing system.
   services = {
     xserver = {
       enable = true;
-      displayManager = { 
+      displayManager = {
         lightdm.enable = true;
         defaultSession = "none+i3";
       };
@@ -57,9 +51,7 @@
       #videoDrivers = [ "nvidia" ];  # Enable just if using real PC
     };
 
-    picom = { 
-      enable = true;
-    };
+    picom = { enable = true; };
 
     openssh.enable = true;
   };
@@ -69,7 +61,6 @@
   #  opengl.enable = true;
   #  nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
   #};
-
 
   # Configure keymap in X11
 
@@ -85,14 +76,19 @@
     pulse.enable = true;
   };
 
-
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.calvo = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "root" "networkmanager" "audio" "video" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel"
+      "root"
+      "networkmanager"
+      "audio"
+      "video"
+    ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       alacritty
       feh
@@ -118,24 +114,5 @@
   };
 
   system.stateVersion = "22.11";
-
-
-#  home-manager.users.calvo = { pkgs, ... }: {
-#    home.packages = with pkgs; [
-#      bitwarden
-#      nextcloud-client
-#      vscodium
-#      rofi
-#      spotify
-#      steam
-#      teams
-#      thunderbird
-#      qbittorrent
-#      polybar
-#    ];
-#
-#    home.stateVersion = "22.11";
-#    nixpkgs.config.allowUnfree = true;
-#  };
 
 }

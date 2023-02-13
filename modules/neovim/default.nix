@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  nixpkgs.config.allowUnfree = true;
-
   programs.neovim = {
     enable = true;
     defaultEditor = true;
