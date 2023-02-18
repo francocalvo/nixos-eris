@@ -47,7 +47,7 @@ fg: #e5e5e5;
 
 * {
   background-color: #00000000;
-  font: "JetBrainsMono Nerd Font 10";
+  font: "FiraCode Nerd Font:style=Regular";
 }
 
 window {
@@ -118,7 +118,7 @@ prompt {
 }
 
 entry {
-  font: "JetBrainsMono Nerd Font10";
+  font: "FiraCode Nerd Font:style=Regular";
   text-color: @fg-search-box;
   padding: 8 0 8 12;
 }
