@@ -56,7 +56,7 @@
       package = pkgs.nordzy-icon-theme;
     };
     font = {
-      name = "FiraCode Nerd Font Mono Medium";
+      name = "FiraCode Nerd Font:style=Regular";
     }; # Cursor is declared under home.pointerCursor
   };
 }

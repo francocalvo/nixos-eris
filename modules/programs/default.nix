@@ -9,7 +9,7 @@
     discord
     firefox
     mdds # libreoffice fails to build without it
-    # libreoffice
+    libreoffice
     nextcloud-client
     spotify
     steam
