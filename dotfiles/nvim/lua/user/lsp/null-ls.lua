@@ -17,15 +17,25 @@ null_ls.setup({
 			extra_filetypes = { "javascript", "toml", "solidity" },
 			--[[ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" }, ]]
 		}),
-		formatting.black.with({ extra_args = { "--fast" } }),
+
 		formatting.stylua,
 		formatting.shfmt,
 		formatting.google_java_format,
 		diagnostics.shellcheck,
 
-    --# C++
-    diagnostics.cpplint,
-    formatting.clang_format,
+		-- Python
+		diagnostics.pylint,
+		diagnostics.flake8,
+		formatting.black,
+
+		--[[ diagnostics.mypy, ]]
+		--[[ diagnostics.pycodestyle, ]]
+		--[[ diagnostics.pydocstyle, ]]
+		--code_actions.refactoring,
+
+		--# C++
+		diagnostics.cpplint,
+		formatting.clang_format,
 
 		--# NIX
 		formatting.nixfmt,

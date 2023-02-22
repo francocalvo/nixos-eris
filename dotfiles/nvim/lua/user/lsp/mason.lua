@@ -12,7 +12,7 @@ local servers = {
 	"eslint",
 	"jsonls",
 	"sqlls",
-	"sumneko_lua",
+	"lua_ls",
 	"yamlls",
 	"html",
 	"cssls",
@@ -20,8 +20,8 @@ local servers = {
 	"clangd",
 	"tsserver",
 	"marksman",
-  "nil_ls",
-  "prismals"
+	"nil_ls",
+	"prismals",
 }
 
 local settings = {
@@ -58,12 +58,12 @@ for _, server in pairs(servers) do
 
 	server = vim.split(server, "@")[1]
 
-	if server == "sumneko_lua" then
+	if server == "lua_ls" then
 		--[[ local l_status_ok, lua_dev = pcall(require, "lua-dev") ]]
 		--[[ if not l_status_ok then ]]
 		--[[ 	return ]]
 		--[[ end ]]
-	 local sumneko_opts = require "user.lsp.settings.sumneko_lua"
+		local sumneko_opts = require("user.lsp.settings.sumneko_lua")
 		opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
 		--[[ opts = vim.tbl_deep_extend("force", require("lua-dev").setup(), opts) ]]
 		--[[ local luadev = lua_dev.setup({ ]]
@@ -92,11 +92,6 @@ for _, server in pairs(servers) do
 	if server == "tsserver" then
 		local tsserver_opts = require("user.lsp.settings.tsserver")
 		opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
-	end
-
-	if server == "pyright" then
-		local pyright_opts = require("user.lsp.settings.pyright")
-		opts = vim.tbl_deep_extend("force", pyright_opts, opts)
 	end
 
 	lspconfig[server].setup(opts)
