@@ -31,6 +31,7 @@ require "user.winbar"                     -- OK - updated up to 2022/09/12
 require "user.dap"
 require "user.cybu"
 require "user.vimtex"
+--[[ require "user.copilot" ]]
 
 
 

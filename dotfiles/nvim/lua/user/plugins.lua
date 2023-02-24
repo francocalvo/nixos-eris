@@ -81,6 +81,7 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-cmdline") -- cmdline completions
 	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 	use("hrsh7th/cmp-nvim-lsp")
+  use "zbirenbaum/copilot-cmp"
 
 	-- snippets
 	use("L3MON4D3/LuaSnip") --snippet engine
@@ -96,7 +97,15 @@ return packer.startup(function(use)
 	use("ray-x/lsp_signature.nvim") -- adds function signature when you type
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 	use("RRethy/vim-illuminate") -- For highlighting the same word under cursor
-	-- use "github/copilot.vim"
+	use({
+		"zbirenbaum/copilot.lua",
+		event = { "VimEnter" },
+		config = function()
+			vim.defer_fn(function()
+				require("user.copilot")
+			end, 100)
+		end,
+	})
 
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
@@ -108,7 +117,7 @@ return packer.startup(function(use)
 	})
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 
-  -- Refactoring for Python
+	-- Refactoring for Python
 	use({
 		"ThePrimeagen/refactoring.nvim",
 		requires = {
