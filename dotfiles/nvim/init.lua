@@ -36,7 +36,7 @@ require "user.vimtex"
 
 
 -- not used
--- require "user.bufferline"                 -- OK - updated up to 2022/09/12
+require "user.bufferline"                 -- OK - updated up to 2022/09/12
 
 
 

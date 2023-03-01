@@ -44,7 +44,7 @@ return packer.startup(function(use)
 	use("wbthomason/packer.nvim") -- Have packer manage itself
 	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
-	use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
+	--[[ use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter ]]
 	use("windwp/nvim-ts-autotag") -- Autotags for CSS, HTML, etc
 	use("numToStr/Comment.nvim") -- Easily comment stuff
 	use("kyazdani42/nvim-web-devicons")
@@ -61,6 +61,10 @@ return packer.startup(function(use)
 	use("karb94/neoscroll.nvim") -- Gives commands like "zz" a nice scroll
 	use("folke/todo-comments.nvim") -- Gives hints on comments like TODO, BUG, etc.
 	use("nacro90/numb.nvim") -- Allows to peek at line by using :{number}
+	use({
+		"akinsho/nvim-bufferline.lua",
+		requires = "kyazdani42/nvim-web-devicons",
+	})
 
 	use("LnL7/vim-nix")
 
@@ -75,13 +79,19 @@ return packer.startup(function(use)
 	use("shaunsingh/nord.nvim")
 
 	-- cmp plugins
-	use({ "hrsh7th/nvim-cmp", commit = "c4dcb1244a8942b8d2bd3c0a441481e12f91cdf1" }) -- The completion plugin
+	use({ "hrsh7th/nvim-cmp" }) -- The completion plugin
 	use("hrsh7th/cmp-buffer") -- buffer completions
 	use("hrsh7th/cmp-path") -- path completions
 	use("hrsh7th/cmp-cmdline") -- cmdline completions
 	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 	use("hrsh7th/cmp-nvim-lsp")
-  use "zbirenbaum/copilot-cmp"
+	--[[ use({ ]]
+	--[[ 	"zbirenbaum/copilot-cmp", ]]
+	--[[ 	after = { "copilot.lua" }, ]]
+	--[[ 	config = function() ]]
+	--[[ 		require("copilot_cmp").setup() ]]
+	--[[ 	end, ]]
+	--[[ }) ]]
 
 	-- snippets
 	use("L3MON4D3/LuaSnip") --snippet engine
