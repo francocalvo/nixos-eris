@@ -77,6 +77,7 @@ return packer.startup(function(use)
 	use("francocalvo/dracula.nvim")
 	--[[ use 'Mofiqul/dracula.nvim' ]]
 	use("shaunsingh/nord.nvim")
+  use "folke/tokyonight.nvim"
 
 	-- cmp plugins
 	use({ "hrsh7th/nvim-cmp" }) -- The completion plugin

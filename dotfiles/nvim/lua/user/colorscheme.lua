@@ -1,5 +1,5 @@
 --[[ local colorscheme = "darkplus" ]]
-local colorscheme = "dracula"
+local colorscheme = "tokyonight"
 
 vim.g.onedarker_italic_keywords = false
 
