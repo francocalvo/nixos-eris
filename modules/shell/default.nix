@@ -1,13 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  programs.alacritty = {
-    enable = true;
-    settings = {
-      font = { normal = { family = "MesloLGS NF"; }; };
-    }; # Used for P10K
-  };
-
   programs.zsh = {
     enable = true;
     enableCompletion = true;

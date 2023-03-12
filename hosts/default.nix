@@ -21,6 +21,32 @@ let
   };
   lib = nixpkgs.lib;
 in {
+  # Profile bacchus
+  bacchus = lib.nixosSystem {
+    inherit system;
+
+    # This allows me to pass the variables to the modules
+    specialArgs = { inherit inputs user; };
+
+    # Modules that are used
+    modules = [
+      ./configuration.nix
+      ./adonis
+
+      # Home Manager configuration
+      home-manager.nixosModules.home-manager
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+
+        home-manager.users.${user} = {
+          imports = [ (import ./adonis/home.nix) ];
+        };
+      }
+    ];
+
+  };
+
   # Profile desktop
   desktop = lib.nixosSystem {
     inherit system;
