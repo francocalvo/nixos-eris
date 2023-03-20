@@ -9,6 +9,7 @@
     dconf # Needed for GTK Theming
     networkmanagerapplet
     rofi
+    libsForQt5.bluedevil
   ];
 
   home.file.".config/i3" = {

@@ -32,6 +32,7 @@
 
   # Enable for Nvidia support
   hardware = {
+    bluetooth.enable = true;
     opengl.enable = true;
     nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
