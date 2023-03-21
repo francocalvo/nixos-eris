@@ -28,11 +28,6 @@ null_ls.setup({
 		diagnostics.flake8,
 		formatting.black,
 
-		--[[ diagnostics.mypy, ]]
-		--[[ diagnostics.pycodestyle, ]]
-		--[[ diagnostics.pydocstyle, ]]
-		--code_actions.refactoring,
-
 		--# C++
 		diagnostics.cpplint,
 		formatting.clang_format,
@@ -40,6 +35,14 @@ null_ls.setup({
 		--# NIX
 		formatting.nixfmt,
 		diagnostics.deadnix,
+
+    --# LaTeX
+    formatting.latexindent.with({
+      filetypes = { "tex", "bib" },
+      extra_args = { "-m", "-l=" .. vim.fn.stdpath("config") .. "/lua/user/lsp/settings/latexindent.yaml" },
+    }),
+
+    diagnostics.chktex,
 	},
 })
 

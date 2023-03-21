@@ -35,6 +35,7 @@ local settings = {
 	},
 	log_level = vim.log.levels.INFO,
 	max_concurrent_installers = 4,
+	--[[ PATH = "append", ]]
 }
 
 mason.setup(settings)
