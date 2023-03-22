@@ -35,6 +35,7 @@
     bluetooth.enable = true;
     opengl.enable = true;
     nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+    opengl.driSupport32Bit = true; # Enable 32 bit support for Steam
   };
 
   # Enable the X11 windowing system.

@@ -11,6 +11,7 @@
     vscode
     llvm
     libcxx
+    microsoft-edge # Bing Chat
   ];
 
   programs.direnv.enable = true;

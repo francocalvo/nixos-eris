@@ -13,6 +13,7 @@
     nextcloud-client
     spotify
     steam
+    protonup-ng
     qbittorrent
     vlc
     unrar
