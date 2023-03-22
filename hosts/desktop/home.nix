@@ -25,6 +25,7 @@
     ../../modules/development
     ../../modules/programs
     ../../modules/neovim
+    ../../modules/gaming
     ../../modules/shell
   ];
 
