@@ -17,8 +17,8 @@
     fsType = "ext4";
   };
 
-  fileSystems."/stg" = {
-    device = "/dev/disk/by-uuid/e1ff845a-fe6f-4383-903d-064c4b7349ec";
+  fileSystems."/elyseum" = {
+    device = "/dev/disk/by-uuid/434a2ced-0e06-4115-a8f8-1a8e00042f1e";
     fsType = "ext4";
   };
 

@@ -13,6 +13,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nix-gaming.url = "github:fufexan/nix-gaming";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -20,11 +21,11 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager }:
+  outputs = inputs@{ self, nixpkgs, home-manager, nix-gaming }:
     let user = "calvo";
     in {
       nixosConfigurations = (import ./hosts {
-        inherit inputs nixpkgs home-manager user;
+        inherit inputs nixpkgs home-manager user nix-gaming;
         inherit (nixpkgs) lib;
       });
     };

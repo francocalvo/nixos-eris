@@ -12,7 +12,7 @@
 #   └  ./modules
 #       └─ systemDesktop 
 
-{ config, pkgs, user, ... }:
+{ config, pkgs, user, inputs, nix-gaming, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;
@@ -37,6 +37,13 @@
     nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
     opengl.driSupport32Bit = true; # Enable 32 bit support for Steam
   };
+
+  # This allows me to pass the variables to the modules
+  # specialArgs = { inherit inputs user nix-gaming; };
+
+  environment.systemPackages = [
+    inputs.nix-gaming.packages.${pkgs.hostPlatform.system}.wine-ge # installs a package
+  ];
 
   # Enable the X11 windowing system.
   services = {

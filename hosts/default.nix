@@ -12,7 +12,7 @@
 #            ├─ ./home.nix 
 #            └─ ./hardware-configuration.nix 
 
-{ lib, inputs, nixpkgs, home-manager, user, ... }:
+{ lib, inputs, nixpkgs, home-manager, user, nix-gaming, ... }:
 let
   system = "x86_64-linux";
   pkgs = import nixpkgs {
@@ -26,7 +26,7 @@ in {
     inherit system;
 
     # This allows me to pass the variables to the modules
-    specialArgs = { inherit inputs user; };
+    specialArgs = { inherit inputs user nix-gaming; };
 
     # Modules that are used
     modules = [

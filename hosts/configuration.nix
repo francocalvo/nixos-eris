@@ -7,7 +7,7 @@
 #       ├─ default.nix 
 #       └─ configuration.nix *
 
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, inputs, ... }: {
 
   # Keep the system updated
   system.autoUpgrade = {
@@ -33,6 +33,8 @@
     efiSupport = true;
     useOSProber = true;
   };
+
+  boot.supportedFilesystems = [ "ext4" "fat" "ntfs" ];
 
   # Docker configuration
   virtualisation.docker = {
@@ -66,6 +68,7 @@
   environment.systemPackages = with pkgs; [
     linuxKernel.packages.linux_5_4.wireguard
     wireguard-tools
+    inputs.nix-gaming.packages.${pkgs.hostPlatform.system}.wine-ge # installs a package
   ];
 
   # Select internationalisation properties.
