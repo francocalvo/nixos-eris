@@ -28,9 +28,10 @@
   # Use the GRUB 2 boot loader.
   boot.loader.grub = {
     enable = true;
-    devices = [ "nodev" ];
+    version = 2;
     efiInstallAsRemovable = true;
     efiSupport = true;
+    devices = [ "nodev" ];
     useOSProber = true;
   };
 
@@ -68,7 +69,6 @@
   environment.systemPackages = with pkgs; [
     linuxKernel.packages.linux_5_4.wireguard
     wireguard-tools
-    inputs.nix-gaming.packages.${pkgs.hostPlatform.system}.wine-ge # installs a package
   ];
 
   # Select internationalisation properties.

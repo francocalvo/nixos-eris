@@ -41,6 +41,9 @@ in {
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
+        home-manager.extraSpecialArgs = {
+          inherit pkgs inputs user nix-gaming;
+        };
 
         home-manager.users.${user} = {
           imports = [ (import ./desktop/home.nix) ];

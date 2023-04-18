@@ -18,6 +18,14 @@
   nixpkgs.config.allowUnfree = true;
   imports = [ ./hardware-configuration.nix ];
 
+  # Cach for nix-gaming
+  nix.settings = {
+    substituters = [ "https://nix-gaming.cachix.org" ];
+    trusted-public-keys = [
+      "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
+    ];
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${user} = {
     isNormalUser = true;
@@ -38,12 +46,10 @@
     opengl.driSupport32Bit = true; # Enable 32 bit support for Steam
   };
 
-  # This allows me to pass the variables to the modules
-  # specialArgs = { inherit inputs user nix-gaming; };
 
-  environment.systemPackages = [
-    inputs.nix-gaming.packages.${pkgs.hostPlatform.system}.wine-ge # installs a package
-  ];
+  # environment.systemPackages = [
+  #   inputs.nix-gaming.packages.${pkgs.hostPlatform.system}.wine-ge # installs a package
+  # ];
 
   # Enable the X11 windowing system.
   services = {
@@ -89,3 +95,4 @@
 
   system.stateVersion = "22.11";
 }
+
