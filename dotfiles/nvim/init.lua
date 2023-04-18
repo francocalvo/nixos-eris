@@ -6,33 +6,34 @@ if vim.g.vscode then
 else
   -- This should make Mason work in NixOS.
   -- https://github.com/williamboman/mason.nvim/issues/428
-	local mason_registry = require("mason-registry")
-	mason_registry:on("package:install:success", function(pkg)
-		pkg:get_receipt():if_present(function(receipt)
-			-- Figure out the interpreter inspecting nvim itself
-			-- This is the same for all packages, so compute only once
-			local interpreter = os.execute(
-				("patchelf --print-interpreter %q"):format(
-					"$(grep -oE '\\/nix\\/store\\/[a-z0-9]+-neovim-unwrapped-[0-9]+\\.[0-9]+\\.[0-9]+\\/bin\\/nvim' $(which nvim))"
-				)
-			)
+  --
+	require("user.plugins") -- OK - See below
+	--local mason_registry = require("mason-registry")
+	--mason_registry:on("package:install:success", function(pkg)
+	--	pkg:get_receipt():if_present(function(receipt)
+	--		-- Figure out the interpreter inspecting nvim itself
+	--		-- This is the same for all packages, so compute only once
+	--		local interpreter = os.execute(
+	--			("patchelf --print-interpreter %q"):format(
+	--				"$(grep -oE '\\/nix\\/store\\/[a-z0-9]+-neovim-unwrapped-[0-9]+\\.[0-9]+\\.[0-9]+\\/bin\\/nvim' $(which nvim))"
+	--			)
+	--		)
 
-			for _, rel_path in pairs(receipt.links.bin) do
-				local bin_abs_path = pkg:get_install_path() .. "/" .. rel_path
-				if pkg.name == "lua-language-server" then
-					bin_abs_path = pkg:get_install_path() .. "/extension/server/bin/lua-language-server"
-				end
+	--		for _, rel_path in pairs(receipt.links.bin) do
+	--			local bin_abs_path = pkg:get_install_path() .. "/" .. rel_path
+	--			if pkg.name == "lua-language-server" then
+	--				bin_abs_path = pkg:get_install_path() .. "/extension/server/bin/lua-language-server"
+	--			end
 
-				-- Set the interpreter on the binary
-				os.execute(("patchelf --set-interpreter %q %q"):format(interpreter, bin_abs_path))
-			end
-		end)
-	end)
+	--			-- Set the interpreter on the binary
+	--			os.execute(("patchelf --set-interpreter %q %q"):format(interpreter, bin_abs_path))
+	--		end
+	--	end)
+	--end)
 
 	require("user.alpha") -- OK
 	require("user.nvim-webdev-icons") -- OK - updated up to 5b240a9
 	require("user.whichkey") -- OK
-	require("user.plugins") -- OK - See below
 	require("user.options") -- OK - updated up to 2022/09/12
 	require("user.illuminate") -- Not updated
 	require("user.colorscheme") -- OK

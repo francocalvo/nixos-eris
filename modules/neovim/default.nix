@@ -10,6 +10,7 @@
     withNodeJs = true;
     withPython3 = true;
     extraPackages = with pkgs; [
+      vimPlugins.packer-nvim
       cargo # Used for packer
       deadnix
       nixfmt
