@@ -48,7 +48,7 @@
       windowManager.i3.enable = true;
       layout = "latam";
       xkbOptions = "caps:escape"; # map caps to escape.
-      #videoDrivers = [ "nvidia" ];  # Enable just if using real PC
+      videoDrivers = [ "amdgpu" ];  # Enable just if using real PC
     };
 
     picom = { enable = true; };

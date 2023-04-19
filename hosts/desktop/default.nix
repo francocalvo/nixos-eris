@@ -38,14 +38,12 @@
     extraOptions = "experimental-features = nix-command flakes";
   };
 
-  # Enable for Nvidia support
   hardware = {
     bluetooth.enable = true;
     opengl.enable = true;
-    nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
     opengl.driSupport32Bit = true; # Enable 32 bit support for Steam
+    # nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
-
 
   # environment.systemPackages = [
   #   inputs.nix-gaming.packages.${pkgs.hostPlatform.system}.wine-ge # installs a package
@@ -83,7 +81,7 @@
       };
       layout = "latam";
       xkbOptions = "caps:escape"; # map caps to escape.
-      videoDrivers = [ "nvidia" ]; # Enable just if using real PC
+      videoDrivers = [ "amdgpu" ]; # Enable just if using real PC
     };
 
     picom = {
@@ -95,4 +93,3 @@
 
   system.stateVersion = "22.11";
 }
-
