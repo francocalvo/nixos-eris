@@ -26,17 +26,17 @@
   outputs =
     inputs@{ self, stable, nixpkgs, unstable, home-manager, nix-gaming, ... }:
     let
-      user = "calvo";
       inherit (self) outputs;
-      system = "x86_64-linux";
 
+      user = "calvo";
+      system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true; # Propietary software
       };
       unstablePkgs = import unstable { inherit system; };
     in rec {
-      inherit pkgs unstablePkgs;
+      inherit pkgs unstablePkgs user;
       nixosModules = import ./modules;
       nixosConfigurations = (import ./hosts {
         inherit inputs outputs nixpkgs stable unstable home-manager user

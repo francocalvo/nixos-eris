@@ -1,6 +1,8 @@
-{ config, pkgs, unstablePkgs, inputs, user, lib, ... }:
+{ inputs, outputs, config, lib, ... }:
 with lib;
-let cfg = config.modules.nixos.gaming;
+let
+  inherit (outputs) pkgs unstablePkgs user;
+  cfg = config.modules.nixos.gaming;
 in {
   options.modules.nixos.gaming = {
     enable = mkEnableOption "Enable gaming packages";

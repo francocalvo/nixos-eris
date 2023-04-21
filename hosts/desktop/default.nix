@@ -12,13 +12,14 @@
 #   └  ./modules
 #       └─ systemDesktop 
 
-{ config, pkgs, user, inputs, outputs, nix-gaming, ... }:
-
-{
-  nixpkgs.config.allowUnfree = true;
-
+{ user, outputs, ... }:
+let inherit (outputs) pkgs;
+in {
   imports = [ ./hardware-configuration.nix ];
+  nixpkgs.config.allowUnfree = true;
   programs.zsh.enable = true;
+
+  # Modules
   modules.nixos.gaming.enable = true;
 
   # Cach for nix-gaming
