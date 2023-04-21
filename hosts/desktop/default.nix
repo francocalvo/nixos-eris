@@ -21,7 +21,10 @@ in {
 
   # Modules
   modules.nixos = {
-    gaming.enable = true;
+    gaming = {
+      enable = true;
+      sunshine = true;
+    };
     basics.enable = true;
     neovim.enable = true;
     dev = {
