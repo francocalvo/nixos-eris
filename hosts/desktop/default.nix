@@ -23,6 +23,7 @@ in {
   modules.nixos = {
     gaming.enable = true;
     basics.enable = true;
+    neovim.enable = true;
     dev = {
       enable = true;
       python = true;
