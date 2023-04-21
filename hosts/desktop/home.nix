@@ -23,10 +23,10 @@
   imports = [
     ../../modules/desktop-wm
     ../../modules/development
-    ../../modules/programs
     ../../modules/neovim
-    # ../../modules/gaming
     ../../modules/shell
+    # ../../modules/programs
+    # ../../modules/gaming
   ];
 
   # Paths managed by Home Manager

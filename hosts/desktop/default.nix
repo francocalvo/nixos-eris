@@ -21,6 +21,7 @@ in {
 
   # Modules
   modules.nixos.gaming.enable = true;
+  modules.nixos.basics.enable = true;
 
   # Cach for nix-gaming
   nix.settings = {

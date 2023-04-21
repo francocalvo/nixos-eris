@@ -1,1 +1,4 @@
-{ gaming = import ./gaming; }
+{
+  gaming = import ./gaming;
+  basics = import ./programs;
+}
