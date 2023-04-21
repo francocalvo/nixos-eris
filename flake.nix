@@ -24,11 +24,15 @@
   };
 
   outputs =
-    inputs@{ self, stable, nixpkgs, unstable, home-manager, nix-gaming }:
-    let user = "calvo";
-    in {
+    inputs@{ self, stable, nixpkgs, unstable, home-manager, nix-gaming, ... }:
+    let
+      user = "calvo";
+      inherit (self) outputs;
+    in rec {
+      nixosModules = import ./modules;
       nixosConfigurations = (import ./hosts {
-        inherit inputs nixpkgs stable unstable home-manager user nix-gaming;
+        inherit inputs outputs nixpkgs stable unstable home-manager user
+          nix-gaming;
         inherit (nixpkgs) lib;
       });
     };

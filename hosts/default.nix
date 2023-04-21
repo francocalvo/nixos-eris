@@ -12,7 +12,8 @@
 #            ├─ ./home.nix 
 #            └─ ./hardware-configuration.nix 
 
-{ lib, inputs, nixpkgs, stable, unstable, home-manager, user, nix-gaming, ... }:
+{ lib, inputs, outputs, nixpkgs, stable, unstable, home-manager, user
+, nix-gaming, ... }:
 let
   system = "x86_64-linux";
   pkgs = import nixpkgs {
@@ -22,6 +23,8 @@ let
 
   unstablePkgs = import unstable { inherit system; };
 
+  mods = builtins.attrValues outputs.nixosModules;
+
   lib = nixpkgs.lib;
 in {
   # Profile desktop
@@ -29,7 +32,7 @@ in {
     inherit system;
 
     # This allows me to pass the variables to the modules
-    specialArgs = { inherit pkgs unstablePkgs inputs user nix-gaming; };
+    specialArgs = { inherit pkgs unstablePkgs inputs outputs user nix-gaming; };
 
     # Modules that are used
     modules = [
@@ -52,7 +55,7 @@ in {
           imports = [ (import ./desktop/home.nix) ];
         };
       }
-    ];
+    ] ++ mods;
 
   };
 }
