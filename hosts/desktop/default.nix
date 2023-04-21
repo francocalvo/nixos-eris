@@ -17,7 +17,7 @@
 {
   nixpkgs.config.allowUnfree = true;
 
-  imports = [ ./hardware-configuration.nix ];
+  imports = [ ./hardware-configuration.nix ../../modules/gaming ];
   programs.zsh.enable = true;
 
   # Cach for nix-gaming
