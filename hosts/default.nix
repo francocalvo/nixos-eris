@@ -15,21 +15,12 @@
 { lib, inputs, outputs, nixpkgs, stable, unstable, home-manager, user
 , nix-gaming, ... }:
 let
-  system = "x86_64-linux";
-  pkgs = import nixpkgs {
-    inherit system;
-    config.allowUnfree = true; # Propietary software
-  };
-
-  unstablePkgs = import unstable { inherit system; };
-
+  inherit (outputs) pkgs unstablePkgs;
   mods = builtins.attrValues outputs.nixosModules;
-
   lib = nixpkgs.lib;
 in {
   # Profile desktop
   desktop = lib.nixosSystem {
-    inherit system;
 
     # This allows me to pass the variables to the modules
     specialArgs = { inherit pkgs unstablePkgs inputs outputs user nix-gaming; };
