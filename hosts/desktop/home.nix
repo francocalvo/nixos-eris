@@ -22,9 +22,9 @@
 
   imports = [
     ../../modules/desktop-wm
-    ../../modules/development
     ../../modules/neovim
     ../../modules/shell
+    # ../../modules/development
     # ../../modules/programs
     # ../../modules/gaming
   ];

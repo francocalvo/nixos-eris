@@ -22,6 +22,9 @@ in {
   # Modules
   modules.nixos.gaming.enable = true;
   modules.nixos.basics.enable = true;
+  modules.nixos.dev.enable = true;
+  modules.nixos.dev.python = true;
+  modules.nixos.dev.nodejs = true;
 
   # Cach for nix-gaming
   nix.settings = {
