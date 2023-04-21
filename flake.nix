@@ -12,7 +12,9 @@
   description = "A poor attempt at a reproducible environment";
 
   inputs = {
+    stable.url = "github:nixos/nixpkgs/nixos-21.11";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nix-gaming.url = "github:fufexan/nix-gaming";
 
     home-manager = {
@@ -21,11 +23,12 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, nix-gaming }:
+  outputs =
+    inputs@{ self, stable, nixpkgs, unstable, home-manager, nix-gaming }:
     let user = "calvo";
     in {
       nixosConfigurations = (import ./hosts {
-        inherit inputs nixpkgs home-manager user nix-gaming;
+        inherit inputs nixpkgs stable unstable home-manager user nix-gaming;
         inherit (nixpkgs) lib;
       });
     };
