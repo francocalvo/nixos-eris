@@ -20,11 +20,15 @@ in {
   programs.zsh.enable = true;
 
   # Modules
-  modules.nixos.gaming.enable = true;
-  modules.nixos.basics.enable = true;
-  modules.nixos.dev.enable = true;
-  modules.nixos.dev.python = true;
-  modules.nixos.dev.nodejs = true;
+  modules.nixos = {
+    gaming.enable = true;
+    basics.enable = true;
+    dev = {
+      enable = true;
+      python = true;
+      nodejs = true;
+    };
+  };
 
   # Cach for nix-gaming
   nix.settings = {
