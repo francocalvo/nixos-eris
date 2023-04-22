@@ -13,7 +13,6 @@ in {
     {
       users.users.${user} = {
         packages = [
-          pkgs.steam
           pkgs.protonup-ng
           pkgs.lutris
           pkgs.gamemode
@@ -21,6 +20,12 @@ in {
           pkgs.winetricks
           unstablePkgs.bottles
         ];
+      };
+
+      programs.steam = {
+        enable = true;
+        remotePlay.openFirewall = true;
+        dedicatedServer.openFirewall = true;
       };
 
       environment = {
@@ -31,7 +36,21 @@ in {
         };
       };
     }
+    ######################### SUNSHINE ############################
     (mkIf cfg.sunshine {
+      boot.kernelModules = [ "uinput" ];
+      services = {
+        avahi = {
+          enable = true;
+          publish = { enable = true; };
+        };
+
+        udev.extraRules = ''
+          KERNEL=="uinput", GROUP="input", MODE="0660" OPTIONS+="static_node=uinput"
+        '';
+      };
+
+      environment.systemPackages = [ pkgs.sunshine ];
       security.wrappers.sunshine = {
         owner = "root";
         group = "root";

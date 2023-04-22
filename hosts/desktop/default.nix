@@ -45,7 +45,7 @@ in {
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${user} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "root" "networkmanager" "audio" "video" "docker" ];
+    extraGroups = [ "wheel" "root" "networkmanager" "audio" "video" "docker" "input" ]; 
     shell = pkgs.zsh;
   };
 
