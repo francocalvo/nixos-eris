@@ -14,18 +14,13 @@ in {
       users.users.${user} = {
         packages = [
           pkgs.protonup-ng
-          pkgs.lutris
+          # pkgs.lutris
           pkgs.gamemode
           inputs.nix-gaming.packages.${pkgs.hostPlatform.system}.wine-ge # installs a package
           pkgs.winetricks
           unstablePkgs.bottles
+          pkgs.steam
         ];
-      };
-
-      programs.steam = {
-        enable = true;
-        remotePlay.openFirewall = true;
-        dedicatedServer.openFirewall = true;
       };
 
       environment = {
