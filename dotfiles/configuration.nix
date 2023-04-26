@@ -88,6 +88,7 @@
       "networkmanager"
       "audio"
       "video"
+      "input"
     ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       alacritty

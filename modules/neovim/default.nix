@@ -7,23 +7,15 @@ in {
   options.modules.nixos.neovim = { enable = mkEnableOption "Enable neovim"; };
 
   config = mkIf cfg.enable {
-    programs.neovim = {
-      enable = true;
-      defaultEditor = true;
-      viAlias = true;
-      vimAlias = true;
-      withNodeJs = true;
-      withPython3 = true;
-    };
-
     home-manager.users.${user} = {
-      home.file.".config/nvim" = {
-        source = ../../dotfiles/nvim;
-        recursive = true;
-      };
-
       # TODO: Improve?
       programs.neovim = {
+        enable = true;
+        defaultEditor = true;
+        viAlias = true;
+        vimAlias = true;
+        withNodeJs = true;
+        withPython3 = true;
         extraPackages = with pkgs; [
           vimPlugins.packer-nvim
           cargo # Used for packer
@@ -37,6 +29,12 @@ in {
           ripgrep # Needed for Telescope in Nvim
         ];
       };
+
+      home.file.".config/nvim" = {
+        source = ../../dotfiles/nvim;
+        recursive = true;
+      };
+
     };
 
   };
