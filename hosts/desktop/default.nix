@@ -19,11 +19,17 @@ in {
   nixpkgs.config.allowUnfree = true;
   programs.zsh.enable = true;
 
+  networking.firewall.enable = false;
+
   # Modules
   modules.nixos = {
     gaming = {
       enable = true;
-      sunshine = true;
+      sunshine = {
+        enable = true;
+        enableAvahi = true;
+        disableFirewall = true;
+      };
     };
     basics.enable = true;
     neovim.enable = true;
@@ -45,7 +51,8 @@ in {
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${user} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "root" "networkmanager" "audio" "video" "docker" "input" ]; 
+    extraGroups =
+      [ "wheel" "root" "networkmanager" "audio" "video" "docker" "input" ];
     shell = pkgs.zsh;
   };
 
@@ -60,10 +67,6 @@ in {
     opengl.driSupport32Bit = true; # Enable 32 bit support for Steam
     # nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
-
-  # environment.systemPackages = [
-  #   inputs.nix-gaming.packages.${pkgs.hostPlatform.system}.wine-ge # installs a package
-  # ];
 
   # Enable the X11 windowing system.
   services = {
@@ -98,6 +101,9 @@ in {
       layout = "latam";
       xkbOptions = "caps:escape"; # map caps to escape.
       videoDrivers = [ "amdgpu" ]; # Enable just if using real PC
+      deviceSection = ''
+        Option "VariableRefresh" "true"
+      '';
     };
 
     picom = {

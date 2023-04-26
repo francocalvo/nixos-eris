@@ -6,7 +6,11 @@ let
 in {
   options.modules.nixos.gaming = {
     enable = mkEnableOption "Enable gaming packages";
-    sunshine = mkEnableOption "Enable sunshine";
+    sunshine = {
+      enable = mkEnableOption "Enable sunshine";
+      disableFirewall = mkEnableOption "Disable firewall";
+      enableAvahi = mkEnableOption "Enable avahi";
+    };
   };
 
   config = mkIf cfg.enable (mkMerge [
@@ -14,12 +18,15 @@ in {
       users.users.${user} = {
         packages = [
           pkgs.protonup-ng
-          # pkgs.lutris
           pkgs.gamemode
-          inputs.nix-gaming.packages.${pkgs.hostPlatform.system}.wine-ge # installs a package
           pkgs.winetricks
           unstablePkgs.bottles
           pkgs.steam
+          pkgs.moonlight-qt
+          pkgs.mangohud
+
+          # pkgs.lutris
+          # inputs.nix-gaming.packages.${pkgs.hostPlatform.system}.wine-ge # installs a package
         ];
       };
 
@@ -31,21 +38,16 @@ in {
         };
       };
     }
+
     ######################### SUNSHINE ############################
-    (mkIf cfg.sunshine {
+    (mkIf cfg.sunshine.enable {
       boot.kernelModules = [ "uinput" ];
       services = {
-        avahi = {
-          enable = true;
-          publish = { enable = true; };
-        };
-
         udev.extraRules = ''
           KERNEL=="uinput", GROUP="input", MODE="0660" OPTIONS+="static_node=uinput"
         '';
       };
 
-      environment.systemPackages = [ pkgs.sunshine ];
       security.wrappers.sunshine = {
         owner = "root";
         group = "root";
@@ -60,7 +62,26 @@ in {
           ExecStart = "${config.security.wrapperDir}/sunshine";
         };
       };
+    })
 
+    ######################### AVAHI ############################
+    (mkIf cfg.sunshine.enableAvahi {
+      services.avahi = {
+        enable = true;
+        reflector = true;
+        nssmdns = true;
+        publish = {
+          enable = true;
+          addresses = true;
+          userServices = true;
+          workstation = true;
+        };
+      };
+    })
+
+    ######################### FIREWALL ############################
+    (mkIf cfg.sunshine.disableFirewall {
+      networking.firewall = { enable = false; };
     })
   ]);
 }
