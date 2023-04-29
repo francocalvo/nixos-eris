@@ -24,6 +24,7 @@ in {
           pkgs.steam
           pkgs.moonlight-qt
           pkgs.mangohud
+          pkgs.glmark2
 
           # pkgs.lutris
           # inputs.nix-gaming.packages.${pkgs.hostPlatform.system}.wine-ge # installs a package

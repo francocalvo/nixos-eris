@@ -48,26 +48,24 @@
       windowManager.i3.enable = true;
       layout = "latam";
       xkbOptions = "caps:escape"; # map caps to escape.
-      videoDrivers = [ "amdgpu" ];  # Enable just if using real PC
+      videoDrivers = [ "amdgpu" ]; # Enable just if using real PC
     };
 
-    picom = { enable = true; };
+    picom = {
+      enable = true;
+      vSync = true;
+      backend = "glx";
+      fade = true;
+      inactiveOpacity = 0.8;
+      settings = ''
+        unredir-if-possible = false
+      '';
+
+    };
 
     openssh.enable = true;
   };
 
-  # Enable just if using real PC
-  #hardware = {
-  #  opengl.enable = true;
-  #  nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
-  #};
-
-  # Configure keymap in X11
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  # Enable sound.
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
