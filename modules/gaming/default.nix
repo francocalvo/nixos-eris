@@ -17,6 +17,7 @@ in {
     {
       users.users.${user} = {
         packages = [
+          pkgs.protonup-qt
           pkgs.protonup-ng
           pkgs.gamemode
           pkgs.winetricks

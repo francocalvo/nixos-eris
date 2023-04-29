@@ -19,6 +19,13 @@ let
   mods = builtins.attrValues outputs.nixosModules;
   lib = nixpkgs.lib;
 in {
+
+  # Adonis server
+  adonis = lib.nixosSystem {
+    specialArgs = { inherit inputs outputs; };
+    modules = [ ./configuration.nix ./adonis ] ++ mods;
+  };
+
   # Profile desktop
   desktop = lib.nixosSystem {
 
@@ -47,6 +54,5 @@ in {
         };
       }
     ] ++ mods;
-
   };
 }

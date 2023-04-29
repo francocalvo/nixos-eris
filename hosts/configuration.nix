@@ -15,6 +15,8 @@
     channel = "https://nixos.org/channels/nixos-unstable";
   };
 
+  environment.systemPackages = with pkgs; [ git vim neovim ];
+
   # Keep the system clean
   nix = {
     settings.auto-optimise-store = true;

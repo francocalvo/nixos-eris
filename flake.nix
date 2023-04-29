@@ -13,10 +13,9 @@
 
   inputs = {
     stable.url = "github:nixos/nixpkgs/nixos-21.11";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nix-gaming.url = "github:fufexan/nix-gaming";
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,8 +26,8 @@
     inputs@{ self, stable, nixpkgs, unstable, home-manager, nix-gaming, ... }:
     let
       inherit (self) outputs;
-
       user = "calvo";
+      serverName = "adonis";
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
@@ -36,11 +35,11 @@
       };
       unstablePkgs = import unstable { inherit system; };
     in rec {
-      inherit pkgs unstablePkgs user;
+      inherit pkgs unstablePkgs user serverName;
       nixosModules = import ./modules;
       nixosConfigurations = (import ./hosts {
         inherit inputs outputs nixpkgs stable unstable home-manager user
-          nix-gaming;
+          serverName nix-gaming;
         inherit (nixpkgs) lib;
       });
     };
