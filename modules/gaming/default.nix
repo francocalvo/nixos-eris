@@ -17,19 +17,27 @@ in {
     {
       users.users.${user} = {
         packages = [
+          # Launchers
+          pkgs.steam
+          unstablePkgs.bottles
+
+          # Benchmarking
+          pkgs.glmark2
+          pkgs.mangohud
+
+          # Improve performance
+          pkgs.gamemode
           pkgs.protonup-qt
           pkgs.protonup-ng
-          pkgs.gamemode
           pkgs.winetricks
-          unstablePkgs.bottles
-          pkgs.steam
-          pkgs.moonlight-qt
-          pkgs.mangohud
-          pkgs.glmark2
-
-          # pkgs.lutris
-          # inputs.nix-gaming.packages.${pkgs.hostPlatform.system}.wine-ge # installs a package
+          pkgs.gamescope
         ];
+      };
+
+      boot = {
+        # Improve performance from https://wiki.archlinux.org/title/gaming
+        kernel.sysctl."vm.max_map_count" = "2147483642";
+        kernelParams = [ "tsc=reliable" "clocksource=tsc" ];
       };
 
       environment = {
@@ -43,7 +51,7 @@ in {
 
     ######################### SUNSHINE ############################
     (mkIf cfg.sunshine.enable {
-      boot.kernelModules = [ "uinput" ];
+      boot = { kernelModules = [ "uinput" ]; };
       services = {
         udev.extraRules = ''
           KERNEL=="uinput", GROUP="input", MODE="0660" OPTIONS+="static_node=uinput"
