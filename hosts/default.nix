@@ -13,7 +13,7 @@
 #            └─ ./hardware-configuration.nix 
 
 { lib, inputs, outputs, nixpkgs, stable, unstable, home-manager, user
-, nix-gaming, ... }:
+, serverName, nix-gaming, ... }:
 let
   inherit (outputs) pkgs unstablePkgs;
   mods = builtins.attrValues outputs.nixosModules;
@@ -23,7 +23,7 @@ in {
   # Adonis server
   adonis = lib.nixosSystem {
     specialArgs = { inherit inputs outputs; };
-    modules = [ ./configuration.nix ./adonis ] ++ mods;
+    modules = [ ./configuration.nix ./adonis ];
   };
 
   # Profile desktop

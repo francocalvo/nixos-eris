@@ -111,6 +111,10 @@ in {
       vSync = true;
     };
     openssh.enable = true;
+    # This allows to use MTP with Kindle, Android, etc.
+    gvfs.enable = true;
+    # This allows the global install of a keyring
+    gnome.gnome-keyring.enable = true;
   };
 
   system.stateVersion = "22.11";

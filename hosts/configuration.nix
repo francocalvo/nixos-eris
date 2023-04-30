@@ -15,8 +15,6 @@
     channel = "https://nixos.org/channels/nixos-unstable";
   };
 
-  environment.systemPackages = with pkgs; [ git vim neovim ];
-
   # Keep the system clean
   nix = {
     settings.auto-optimise-store = true;
@@ -69,6 +67,8 @@
 
   # Wireguard configuration
   environment.systemPackages = with pkgs; [
+    vim
+    git
     linuxKernel.packages.linux_5_4.wireguard
     wireguard-tools
   ];
@@ -78,12 +78,6 @@
 
   # Set your time zone.
   time.timeZone = "America/Argentina/Cordoba";
-
-  # This allows to use MTP with Kindle, Android, etc.
-  services = { gvfs.enable = true; };
-
-  # This allows the global install of a keyring
-  services.gnome.gnome-keyring.enable = true;
 
   fonts.fonts = with pkgs; [
     font-awesome
