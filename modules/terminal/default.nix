@@ -5,18 +5,16 @@ let
   inherit (lib) types;
   cfg = config.modules.nixos.terminal;
 in {
-  options.modules.nixos.terminal = {
-    name = lib.mkOption {
-      type = types.enum [ "alacritty" ];
-      default = "alacritty";
-      example = "alacritty";
-      description = lib.mdDoc "Which terminal emulator to use";
-    };
+  options.modules.nixos.terminal = lib.mkOption {
+    type = types.enum [ "alacritty" ];
+    default = "alacritty";
+    example = "alacritty";
+    description = lib.mdDoc "Which terminal emulator to use";
   };
 
   config = lib.mkMerge [
     ################### alacritty ###################
-    (lib.mkIf (cfg.name == "alacritty") {
+    (lib.mkIf (cfg == "alacritty") {
       home-manager.users.${user} = {
         programs.alacritty = {
           enable = true;

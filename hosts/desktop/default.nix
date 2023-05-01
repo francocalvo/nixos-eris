@@ -27,8 +27,8 @@ in {
 
   # Modules
   modules.nixos = {
-    # shell = "zsh";
-    # terminal = "alacritty";
+    shell = "zsh";
+    terminal = "alacritty";
     gaming = {
       enable = true;
       sunshine = {

@@ -5,18 +5,16 @@ let
   inherit (lib) types;
   cfg = config.modules.nixos.shell;
 in {
-  options.modules.nixos.shell = {
-    name = lib.mkOption {
-      type = types.enum [ "zsh" "bash" ];
-      default = "zsh";
-      example = "zsh";
-      description = lib.mdDoc "Which shell to use";
-    };
+  options.modules.nixos.shell = lib.mkOption {
+    type = types.enum [ "zsh" "bash" ];
+    default = "bash";
+    example = "zsh";
+    description = lib.mdDoc "Which shell to use";
   };
 
   config = lib.mkMerge [
     ################### zsh ###################
-    (lib.mkIf (cfg.name == "zsh") {
+    (lib.mkIf (cfg == "zsh") {
       home-manager.users.${user} = {
         programs.zsh = {
           enable = true;
@@ -49,7 +47,7 @@ in {
     })
 
     ################### bash ###################
-    (lib.mkIf (cfg.name == "bash") {
+    (lib.mkIf (cfg == "bash") {
       home-manager.users.${user} = {
         programs.bash = {
           enable = true;
