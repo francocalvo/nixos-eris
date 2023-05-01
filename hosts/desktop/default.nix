@@ -31,11 +31,7 @@ in {
     terminal = "alacritty";
     gaming = {
       enable = true;
-      sunshine = {
-        enable = true;
-        enableAvahi = true;
-        disableFirewall = true;
-      };
+      sunshine.enable = false;
     };
     basics.enable = true;
     neovim.enable = true;
