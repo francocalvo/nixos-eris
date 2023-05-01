@@ -4,7 +4,7 @@ let
   inherit (pkgs) lib;
   cfg = config.modules.internal.shell.zsh;
 in {
-  options.modules.internal.shell.zsh = lib.mkEnableOption "Set up bash shell";
+  options.modules.internal.shell.zsh = lib.mkEnableOption "Set up zsh shell";
 
   config = lib.mkIf cfg {
     home-manager.users.${user} = {
