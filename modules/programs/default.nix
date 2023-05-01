@@ -19,7 +19,6 @@ in {
         firefox
         mdds # libreoffice fails to build without it
         libreoffice
-        nextcloud-client
         spotify
         qbittorrent
         vlc
@@ -33,11 +32,16 @@ in {
         texlive.combined.scheme-full
         teams
         thunderbird
-        nextcloud-client
       ];
     };
 
     # TODO: Autostart nextcloud-client
+    home-manager.users.${user} = {
+      services.nextcloud-client = {
+        enable = true;
+        startInBackground = true;
+      };
+    };
 
   };
 }
