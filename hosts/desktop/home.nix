@@ -23,7 +23,7 @@
   imports = [
     # ../../modules/desktop-wm
     # ../../modules/neovim
-    ../../modules/shell
+    # ../../modules/shell
     # ../../modules/development
     # ../../modules/programs
     # ../../modules/gaming
