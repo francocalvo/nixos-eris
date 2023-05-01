@@ -15,7 +15,11 @@
 { user, outputs, ... }:
 let inherit (outputs) pkgs;
 in {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [
+    ../../modules/desktop-wm
+    # ../../modules/shell
+    ./hardware-configuration.nix
+  ];
   nixpkgs.config.allowUnfree = true;
   programs.zsh.enable = true;
 

@@ -21,7 +21,7 @@
 {
 
   imports = [
-    ../../modules/desktop-wm
+    # ../../modules/desktop-wm
     # ../../modules/neovim
     ../../modules/shell
     # ../../modules/development
