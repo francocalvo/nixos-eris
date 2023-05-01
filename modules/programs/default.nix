@@ -2,10 +2,10 @@
 with lib;
 let
   inherit (outputs) pkgs unstablePkgs user;
-  cfg = config.modules.nixos.basics;
+  cfg = config.modules.nixos.basicSoftware;
 in {
-  options.modules.nixos.basics = {
-    enable = mkEnableOption "Enable base packages";
+  options.modules.nixos.basicSoftware = {
+    enable = mkEnableOption "Enable software to make desktop more usable";
   };
 
   config = mkIf cfg.enable {
@@ -17,7 +17,6 @@ in {
         calibre
         discord
         firefox
-        mdds # libreoffice fails to build without it
         libreoffice
         spotify
         qbittorrent

@@ -33,7 +33,7 @@ in {
       enable = true;
       sunshine.enable = false;
     };
-    basics.enable = true;
+    basicSoftware.enable = true;
     neovim.enable = true;
     dev = {
       enable = true;
