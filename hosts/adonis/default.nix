@@ -12,7 +12,7 @@ in {
   };
 
   # Modules
-  modules.nixos = { samba.olimpo = true; };
+  modules.nixos = { samba.olimpo.connect = true; };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${serverName} = {
