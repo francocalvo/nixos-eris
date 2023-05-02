@@ -12,8 +12,7 @@
 #            ├─ ./home.nix 
 #            └─ ./hardware-configuration.nix 
 
-{ lib, inputs, outputs, nixpkgs, stable, unstable, home-manager, user
-, serverName, nix-gaming, ... }:
+{ inputs, outputs, nixpkgs, home-manager, user, ... }:
 let
   inherit (outputs) pkgs unstablePkgs;
   mods = builtins.attrValues outputs.nixosModules;
@@ -23,14 +22,14 @@ in {
   # Adonis server
   adonis = lib.nixosSystem {
     specialArgs = { inherit inputs outputs; };
-    modules = [ ./configuration.nix ./adonis ];
+    modules = [ ./configuration.nix ./adonis ] ++ mods;
   };
 
   # Profile desktop
   desktop = lib.nixosSystem {
 
     # This allows me to pass the variables to the modules
-    specialArgs = { inherit pkgs unstablePkgs inputs outputs user nix-gaming; };
+    specialArgs = { inherit pkgs unstablePkgs inputs outputs user; };
 
     # Modules that are used
     modules = [
@@ -46,7 +45,7 @@ in {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
-          inherit pkgs unstablePkgs inputs user nix-gaming;
+          inherit pkgs unstablePkgs inputs user;
         };
 
         home-manager.users.${user} = {

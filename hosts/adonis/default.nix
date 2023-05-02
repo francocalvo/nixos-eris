@@ -1,4 +1,4 @@
-{ inputs, outputs, ... }:
+{ outputs, ... }:
 let inherit (outputs) pkgs serverName;
 in {
   imports = [ ./hardware-configuration.nix ];
@@ -11,17 +11,8 @@ in {
     extraOptions = "experimental-features = nix-command flakes";
   };
 
-  # # Modules
-  # modules.nixos = {
-  #   gaming.enable = false;
-  #   basics.enable = false;
-  #   neovim.enable = true;
-  #   dev = {
-  #     enable = true;
-  #     python = true;
-  #     nodejs = true;
-  #   };
-  # };
+  # Modules
+  modules.nixos = { samba.olimpo = true; };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${serverName} = {

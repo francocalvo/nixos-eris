@@ -5,4 +5,5 @@
   neovim = import ./neovim;
   shell = import ./shell;
   terminal = import ./terminal;
+  samba = import ./samba;
 }
