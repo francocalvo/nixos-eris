@@ -14,7 +14,7 @@
 
 { inputs, outputs, nixpkgs, home-manager, user, ... }:
 let
-  inherit (outputs) pkgs unstablePkgs;
+  inherit (outputs) pkgs unstablePkgs serverName;
   mods = builtins.attrValues outputs.nixosModules;
   lib = nixpkgs.lib;
 in {
@@ -22,7 +22,19 @@ in {
   # Adonis server
   adonis = lib.nixosSystem {
     specialArgs = { inherit inputs outputs; };
-    modules = [ ./configuration.nix ./adonis ] ++ mods;
+    modules = [
+      ./configuration.nix
+      ./adonis
+
+      home-manager.nixosModules.home-manager
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.extraSpecialArgs = {
+          inherit pkgs unstablePkgs inputs serverName;
+        };
+      }
+    ] ++ mods;
   };
 
   # Profile desktop

@@ -30,6 +30,6 @@ in {
       };
     }
 
-    (lib.mkIf cfg.openFirewall { services.openFirewall.enable = true; })
+    (lib.mkIf cfg.openFirewall { services.samba.openFirewall = true; })
   ]);
 }
