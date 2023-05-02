@@ -33,7 +33,12 @@ in {
         home-manager.extraSpecialArgs = {
           inherit pkgs unstablePkgs inputs serverName;
         };
+
+        home-manager.users.${serverName} = {
+          imports = [ (import ./adonis/home.nix) ];
+        };
       }
+
     ] ++ mods;
   };
 
