@@ -13,7 +13,7 @@
 #       └─ systemDesktop 
 
 { user, outputs, ... }:
-let inherit (outputs) pkgs;
+let inherit (outputs) pkgs unstablePkgs;
 in {
   imports = [
     ../../modules/desktop-wm
@@ -22,7 +22,7 @@ in {
   ];
   nixpkgs.config.allowUnfree = true;
   programs.zsh.enable = true;
-
+  boot.kernelPackages = unstablePkgs.linuxPackages_zen;
   networking.firewall.enable = false;
 
   # Modules
@@ -67,7 +67,6 @@ in {
     bluetooth.enable = true;
     opengl.enable = true;
     opengl.driSupport32Bit = true; # Enable 32 bit support for Steam
-    # nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
   # Enable the X11 windowing system.
