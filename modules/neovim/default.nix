@@ -17,6 +17,8 @@ in {
         withNodeJs = true;
         withPython3 = true;
         extraPackages = with pkgs; [
+          pylint
+          black
           vimPlugins.packer-nvim
           cargo # Used for packer
           deadnix
