@@ -16,7 +16,6 @@ local servers = {
 	"yamlls",
 	"html",
 	"cssls",
-	"jedi_language_server",
 	"clangd",
 	"tsserver",
 	"marksman",
