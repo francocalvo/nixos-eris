@@ -16,7 +16,7 @@
 let inherit (outputs) pkgs unstablePkgs;
 in {
   imports = [
-    ../../modules/desktop-wm
+    # ../../modules/desktop-wm
     # ../../modules/shell
     ./hardware-configuration.nix
   ];
@@ -29,6 +29,7 @@ in {
   modules.nixos = {
     shell = "zsh";
     terminal = "alacritty";
+    displayServer.xorg.enable = true;
     gaming = {
       enable = true;
       sunshine.enable = false;
@@ -71,46 +72,6 @@ in {
 
   # Enable the X11 windowing system.
   services = {
-    xserver = {
-      enable = true;
-      displayManager = {
-        lightdm = {
-          enable = true; # Wallpaper and GTK theme
-          background =
-            pkgs.nixos-artwork.wallpapers.nineish-dark-gray.gnomeFilePath;
-          greeters = {
-            gtk = {
-              theme = {
-                name = "Nordic";
-                package = pkgs.nordic;
-              };
-              cursorTheme = {
-                name = "Nordic-cursors";
-                package = pkgs.nordic;
-                size = 16;
-              };
-            };
-          };
-        };
-
-        defaultSession = "none+i3";
-      };
-      windowManager.i3 = {
-        enable = true;
-        extraPackages = with pkgs; [ nordic ];
-      };
-      layout = "latam";
-      xkbOptions = "caps:escape"; # map caps to escape.
-      videoDrivers = [ "amdgpu" ]; # Enable just if using real PC
-      deviceSection = ''
-        Option "VariableRefresh" "true"
-      '';
-    };
-
-    picom = {
-      enable = true;
-      vSync = true;
-    };
     openssh.enable = true;
     # This allows to use MTP with Kindle, Android, etc.
     gvfs.enable = true;

@@ -31,6 +31,9 @@ in {
         texlive.combined.scheme-full
         teams
         thunderbird
+        flameshot
+        cinnamon.nemo
+        libsForQt5.bluedevil
       ];
     };
 

@@ -6,4 +6,5 @@
   shell = import ./shell;
   terminal = import ./terminal;
   samba = import ./samba;
+  displayServer = import ./display-server;
 }
