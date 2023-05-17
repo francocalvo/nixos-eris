@@ -29,7 +29,10 @@ in {
   modules.nixos = {
     shell = "zsh";
     terminal = "alacritty";
-    displayServer.xorg.enable = true;
+    displayServer = {
+      xorg.enable = true;
+      wayland.enable = true;
+    };
     gaming = {
       enable = true;
       sunshine.enable = false;
