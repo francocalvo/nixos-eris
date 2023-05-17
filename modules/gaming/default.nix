@@ -16,6 +16,7 @@ in {
       packages = [
         # Launchers
         pkgs.steam
+        pkgs.steamtinkerlaunch
         unstablePkgs.bottles
 
         # Benchmarking
