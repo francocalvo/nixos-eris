@@ -12,7 +12,6 @@
   description = "A poor attempt at a reproducible environment";
 
   inputs = {
-    stable.url = "github:nixos/nixpkgs/nixos-21.11";
     unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -22,17 +21,16 @@
     };
   };
 
-  outputs = inputs@{ self, stable, nixpkgs, unstable, home-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, unstable, home-manager, ... }:
     let
-      # Extended library
-      lib = nixpkgs.lib.extend (self: super: {
-        my = import ./lib {
-          inherit pkgs inputs;
-          lib = self;
-        };
-      });
-      inherit (lib.my) mapModules mapModulesRec mapHosts;
       inherit (self) outputs;
+
+      lib = import ./lib {
+        inherit pkgs inputs;
+        lib = nixpkgs.lib;
+      };
+      inherit (lib._) mapModules mapModulesRec mapHosts;
+
       user = "calvo";
       serverName = "adonis";
       system = "x86_64-linux";
@@ -43,14 +41,12 @@
       unstablePkgs = import unstable { inherit system; };
 
     in {
-      lib = lib.my;
       inherit pkgs unstablePkgs user serverName;
 
       nixosModules = mapModulesRec ./modules import;
 
       nixosConfigurations = (import ./hosts {
-        inherit inputs outputs nixpkgs stable unstable home-manager user
-          serverName;
+        inherit inputs outputs nixpkgs unstable home-manager user serverName;
         inherit (nixpkgs) lib;
       });
     };
