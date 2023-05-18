@@ -24,28 +24,28 @@ in {
   programs.zsh.enable = true;
   boot.kernelPackages = unstablePkgs.linuxPackages_zen;
   networking.firewall.enable = false;
-
-  # Modules
-  modules.nixos = {
-    shell = "zsh";
-    terminal = "alacritty";
-    displayServer = {
-      xorg.enable = true;
-      wayland.enable = true;
-    };
-    gaming = {
-      enable = true;
-      sunshine.enable = false;
-    };
-    basicSoftware.enable = true;
-    neovim.enable = true;
-    dev = {
-      enable = true;
-      python = true;
-      nodejs = true;
-    };
-  };
-
+  #
+  # # Modules
+  # modules.nixos = {
+  #   shell = "zsh";
+  #   terminal = "alacritty";
+  #   displayServer = {
+  #     xorg.enable = true;
+  #     wayland.enable = true;
+  #   };
+  #   gaming = {
+  #     enable = true;
+  #     sunshine.enable = false;
+  #   };
+  #   basicSoftware.enable = true;
+  #   neovim.enable = true;
+  #   dev = {
+  #     enable = true;
+  #     python = true;
+  #     nodejs = true;
+  #   };
+  # };
+  #
   # Cach for nix-gaming
   nix.settings = {
     substituters = [ "https://nix-gaming.cachix.org" ];
