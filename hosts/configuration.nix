@@ -28,7 +28,6 @@
   # Use the GRUB 2 boot loader.
   boot.loader.grub = {
     enable = true;
-    version = 2;
     efiInstallAsRemovable = true;
     efiSupport = true;
     devices = [ "nodev" ];

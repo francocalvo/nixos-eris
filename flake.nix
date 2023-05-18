@@ -15,16 +15,26 @@
     stable.url = "github:nixos/nixpkgs/nixos-21.11";
     unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nix-gaming.url = "github:fufexan/nix-gaming";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs =
-    inputs@{ self, stable, nixpkgs, unstable, home-manager, nix-gaming, ... }:
+  outputs = inputs@{ self, stable, nixpkgs, unstable, home-manager, ... }:
     let
+
+      lib = nixpkgs.lib.extend (self: super: {
+        my = import ./lib {
+          inherit pkgs inputs;
+          lib = self;
+        };
+      });
+
+
+      inherit (lib.my) mapModules mapModulesRec mapHosts;
+
       inherit (self) outputs;
       user = "calvo";
       serverName = "adonis";
@@ -34,12 +44,15 @@
         config.allowUnfree = true; # Propietary software
       };
       unstablePkgs = import unstable { inherit system; };
-    in rec {
+
+    in {
       inherit pkgs unstablePkgs user serverName;
+
       nixosModules = import ./modules;
+
       nixosConfigurations = (import ./hosts {
         inherit inputs outputs nixpkgs stable unstable home-manager user
-          serverName nix-gaming;
+          serverName;
         inherit (nixpkgs) lib;
       });
     };
