@@ -10,3 +10,4 @@ tries to support two systems:
 ## Useful links
 
 - [Matthias Benaets dotfiles](https://github.com/MatthiasBenaets/nixos-config): main source of inspiration.
+- [KubqoA dotfiles](https://github.com/KubqoA/dotfiles): modules magic
