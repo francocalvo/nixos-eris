@@ -24,16 +24,12 @@
 
   outputs = inputs@{ self, stable, nixpkgs, unstable, home-manager, ... }:
     let
-
-      lib = nixpkgs.lib.extend (self: super: {
-        my = import ./lib {
-          inherit pkgs inputs;
-          lib = self;
-        };
-      });
-
-
-      inherit (lib.my) mapModules mapModulesRec mapHosts;
+      # Extended library
+      lib = import ./lib {
+        inherit pkgs inputs;
+        lib = nixpkgs.lib;
+      };
+      inherit (lib.my) mapModules mapModulesRec mkHost;
 
       inherit (self) outputs;
       user = "calvo";
