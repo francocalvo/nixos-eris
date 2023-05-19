@@ -12,8 +12,8 @@
 #   └  ./modules
 #       └─ systemDesktop 
 
-{ user, outputs, ... }:
-let inherit (outputs) pkgs unstablePkgs;
+{ inputs, lib, pkgs, ... }:
+let inherit lib;
 in {
   imports = [
     # ../../modules/desktop-wm
@@ -22,7 +22,7 @@ in {
   ];
   nixpkgs.config.allowUnfree = true;
   programs.zsh.enable = true;
-  boot.kernelPackages = unstablePkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
   networking.firewall.enable = false;
   #
   # # Modules
@@ -54,13 +54,13 @@ in {
     ];
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.${user} = {
-    isNormalUser = true;
-    extraGroups =
-      [ "wheel" "root" "networkmanager" "audio" "video" "docker" "input" ];
-    shell = pkgs.zsh;
-  };
+  # # Define a user account. Don't forget to set a password with ‘passwd’.
+  # users.users.${user} = {
+  #   isNormalUser = true;
+  #   extraGroups =
+  #     [ "wheel" "root" "networkmanager" "audio" "video" "docker" "input" ];
+  #   shell = pkgs.zsh;
+  # };
 
   nix = {
     package = pkgs.nixFlakes;

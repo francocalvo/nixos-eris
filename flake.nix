@@ -25,7 +25,7 @@
     let
       inherit (self) outputs;
 
-      inherit (lib.my) mapModules mapModulesRec;
+      inherit (lib.my) mapModules mapModulesRec mapHosts;
 
       lib = nixpkgs.lib.extend (self: super: {
         my = import ./lib {
@@ -48,10 +48,6 @@
 
       nixosModules = mapModulesRec ./modules import;
 
-      inherit pkgs unstablePkgs user serverName;
-      nixosConfigurations = (import ./hosts {
-        inherit inputs outputs nixpkgs unstable home-manager user serverName;
-        inherit lib;
-      });
+      nixosConfigurations = mapHosts ./hosts { };
     };
 }
