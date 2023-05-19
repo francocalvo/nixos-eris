@@ -25,11 +25,14 @@
     let
       inherit (self) outputs;
 
-      lib = import ./lib {
-        inherit pkgs inputs;
-        lib = nixpkgs.lib;
-      };
-      inherit (lib._) mapModules mapModulesRec mapHosts;
+      inherit (lib.my) mapModules mapModulesRec;
+
+      lib = nixpkgs.lib.extend (self: super: {
+        my = import ./lib {
+          inherit pkgs inputs;
+          lib = self;
+        };
+      });
 
       user = "calvo";
       serverName = "adonis";
@@ -41,13 +44,14 @@
       unstablePkgs = import unstable { inherit system; };
 
     in {
-      inherit pkgs unstablePkgs user serverName;
+      lib = lib.my;
 
+      inherit pkgs unstablePkgs user serverName;
       nixosModules = mapModulesRec ./modules import;
 
       nixosConfigurations = (import ./hosts {
         inherit inputs outputs nixpkgs unstable home-manager user serverName;
-        inherit (nixpkgs) lib;
+        inherit lib;
       });
     };
 }

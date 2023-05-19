@@ -12,11 +12,12 @@
 #            ├─ ./home.nix 
 #            └─ ./hardware-configuration.nix 
 
-{ inputs, outputs, nixpkgs, home-manager, user, ... }:
+{ lib, inputs, outputs, nixpkgs, home-manager, user, ... }:
+with lib;
+with lib.my;
 let
   inherit (outputs) pkgs unstablePkgs serverName;
   mods = builtins.attrValues outputs.nixosModules;
-  lib = nixpkgs.lib;
 in {
 
   # Adonis server
@@ -46,7 +47,7 @@ in {
   desktop = lib.nixosSystem {
 
     # This allows me to pass the variables to the modules
-    specialArgs = { inherit pkgs unstablePkgs inputs outputs user; };
+    specialArgs = { inherit lib pkgs unstablePkgs inputs outputs user; };
 
     # Modules that are used
     modules = [

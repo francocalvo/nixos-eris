@@ -1,125 +1,95 @@
-{ config, inputs, lib, options, ... }:
+{ config, options, lib, home-manager, ... }:
 
-with lib; {
+with lib;
+with lib.my;
+{
   options = with types; {
-    user = mkOption {
-      type = attrs;
-      default = { };
-      example = { packages = [ pkgs.neovim ]; };
-      description = ''
-        An alias for passing option to the default user via the option
-        <option>users.user.<name></option>.
-      '';
+    user = mkOpt attrs {};
+
+    dotfiles = {
+      dir = mkOpt path
+        (removePrefix "/mnt"
+          (findFirst pathExists (toString ../.) [
+            "/mnt/etc/dotfiles"
+            "/etc/dotfiles"
+          ]));
+      binDir     = mkOpt path "${config.dotfiles.dir}/bin";
+      configDir  = mkOpt path "${config.dotfiles.dir}/config";
+      modulesDir = mkOpt path "${config.dotfiles.dir}/modules";
+      themesDir  = mkOpt path "${config.dotfiles.modulesDir}/themes";
     };
+
     home = {
-      file = mkOption {
-        type = attrs;
-        default = { };
-        description =
-          "Files managed by home-manager's <option>home.file</option>";
-      };
-      configFile = mkOption {
-        type = attrs;
-        default = { };
-        description =
-          "Files managed by home-manager's <option>xdg.configFile</option>";
-      };
-      _ = mkOption {
-        type = attrs;
-        default = { };
-        description =
-          "For passing arbitrary configuration to user's home-manager config";
-      };
+      file       = mkOpt' attrs {} "Files to place directly in $HOME";
+      configFile = mkOpt' attrs {} "Files to place in $XDG_CONFIG_HOME";
+      dataFile   = mkOpt' attrs {} "Files to place in $XDG_DATA_HOME";
     };
-    localMachine = mkOption {
-      type = bool;
-      default = true;
-      description = ''
-        Whether this is a local machine or not. On local machine we can for
-        example enable the <literal>noPass = true;</literal> rule in
-        <option>security.doas.extraRules</option> for the user, or several
-        other relaxations that are not recommended for a server environment.
-      '';
-    };
-    dotfiles = let t = either str path;
-    in {
-      dir = _.mkOpt t (findFirst pathExists (toString ../.) [
-        "${config.user.home}/.config/dotfiles"
-        "/etc/dotfiles"
-      ]) "The root directory of the dotfiles";
-      binDir = _.mkOpt' t "${config.dotfiles.dir}/bin";
-      configDir = _.mkOpt' t "${config.dotfiles.dir}/config";
-    };
+
     env = mkOption {
       type = attrsOf (oneOf [ str path (listOf (either str path)) ]);
-      apply = mapAttrs (n: v:
-        if isList v then
-          concatMapStringsSep ":" (x: toString x) v
-        else
-          (toString v));
-      default = { };
-      description = "Maps environment variables";
+      apply = mapAttrs
+        (n: v: if isList v
+               then concatMapStringsSep ":" (x: toString x) v
+               else (toString v));
+      default = {};
+      description = "TODO";
     };
   };
 
   config = {
-    # Defines the default user.
-    user = let
-      defaultName = "jarbet";
-      user = builtins.getEnv "USER";
-      name = if elem user [ "" "root" ] then defaultName else user;
-    in {
-      inherit name;
-      isNormalUser = true;
-      home = "/home/${name}";
-      group = "users";
-      uid = 1000;
-      # If we are on a local machine the ‹wheel› group is not necessary
-      # because a special ‹doas› rule will be created.
-      extraGroups = if !config.localMachine then [ "wheel" ] else [ ];
+    user =
+      let user = builtins.getEnv "USER";
+          name = if elem user [ "" "root" ] then "hlissner" else user;
+      in {
+        inherit name;
+        description = "The primary user account";
+        extraGroups = [ "wheel" ];
+        isNormalUser = true;
+        home = "/home/${name}";
+        group = "users";
+        uid = 1000;
+      };
+
+    # Install user packages to /etc/profiles instead. Necessary for
+    # nixos-rebuild build-vm to work.
+    home-manager = {
+      useUserPackages = true;
+
+      # I only need a subset of home-manager's capabilities. That is, access to
+      # its home.file, home.xdg.configFile and home.xdg.dataFile so I can deploy
+      # files easily to my $HOME, but 'home-manager.users.hlissner.home.file.*'
+      # is much too long and harder to maintain, so I've made aliases in:
+      #
+      #   home.file        ->  home-manager.users.hlissner.home.file
+      #   home.configFile  ->  home-manager.users.hlissner.home.xdg.configFile
+      #   home.dataFile    ->  home-manager.users.hlissner.home.xdg.dataFile
+      users.${config.user.name} = {
+        home = {
+          file = mkAliasDefinitions options.home.file;
+          # Necessary for home-manager to work with flakes, otherwise it will
+          # look for a nixpkgs channel.
+          stateVersion = config.system.stateVersion;
+        };
+        xdg = {
+          configFile = mkAliasDefinitions options.home.configFile;
+          dataFile   = mkAliasDefinitions options.home.dataFile;
+        };
+      };
     };
 
     users.users.${config.user.name} = mkAliasDefinitions options.user;
 
-    home._ = {
-      home.stateVersion = config.system.stateVersion;
-      home.file = mkAliasDefinitions options.home.file;
-      xdg.enable = true;
-      xdg.configFile = mkAliasDefinitions options.home.configFile;
+    nix.settings = let users = [ "root" config.user.name ]; in {
+      trusted-users = users;
+      allowed-users = users;
     };
 
-    home-manager.useUserPackages = true;
-    home-manager.users.${config.user.name} = mkAliasDefinitions options.home._;
+    # must already begin with pre-existing PATH. Also, can't use binDir here,
+    # because it contains a nix store path.
+    env.PATH = [ "$DOTFILES_BIN" "$XDG_BIN_HOME" "$PATH" ];
 
-    security.doas.extraRules = if config.localMachine then [{
-      users = [ config.user.name ];
-      noPass = true;
-      keepEnv = true;
-    }] else
-      [ ];
-
-    nix = let users = [ "root" config.user.name ];
-    in {
-      trustedUsers = users;
-      allowedUsers = users;
-    };
-
-    environment = {
-      sessionVariables = {
-        XDG_CACHE_HOME = "$HOME/.cache";
-        XDG_CONFIG_HOME = "$HOME/.config";
-        XDG_DATA_HOME = "$HOME/.local/share";
-        XDG_BIN_HOME = "$HOME/.local/bin";
-        # To prevent firefox from creating ~/Desktop
-        XDG_DESKTOP_DIR = "$HOME";
-      };
-      variables = {
-        # Make some programs "XDG" compliant
-        LESSHISTFILE = "$XDG_CACHE_HOME/lesshst";
-        WGETRC = "$XDG_CONFIG_HOME/wgetrc";
-      };
-      extraInit = concatStringsSep "\n"
-        (mapAttrsToList (n: v: ''export ${n}="${v}"'') config.env);
-    };
+    environment.extraInit =
+      concatStringsSep "\n"
+        (mapAttrsToList (n: v: "export ${n}=\"${v}\"") config.env);
   };
 }
