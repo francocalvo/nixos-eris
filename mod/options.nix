@@ -73,8 +73,6 @@ with lib.my; {
       uid = 1000;
     };
 
-    users.users.${config.user.name} = mkAliasDefinitions options.user;
-
     # INFO: this is hlissner's home-manager config, but I'm not using it
 
     # # Install user packages to /etc/profiles instead. Necessary for
@@ -109,12 +107,13 @@ with lib.my; {
     home._ = {
       home.stateVersion = config.system.stateVersion;
       home.file = mkAliasDefinitions options.home.file;
-      xdg.enable = true;
       xdg.configFile = mkAliasDefinitions options.home.configFile;
     };
 
     home-manager.useUserPackages = true;
-    home-manager.users.${config.user.name} = mkAliasDefinitions options.home._;
+    home-manager.users.${config.user.name} = mkAliasDefinitions options.home;
+
+    users.users.${config.user.name} = mkAliasDefinitions options.user._;
 
     nix.settings = let users = [ "root" config.user.name ];
     in {

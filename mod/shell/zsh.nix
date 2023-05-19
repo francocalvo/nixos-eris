@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, options, ... }:
 with lib;
 with lib.my;
 let cfg = config.modules.shell.zsh;
