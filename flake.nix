@@ -46,9 +46,9 @@
     in {
       lib = lib.my;
 
-      inherit pkgs unstablePkgs user serverName;
       nixosModules = mapModulesRec ./modules import;
 
+      inherit pkgs unstablePkgs user serverName;
       nixosConfigurations = (import ./hosts {
         inherit inputs outputs nixpkgs unstable home-manager user serverName;
         inherit lib;

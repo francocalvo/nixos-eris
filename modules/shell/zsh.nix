@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, options, ... }:
 with lib;
 with lib.my;
 let cfg = config.modules.shell.zsh;
@@ -6,7 +6,7 @@ in {
   options.modules.shell.zsh.enable = mkEnableOption "Set up zsh shell";
 
   config = mkIf cfg.enable {
-    options.home._ = {
+    home._ = {
       programs.zsh = {
         enable = true;
         enableCompletion = true;

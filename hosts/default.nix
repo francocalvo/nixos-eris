@@ -15,34 +15,8 @@
 { lib, inputs, outputs, nixpkgs, home-manager, user, ... }:
 with lib;
 with lib.my;
-let
-  inherit (outputs) pkgs unstablePkgs serverName;
-  mods = builtins.attrValues outputs.nixosModules;
+let inherit (outputs) pkgs unstablePkgs serverName;
 in {
-
-  # Adonis server
-  adonis = lib.nixosSystem {
-    specialArgs = { inherit inputs outputs; };
-    modules = [
-      ./configuration.nix
-      ./adonis
-
-      home-manager.nixosModules.home-manager
-      {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = {
-          inherit pkgs unstablePkgs inputs serverName;
-        };
-
-        home-manager.users.${serverName} = {
-          imports = [ (import ./adonis/home.nix) ];
-        };
-      }
-
-    ] ++ mods;
-  };
-
   # Profile desktop
   desktop = lib.nixosSystem {
 
@@ -70,6 +44,30 @@ in {
           imports = [ (import ./desktop/home.nix) ];
         };
       }
-    ] ++ mods;
+    ];
   };
+
+  # Adonis server
+  adonis = lib.nixosSystem {
+    specialArgs = { inherit inputs outputs; };
+    modules = [
+      ./configuration.nix
+      ./adonis
+
+      home-manager.nixosModules.home-manager
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.extraSpecialArgs = {
+          inherit pkgs unstablePkgs inputs serverName;
+        };
+
+        home-manager.users.${serverName} = {
+          imports = [ (import ./adonis/home.nix) ];
+        };
+      }
+
+    ];
+  };
+
 }
