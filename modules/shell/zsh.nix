@@ -1,13 +1,12 @@
-{ outputs, config, ... }:
-let
-  inherit (outputs) pkgs user;
-  inherit (pkgs) lib;
-  cfg = config.modules.internal.shell.zsh;
+{ lib, config, pkgs, options, ... }:
+with lib;
+with lib.my;
+let cfg = config.modules.shell.zsh;
 in {
-  options.modules.internal.shell.zsh = lib.mkEnableOption "Set up zsh shell";
+  options.modules.shell.zsh = mkEnableOption "Set up zsh shell";
 
-  config = lib.mkIf cfg {
-    home-manager.users.${user} = {
+  config = mkIf cfg {
+    options.home._ = {
       programs.zsh = {
         enable = true;
         enableCompletion = true;

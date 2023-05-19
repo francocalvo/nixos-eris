@@ -1,12 +1,12 @@
-{ outputs, config, ... }:
-let
-  inherit (outputs) pkgs user;
-  inherit (pkgs) lib;
-  cfg = config.modules.internal.shell.bash;
+{ lib, config, ... }:
+with lib;
+with lib.my;
+let cfg = config.modules.shell.bash;
 in {
-  options.modules.internal.shell.bash = lib.mkEnableOption "Set up bash shell";
 
-  config = lib.mkIf cfg {
+  options.modules.shell.bash.enable = mkEnableOption "Set up bash shell";
+
+  config = lib.mkIf cfg.enable {
     home-manager.users.${user} = {
       programs.bash = {
         enable = true;
