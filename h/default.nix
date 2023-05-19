@@ -12,19 +12,22 @@
 #            ├─ ./home.nix 
 #            └─ ./hardware-configuration.nix 
 
-{ lib, inputs, outputs, nixpkgs, home-manager, user, ... }:
+{ lib, inputs, outputs, pkgs, home-manager, user, ... }:
 with lib;
 with lib.my;
-let inherit (outputs) pkgs unstablePkgs serverName;
+let inherit (outputs) unstablePkgs serverName;
 in {
   # Profile desktop
   desktop = lib.nixosSystem {
-
     # This allows me to pass the variables to the modules
     specialArgs = { inherit lib pkgs unstablePkgs inputs outputs user; };
 
     # Modules that are used
     modules = [
+      {
+        nixpkgs.pkgs = pkgs;
+      }
+
       # General configuration
       ./configuration.nix
 
