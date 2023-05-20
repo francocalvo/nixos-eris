@@ -13,15 +13,11 @@
 #       └─ systemDesktop 
 
 { inputs, lib, pkgs, ... }:
-let inherit lib;
-in {
-  imports = [
-    # ../../modules/desktop-wm
-    # ../../modules/shell
-    ./hardware-configuration.nix
-  ];
-  nixpkgs.config.allowUnfree = true;
-  programs.zsh.enable = true;
+with lib;
+with lib.my; {
+
+  imports = [ ./hardware-configuration.nix ];
+
   boot.kernelPackages = pkgs.linuxPackages_zen;
   networking.firewall.enable = false;
   #
@@ -73,12 +69,9 @@ in {
     opengl.driSupport32Bit = true; # Enable 32 bit support for Steam
   };
 
-  # Enable the X11 windowing system.
   services = {
     openssh.enable = true;
-    # This allows to use MTP with Kindle, Android, etc.
-    gvfs.enable = true;
-    # This allows the global install of a keyring
+    gvfs.enable = true; # MTP for Kindle, Android, etc
     gnome.gnome-keyring.enable = true;
   };
 

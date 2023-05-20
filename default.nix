@@ -1,7 +1,6 @@
 { config, inputs, lib, pkgs, ... }:
 
-let inherit (lib) my;
-in {
+with lib; {
   imports = [ inputs.home-manager.nixosModules.home-manager ]
     ++ my.mapModulesRec' ./modules import;
 
@@ -22,12 +21,15 @@ in {
   };
 
   # Use the GRUB 2 boot loader.
-  boot.loader.grub = {
-    enable = true;
-    efiInstallAsRemovable = true;
-    efiSupport = true;
-    devices = [ "nodev" ];
-    useOSProber = true;
+  boot = {
+    kernelPackages = mkDefault pkgs.linuxPackages_latest;
+    loader.grub = {
+      enable = true;
+      efiInstallAsRemovable = true;
+      efiSupport = true;
+      devices = [ "nodev" ];
+      useOSProber = true;
+    };
   };
 
   i18n.defaultLocale = "en_US.UTF-8";
