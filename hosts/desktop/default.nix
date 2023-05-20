@@ -7,6 +7,10 @@ in {
   networking.firewall = enable;
 
   modules = {
+    dev = {
+      python = enable;
+      nodejs = enable;
+    };
     shell.zsh = enable;
     gaming = {
       enable = true;
