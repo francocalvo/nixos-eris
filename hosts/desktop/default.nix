@@ -20,7 +20,15 @@ with lib.my; {
 
   boot.kernelPackages = pkgs.linuxPackages_zen;
   networking.firewall.enable = false;
-  #
+
+  modules = {
+    shell.zsh.enable = true;
+    # gaming = {
+    #   enable = true;
+      # performanceTweaks = true;
+    # };
+  };
+
   # # Modules
   # modules.nixos = {
   #   shell = "zsh";

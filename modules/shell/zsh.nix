@@ -21,6 +21,7 @@ in {
 
         oh-my-zsh = { enable = true; };
 
+        # TODO: fix how the powerlevel10k-config is used
         plugins = [
           {
             file = "/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";

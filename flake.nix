@@ -34,8 +34,6 @@
         };
       });
 
-      user = "calvo";
-      serverName = "adonis";
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
@@ -47,7 +45,6 @@
       lib = lib.my;
 
       nixosModules = mapModulesRec ./modules import;
-
       nixosConfigurations = mapHosts ./hosts { };
     };
 }
