@@ -1,32 +1,18 @@
-# NixOS Configuration for my desktop. This is mainly global confugrations,
-# since most programs and per user configs are managed by home-manager.
-#
-# The current referenced files are:
-#
-#  flake.nix 
-#   ├─ ./hosts  
-#   │   ├─ default.nix 
-#   │   └─ ./desktop
-#   │       ├─ ./default.nix *
-#   │       └─ ./hardware-configuration.nix 
-#   └  ./modules
-#       └─ systemDesktop 
-
 { inputs, lib, pkgs, ... }:
-with lib;
-with lib.my; {
-
+let inherit (lib.my) enable disable;
+in {
   imports = [ ./hardware-configuration.nix ];
 
   boot.kernelPackages = pkgs.linuxPackages_zen;
-  networking.firewall.enable = false;
+  networking.firewall = enable;
 
   modules = {
-    shell.zsh.enable = true;
-    # gaming = {
-    #   enable = true;
-      # performanceTweaks = true;
-    # };
+    shell.zsh = enable;
+    gaming = {
+      enable = true;
+      performanceTweaks = enable;
+      sunshine = disable;
+    };
   };
 
   # # Modules

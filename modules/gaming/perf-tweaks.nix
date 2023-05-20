@@ -2,8 +2,9 @@
 with lib;
 let cfg = config.modules.gaming.performanceTweaks;
 in {
-  options.modules.gaming.performanceTweaks =
-    mkEnableOption "Enable tweaks to improve performance";
+  options.modules.gaming.performanceTweaks = {
+    enable = mkEnableOption "Enable tweaks to improve performance";
+  };
 
   config = mkIf cfg.enable {
     boot = {

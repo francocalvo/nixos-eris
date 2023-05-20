@@ -1,6 +1,6 @@
 { pkgs, config, lib, ... }:
 with lib;
-let cfg = config.module.gaming.sunshine;
+let cfg = config.modules.gaming.sunshine;
 in {
   options.modules.gaming.sunshine = {
     enable = mkEnableOption "Enable Sunshine for game streaming";
