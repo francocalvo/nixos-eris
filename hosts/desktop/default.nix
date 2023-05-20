@@ -13,6 +13,7 @@ in {
       performanceTweaks = enable;
       sunshine = disable;
     };
+    editors = { neovim = enable; };
   };
 
   # # Modules

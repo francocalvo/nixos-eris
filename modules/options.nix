@@ -104,6 +104,7 @@ with lib.my; {
 
     # This is KubqoA. I'll try to replace it with the above version at some point
     # TODO: eliminate the need to use options.home._
+
     home._ = {
       home.stateVersion = config.system.stateVersion;
       home.file = mkAliasDefinitions options.home.file;
