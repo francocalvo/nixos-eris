@@ -7,6 +7,7 @@ in {
   networking.firewall = enable;
 
   modules = {
+    network = { samba.olimpo.connect = true; };
     dev = {
       python = enable;
       nodejs = enable;
