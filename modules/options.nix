@@ -5,16 +5,14 @@ with lib.my; {
   options = with types; {
     user = mkOpt attrs { };
 
-    dotfiles = {
+    paths = {
       dir = mkOpt path (removePrefix "/mnt"
-        (findFirst pathExists (toString ../.) [
-          "/home/calvo/dotfiles" # TODO: extend to etc/dotfiles
-          "/etc/dotfiles"
-        ]));
-      binDir = mkOpt path "${config.dotfiles.dir}/bin";
-      configDir = mkOpt path "${config.dotfiles.dir}/config";
-      modulesDir = mkOpt path "${config.dotfiles.dir}/modules";
-      themesDir = mkOpt path "${config.dotfiles.modulesDir}/themes";
+        (findFirst pathExists (toString ../.) [ "/etc/dotfiles" ]));
+      binDir = mkOpt path "${config.paths.dir}/bin";
+      configDir = mkOpt path "${config.paths.dir}/config";
+      modulesDir = mkOpt path "${config.paths.dir}/modules";
+      themesDir = mkOpt path "${config.paths.modulesDir}/themes";
+      dotsDir = mkOpt path "${config.paths.dir}/dotfiles";
     };
 
     # NOTE: hlissner's home configuration 
