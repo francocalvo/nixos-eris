@@ -6,6 +6,10 @@ in {
   options.modules.shell.zsh.enable = mkEnableOption "Set up zsh shell";
 
   config = mkIf cfg.enable {
+    programs.zsh.enable = true;
+
+    user = { shell = pkgs.zsh; };
+
     home._ = {
       programs.zsh = {
         enable = true;
@@ -31,8 +35,7 @@ in {
           {
             file = "p10k.zsh";
             name = "powerlevel10k-config";
-            src = lib.cleanSource
-              (builtins.toPath "${config.paths.dotsDir}/zsh");
+            src = builtins.toPath "${config.paths.dotsDir}/zsh";
           }
         ];
       };
