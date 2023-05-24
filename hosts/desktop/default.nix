@@ -4,7 +4,16 @@ in {
   imports = [ ./hardware-configuration.nix ];
 
   boot.kernelPackages = pkgs.linuxPackages_zen;
-  networking.firewall = enable;
+
+  # Networking with NetworkManager 
+  networking = {
+    hostName = "nixos"; # Define your hostname.
+    firewall = {
+      enable = true;
+      checkReversePath = false; # This is important for the VPN
+    };
+    networkmanager.enable = true;
+  };
 
   modules = {
     d = {
@@ -25,6 +34,7 @@ in {
       sunshine = disable;
     };
     editors = { neovim = enable; };
+    fonts = enable;
   };
 
   user = {
@@ -96,7 +106,6 @@ in {
   #   isNormalUser = true;
   #   extraGroups =
   #     [ "wheel" "root" "networkmanager" "audio" "video" "docker" "input" ];
-  #   shell = pkgs.zsh;
   # };
 
   nix = {
