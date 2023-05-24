@@ -7,7 +7,12 @@ in {
   networking.firewall = enable;
 
   modules = {
-    d.terminal.alacritty.enable = true;
+    d = {
+      terminal.alacritty = enable;
+      theme.nord = enable;
+
+      displayServer.xorg = enable;
+    };
     network = { samba.olimpo.connect = false; };
     dev = {
       python = enable;
