@@ -6,11 +6,7 @@ in {
   options.modules.shell.zsh.enable = mkEnableOption "Set up zsh shell";
 
   config = mkIf cfg.enable {
-    programs.zsh.enable = true;
-
-    user = { shell = pkgs.zsh; };
-
-    home._ = {
+    options.home._ = {
       programs.zsh = {
         enable = true;
         enableCompletion = true;
@@ -25,7 +21,6 @@ in {
 
         oh-my-zsh = { enable = true; };
 
-        # TODO: fix how the powerlevel10k-config is used
         plugins = [
           {
             file = "/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
@@ -35,7 +30,7 @@ in {
           {
             file = "p10k.zsh";
             name = "powerlevel10k-config";
-            src = builtins.toPath "${config.paths.dotsDir}/zsh";
+            src = lib.cleanSource ../../dotfiles/zsh;
           }
         ];
       };

@@ -7,7 +7,7 @@ in {
   options.modules.shell.bash.enable = mkEnableOption "Set up bash shell";
 
   config = mkIf cfg.enable {
-    home._ = {
+    options.home._ = {
       programs.bash = {
         enable = true;
         enableCompletion = true;

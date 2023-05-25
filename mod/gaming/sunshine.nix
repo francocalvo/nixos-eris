@@ -1,11 +1,8 @@
 { pkgs, config, lib, ... }:
 with lib;
-let cfg = config.modules.gaming.sunshine;
+let
+  cfg = config.modules.nixos.gaming.sunshine;
 in {
-  options.modules.gaming.sunshine = {
-    enable = mkEnableOption "Enable Sunshine for game streaming";
-  };
-
   config = mkIf cfg.enable {
     warnings = [''
       You have enabled sunshine which needs to disable the firewall and add a
