@@ -5,24 +5,17 @@ in {
 
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
-  # Networking with NetworkManager 
-  networking = {
-    hostName = "nixos"; # Define your hostname.
-    firewall = {
-      enable = true;
-      checkReversePath = false; # This is important for the VPN
-    };
-    networkmanager.enable = true;
-  };
-
   modules = {
     d = {
       terminal.alacritty = enable;
       theme.nord = enable;
-
       displayServer.xorg = enable;
     };
-    network = { samba.olimpo.connect = false; };
+    network = {
+      network-manager = enable;
+      samba.olimpo.connect = false;
+    };
+    hardware = { sound = enable; };
     dev = {
       python = enable;
       nodejs = enable;
