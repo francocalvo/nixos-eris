@@ -10,6 +10,12 @@ in {
       terminal.alacritty = enable;
       theme.nord = enable;
       displayServer = {
+        lightdm = {
+          enable = true;
+          defaultSession = "sway";
+        };
+      };
+      windowManager = {
         xorg = enable;
         sway = enable;
       };

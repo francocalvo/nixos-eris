@@ -1,36 +1,15 @@
 { lib, pkgs, config, ... }:
 with lib;
 with lib.my;
-let cfg = config.modules.d.displayServer.xorg;
+let cfg = config.modules.d.windowManager.xorg;
 in {
-  options.modules.d.displayServer.xorg.enable =
+  options.modules.d.windowManager.xorg.enable =
     mkEnableOption "Xorg display server";
 
   config = mkIf cfg.enable {
     services = {
       xserver = {
         enable = true;
-        displayManager = {
-          lightdm = {
-            enable = true; # Wallpaper and GTK theme
-            background =
-              pkgs.nixos-artwork.wallpapers.nineish-dark-gray.gnomeFilePath;
-            greeters = {
-              gtk = {
-                theme = {
-                  name = "Nordic";
-                  package = pkgs.nordic;
-                };
-                cursorTheme = {
-                  name = "Nordic-cursors";
-                  package = pkgs.nordic;
-                  size = 16;
-                };
-              };
-            };
-          };
-          defaultSession = "none+i3";
-        };
         windowManager.i3 = {
           enable = true;
           extraPackages = with pkgs; [ nordic ];

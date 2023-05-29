@@ -1,9 +1,9 @@
 { lib, pkgs, config, ... }:
 with lib;
 with lib.my;
-let cfg = config.modules.d.displayServer.sway;
+let cfg = config.modules.d.windowManager.sway;
 in {
-  options.modules.d.displayServer.sway.enable =
+  options.modules.d.windowManager.sway.enable =
     lib.mkEnableOption "Wayland display server";
 
   config = lib.mkIf cfg.enable {
