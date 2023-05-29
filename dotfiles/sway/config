@@ -3,14 +3,30 @@ set $mod Mod1
 font pango:Cascadia Code  10
 
 # Monitor setup
-output HDMI-A-1 position 0 0
-output DP-2 position 2560 0
+output HDMI-A-1 {
+  scale 1
+  position 0 0
+  res 2560x1080@75.00Hz
+  adaptative_sync on
+}
+output DP-2 {
+  scale 1
+  position 2560 0
+  res 1920x1080@144.00Hz
+  adaptative_sync on
+}
+
 focus_follows_mouse no
 
 # Keyboard settings
 input * {
     xkb_layout "latam"
       xkb_options "caps:escape"
+}
+
+# Waybar
+bar {
+     swaybar_command waybar
 }
 
 # Flameshot
