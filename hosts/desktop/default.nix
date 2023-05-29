@@ -10,7 +10,8 @@ in {
       terminal.alacritty = enable;
       theme.nord = enable;
       displayServer = {
-        lightdm = {
+        lightdm.enable = false;
+        sddm = {
           enable = true;
           defaultSession = "sway";
         };
