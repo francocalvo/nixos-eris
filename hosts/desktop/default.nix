@@ -9,7 +9,10 @@ in {
     d = {
       terminal.alacritty = enable;
       theme.nord = enable;
-      displayServer.xorg = enable;
+      displayServer = {
+        xorg = enable;
+        sway = enable;
+      };
     };
     network = {
       network-manager = enable;
