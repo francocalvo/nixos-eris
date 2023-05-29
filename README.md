@@ -11,3 +11,5 @@ tries to support two systems:
 
 - [Matthias Benaets dotfiles](https://github.com/MatthiasBenaets/nixos-config): main source of inspiration.
 - [KubqoA dotfiles](https://github.com/KubqoA/dotfiles): modules magic
+- [hlissner dotfiles](https://github.com/hlissner/dotfiles): even more magic for modules
+- [stelcodes dotfiles](https://github.com/stelcodes/nixos-config): inspiration for Wayland config.
