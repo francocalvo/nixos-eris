@@ -7,13 +7,18 @@ output HDMI-A-1 {
   scale 1
   position 0 0
   res 2560x1080@75.00Hz
-  adaptative_sync on
 }
 output DP-2 {
   scale 1
   position 2560 0
   res 1920x1080@144.00Hz
-  adaptative_sync on
+}
+
+# Enable VSync
+output * {
+  adaptive_sync on
+  render_bit_depth 10
+  bg ./wal.jpg fill
 }
 
 focus_follows_mouse no
@@ -40,6 +45,9 @@ exec --no-startup-id nm-applet
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+# start a wofi
+bindsym $mod+d exec wofi --show run
 
 # start a terminal
 bindsym $mod+Return exec alacritty
@@ -96,16 +104,16 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1:Main"
-set $ws2 "2:Notas"
-set $ws3 "3:Configuracion"
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
-set $ws8 "8:Grabacion"
-set $ws9 "9:Clase"
-set $ws10 "10:Comunicacion"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1

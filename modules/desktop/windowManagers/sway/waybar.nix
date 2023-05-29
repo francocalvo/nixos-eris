@@ -13,6 +13,11 @@ in {
     user.packages = with pkgs; mkIf audioSupport [ pavucontrol playerctl ];
 
     home._ = {
+      home.packages = with pkgs; [
+        htop
+        blueberry
+      ];
+
       programs.waybar = {
         enable = true;
         package = pkgs.waybar.override { pulseSupport = audioSupport; };
