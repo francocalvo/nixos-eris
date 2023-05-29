@@ -23,7 +23,6 @@ in {
       sway = {
         enable = true;
         extraSessionCommands = ''
-          export SDL_VIDEODRIVER=wayland
           export _JAVA_AWT_WM_NONREPARENTING=1
           export QT_QPA_PLATFORM=wayland
           export XDG_CURRENT_DESKTOP=sway
@@ -38,7 +37,6 @@ in {
         autotiling
         glib
         wl-clipboard
-        wofi
         xwayland
         xdg-desktop-portal
         xdg-desktop-portal-wlr
@@ -46,7 +44,11 @@ in {
       ];
 
       xdg.configFile = {
-        "wofi/config".text = "allow_images=true";
+        "wofi/config".text = ''
+          allow_images=true
+          insensitive=true
+          location=center
+        '';
         "wofi/style.css".source = ./wofi.css;
       };
 

@@ -47,7 +47,7 @@ exec --no-startup-id nm-applet
 floating_modifier $mod
 
 # start a wofi
-bindsym $mod+d exec wofi --show run
+bindsym $mod+d exec wofi -c .config/wofi/config --show=drun 
 
 # start a terminal
 bindsym $mod+Return exec alacritty
