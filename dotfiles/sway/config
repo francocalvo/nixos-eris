@@ -5,14 +5,24 @@ font pango:Cascadia Code  10
 # Monitor setup
 output HDMI-A-1 {
   scale 1
-  position 0 0
+  position 3000 0
   res 2560x1080@75.00Hz
 }
+
+output DP-1 {
+  transform 270
+  scale 1
+  position 0 0
+  res 1080x1920@144.00Hz
+}
+
 output DP-2 {
   scale 1
-  position 2560 0
+  position 1080 0
   res 1920x1080@144.00Hz
 }
+  # res 3840x2160@60.00Hz
+  # res 2560x1080@75.00Hz
 
 # Enable VSync
 output * {
