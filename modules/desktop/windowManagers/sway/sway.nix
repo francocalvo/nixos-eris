@@ -16,7 +16,10 @@ in {
       enable = true;
       wlr.enable = true;
       # gtk portal needed to make gtk apps happy
-      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-wlr
+      ];
     };
 
     programs = {
@@ -27,6 +30,7 @@ in {
           export QT_QPA_PLATFORM=wayland
           export XDG_CURRENT_DESKTOP=sway
           export XDG_SESSION_DESKTOP=sway
+          export MOZ_ENABLE_WAYLAND=1
         '';
       };
     };
