@@ -8,7 +8,17 @@ in {
 
   config = mkIf cfg.enable {
     user = {
-      packages = with pkgs; [ git zathura gcc dbeaver vscode llvm libcxx ];
+      packages = with pkgs; [
+        git
+        remmina
+        zathura
+        gcc
+        dbeaver
+        vscode
+        llvm
+        libcxx
+        insomnia
+      ];
     };
 
     home._ = {
