@@ -3,7 +3,7 @@ if not status_ok then
   return
 end
 
-bufferline.setup {
+bufferline.setup({
   options = {
     numbers = "none", -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
     close_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
@@ -13,14 +13,17 @@ bufferline.setup {
     -- NOTE: this plugin is designed with this icon in mind,
     -- and so changing this is NOT recommended, this is intended
     -- as an escape hatch for people who cannot bear it for whatever reason
-    indicator = { style = "icon", icon = "▎" },
+    indicator = {
+      style = 'icon',
+      icon = "▎",
+    },
     buffer_close_icon = "",
     -- buffer_close_icon = '',
     modified_icon = "●",
     close_icon = "",
     -- close_icon = '',
-    left_trunc_marker = "",
-    right_trunc_marker = "",
+    left_trunc_marker = " ",
+    right_trunc_marker = " ",
     --- name_formatter can be used to change the buffer's label in the bufferline.
     --- Please note some names can/will break the
     --- bufferline so use this at your discretion knowing that it has
@@ -34,7 +37,7 @@ bufferline.setup {
     max_name_length = 30,
     max_prefix_length = 30, -- prefix used when a buffer is de-duplicated
     tab_size = 21,
-    diagnostics = false, -- | "nvim_lsp" | "coc",
+    diagnostics = "nvim_lsp", -- | "nvim_lsp" | "coc",
     diagnostics_update_in_insert = false,
     -- diagnostics_indicator = function(count, level, diagnostics_dict, context)
     --   return "("..count..")"
@@ -73,7 +76,7 @@ bufferline.setup {
   },
   highlights = {
     fill = {
-      fg = { attribute = "fg", highlight = "#ff0000" },
+      fg = { attribute = "fg", highlight = "TabLine" },
       bg = { attribute = "bg", highlight = "TabLine" },
     },
     background = {
@@ -82,8 +85,8 @@ bufferline.setup {
     },
 
     -- buffer_selected = {
-    --   fg = {attribute='fg',highlight='#ff0000'},
-    --   bg = {attribute='bg',highlight='#0000ff'},
+    --   guifg = {attribute='fg',highlight='#ff0000'},
+    --   guibg = {attribute='bg',highlight='#0000ff'},
     --   gui = 'none'
     --   },
     buffer_visible = {
@@ -100,8 +103,8 @@ bufferline.setup {
       bg = { attribute = "bg", highlight = "TabLine" },
     },
     -- close_button_selected = {
-    --   fg = {attribute='fg',highlight='TabLineSel'},
-    --   bg ={attribute='bg',highlight='TabLineSel'}
+    --   guifg = {attribute='fg',highlight='TabLineSel'},
+    --   guibg ={attribute='bg',highlight='TabLineSel'}
     --   },
 
     tab_selected = {
@@ -113,7 +116,7 @@ bufferline.setup {
       bg = { attribute = "bg", highlight = "TabLine" },
     },
     tab_close = {
-      -- fg = {attribute='fg',highlight='LspDiagnosticsDefaultError'},
+      -- guifg = {attribute='fg',highlight='LspDiagnosticsDefaultError'},
       fg = { attribute = "fg", highlight = "TabLineSel" },
       bg = { attribute = "bg", highlight = "Normal" },
     },
@@ -121,17 +124,17 @@ bufferline.setup {
     duplicate_selected = {
       fg = { attribute = "fg", highlight = "TabLineSel" },
       bg = { attribute = "bg", highlight = "TabLineSel" },
-      italic = true
+      italic = true,
     },
     duplicate_visible = {
       fg = { attribute = "fg", highlight = "TabLine" },
       bg = { attribute = "bg", highlight = "TabLine" },
-      italic = true
+      italic = true,
     },
     duplicate = {
       fg = { attribute = "fg", highlight = "TabLine" },
       bg = { attribute = "bg", highlight = "TabLine" },
-      italic = true
+      italic = true,
     },
 
     modified = {
@@ -156,12 +159,12 @@ bufferline.setup {
       bg = { attribute = "bg", highlight = "Normal" },
     },
     -- separator_visible = {
-    --   fg = {attribute='bg',highlight='TabLine'},
-    --   bg = {attribute='bg',highlight='TabLine'}
+    --   guifg = {attribute='bg',highlight='TabLine'},
+    --   guibg = {attribute='bg',highlight='TabLine'}
     --   },
     indicator_selected = {
       fg = { attribute = "fg", highlight = "LspDiagnosticsDefaultHint" },
       bg = { attribute = "bg", highlight = "Normal" },
     },
   },
-}
+})

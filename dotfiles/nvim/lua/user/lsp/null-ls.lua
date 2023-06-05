@@ -24,9 +24,11 @@ null_ls.setup({
 		diagnostics.shellcheck,
 
 		-- Python
-		diagnostics.pylint,
-		diagnostics.flake8,
-		formatting.black,
+		--[[ diagnostics.pylint, ]]
+		--[[ formatting.black, ]]
+    formatting.ruff,
+    diagnostics.ruff,
+
 
 		--# C++
 		diagnostics.cpplint,
