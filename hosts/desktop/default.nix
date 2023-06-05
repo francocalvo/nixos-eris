@@ -48,6 +48,7 @@ in {
       discord
       firefox
       libreoffice
+      zulu
       spotify
       qbittorrent
       vlc
@@ -57,13 +58,16 @@ in {
       which
       git
       libsForQt5.kcalc
-      latexrun
-      texlive.combined.scheme-full
+      # latexrun
+      # texlive.combined.scheme-full
       teams
       thunderbird
       flameshot
       cinnamon.nemo
       libsForQt5.bluedevil
+      nextcloud-client
+      # Monitoring
+      amdgpu_top
     ];
   };
 
