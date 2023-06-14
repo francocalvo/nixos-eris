@@ -21,19 +21,17 @@ in {
         sway = enable;
       };
     };
-    network = {
-      network-manager = enable;
-      samba.olimpo.connect = false;
-    };
+    network = { network-manager = enable; };
     hardware = { sound = enable; };
     dev = {
       python = enable;
       nodejs = enable;
+      docker = enable;
     };
     shell.zsh = enable;
     gaming = {
       enable = true;
-      performanceTweaks = enable;
+      performanceTweaks = disable;
       sunshine = disable;
     };
     editors = { neovim = enable; };
@@ -64,8 +62,11 @@ in {
       thunderbird
       flameshot
       cinnamon.nemo
+      gnome.nautilus
+      gnome.sushi
       libsForQt5.bluedevil
       nextcloud-client
+
       # Monitoring
       amdgpu_top
     ];
@@ -78,42 +79,6 @@ in {
       startInBackground = true;
     };
   };
-
-  # # Modules
-  # modules.nixos = {
-  #   shell = "zsh";
-  #   terminal = "alacritty";
-  #   displayServer = {
-  #     xorg.enable = true;
-  #     wayland.enable = true;
-  #   };
-  #   gaming = {
-  #     enable = true;
-  #     sunshine.enable = false;
-  #   };
-  #   basicSoftware.enable = true;
-  #   neovim.enable = true;
-  #   dev = {
-  #     enable = true;
-  #     python = true;
-  #     nodejs = true;
-  #   };
-  # };
-  #
-  # Cach for nix-gaming
-  nix.settings = {
-    substituters = [ "https://nix-gaming.cachix.org" ];
-    trusted-public-keys = [
-      "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
-    ];
-  };
-
-  # # Define a user account. Don't forget to set a password with ‘passwd’.
-  # users.users.${user} = {
-  #   isNormalUser = true;
-  #   extraGroups =
-  #     [ "wheel" "root" "networkmanager" "audio" "video" "docker" "input" ];
-  # };
 
   nix = {
     package = pkgs.nixFlakes;
