@@ -25,10 +25,9 @@ null_ls.setup({
 
 		-- Python
 		--[[ diagnostics.pylint, ]]
-		--[[ formatting.black, ]]
-    formatting.ruff,
-    diagnostics.ruff,
-
+		formatting.black,
+		formatting.ruff,
+		diagnostics.ruff,
 
 		--# C++
 		diagnostics.cpplint,
@@ -38,13 +37,13 @@ null_ls.setup({
 		formatting.nixfmt,
 		diagnostics.deadnix,
 
-    --# LaTeX
-    formatting.latexindent.with({
-      filetypes = { "tex", "bib" },
-      extra_args = { "-m", "-l=" .. vim.fn.stdpath("config") .. "/lua/user/lsp/settings/latexindent.yaml" },
-    }),
+		--# LaTeX
+		formatting.latexindent.with({
+			filetypes = { "tex", "bib" },
+			extra_args = { "-m", "-l=" .. vim.fn.stdpath("config") .. "/lua/user/lsp/settings/latexindent.yaml" },
+		}),
 
-    diagnostics.chktex,
+		diagnostics.chktex,
 	},
 })
 
