@@ -97,6 +97,8 @@
       neovim
       brave
       cinnamon.nemo
+      gnome.nautilus
+      gnome.sushi
       #cinnamon.nemo-fileroller
       networkmanagerapplet
       nodejs
