@@ -33,6 +33,6 @@
   home.username = "calvo";
   home.homeDirectory = "/home/calvo";
   # Basic configuration
-  home.stateVersion = "22.11";
+  home.stateVersion = "23.05";
   programs.home-manager.enable = true;
 }

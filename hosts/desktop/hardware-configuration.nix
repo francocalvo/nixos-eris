@@ -8,9 +8,22 @@
 
   boot.initrd.availableKernelModules =
     [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
-    boot.initrd.kernelModules = [ "amdgpu"];
+  boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+  boot.kernelParams = [
+    ''quiet" "splash''
+    "mitigations=off"
+    "loglevel=3"
+    "usbcore.autosuspend=-1"
+    "spec_store_bypass_disable=prctl"
+    "spectre_v2=off"
+    "iommu=pt"
+    "amd_iommu=on"
+    "rd.systemd.show_status=auto"
+    "rd.udev.log_priority=3"
+    "nowatchdog"
+  ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/0f53e6a2-ecc0-4f6e-805b-fde86ac4d67d";

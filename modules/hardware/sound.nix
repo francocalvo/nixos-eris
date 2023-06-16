@@ -8,7 +8,6 @@ in {
 
   config = mkIf cfg.enable {
     # Enable sound.
-    security.rtkit.enable = true;
     services.pipewire = {
       enable = true;
       audio.enable = true;
