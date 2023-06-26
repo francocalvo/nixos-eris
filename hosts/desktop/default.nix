@@ -1,4 +1,4 @@
-{ inputs, lib, pkgs, ... }:
+{ lib, pkgs, ... }:
 let inherit (lib.my) enable disable;
 in {
   imports = [ ./hardware-configuration.nix ];
@@ -66,6 +66,8 @@ in {
       gnome.sushi
       libsForQt5.bluedevil
       nextcloud-client
+      microsoft-edge-dev
+      librecad
 
       # Monitoring
       amdgpu_top

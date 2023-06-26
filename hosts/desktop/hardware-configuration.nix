@@ -30,10 +30,11 @@
     fsType = "ext4";
   };
 
-  fileSystems."/elyseum" = {
-    device = "/dev/disk/by-uuid/434a2ced-0e06-4115-a8f8-1a8e00042f1e";
+  fileSystems."/giardino" = {
+    device = "/dev/disk/by-uuid/f08d0bb3-ac20-4936-a518-b60b61ad94e7";
     fsType = "ext4";
   };
+
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/AE80-D3B1";
