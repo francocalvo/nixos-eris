@@ -77,22 +77,17 @@ return packer.startup(function(use)
 	use("francocalvo/dracula.nvim")
 	--[[ use 'Mofiqul/dracula.nvim' ]]
 	use("shaunsingh/nord.nvim")
-  use "folke/tokyonight.nvim"
+	use("folke/tokyonight.nvim")
 
 	-- cmp plugins
-	use({ "hrsh7th/nvim-cmp" }) -- The completion plugin
+	use("hrsh7th/nvim-cmp") -- The completion plugin
 	use("hrsh7th/cmp-buffer") -- buffer completions
 	use("hrsh7th/cmp-path") -- path completions
 	use("hrsh7th/cmp-cmdline") -- cmdline completions
-	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 	use("hrsh7th/cmp-nvim-lsp")
-	--[[ use({ ]]
-	--[[ 	"zbirenbaum/copilot-cmp", ]]
-	--[[ 	after = { "copilot.lua" }, ]]
-	--[[ 	config = function() ]]
-	--[[ 		require("copilot_cmp").setup() ]]
-	--[[ 	end, ]]
-	--[[ }) ]]
+	use("hrsh7th/cmp-omni") -- vsnip completions
+	use("saadparwaiz1/cmp_luasnip") -- snippet completions
+	use("crispgm/cmp-beancount") -- vsnip completions
 
 	-- snippets
 	use("L3MON4D3/LuaSnip") --snippet engine
@@ -146,15 +141,14 @@ return packer.startup(function(use)
 	use({ "Pocco81/DAPInstall.nvim", commit = "24923c3" }) -- in got a rebranding that's shit
 	use("theHamsta/nvim-dap-virtual-text")
 
-	-- Note taking
-	use("vimwiki/vimwiki")
-
 	-- Winbar
 	use("fgheng/winbar.nvim")
 	use("SmiteshP/nvim-navic")
 
-	-- LaTeX
-	use("lervag/vimtex")
+	-- Personal
+	use("lervag/vimtex") -- LaTeX
+	use("vimwiki/vimwiki") -- Wiki
+  use("nathangrigg/vim-beancount")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

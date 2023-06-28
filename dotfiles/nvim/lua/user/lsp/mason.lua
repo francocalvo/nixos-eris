@@ -21,6 +21,7 @@ local servers = {
 	"marksman",
 	"nil_ls",
 	"prismals",
+	"beancount",
 }
 
 local settings = {
@@ -92,6 +93,11 @@ for _, server in pairs(servers) do
 	if server == "tsserver" then
 		local tsserver_opts = require("user.lsp.settings.tsserver")
 		opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
+	end
+
+	if server == "beancount" then
+		local beancount_opts = require("user.lsp.settings.beancount")
+		opts = vim.tbl_deep_extend("force", beancount_opts, opts)
 	end
 
 	lspconfig[server].setup(opts)

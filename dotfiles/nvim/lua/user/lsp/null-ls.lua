@@ -42,8 +42,10 @@ null_ls.setup({
 			filetypes = { "tex", "bib" },
 			extra_args = { "-m", "-l=" .. vim.fn.stdpath("config") .. "/lua/user/lsp/settings/latexindent.yaml" },
 		}),
-
 		diagnostics.chktex,
+
+		--# Beancount
+		formatting.bean_format,
 	},
 })
 

@@ -68,6 +68,8 @@ in {
       nextcloud-client
       microsoft-edge-dev
       librecad
+      beancount
+      beancount-language-server
 
       # Monitoring
       amdgpu_top

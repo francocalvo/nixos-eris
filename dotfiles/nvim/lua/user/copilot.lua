@@ -1,9 +1,9 @@
 local status_ok, copilot = pcall(require, "copilot")
 if not status_ok then
-  return
+	return
 end
 
-copilot.setup {
+copilot.setup({
 	cmp = {
 		enabled = true,
 		method = "getCompletionsCycling",
@@ -14,7 +14,7 @@ copilot.setup {
 		keymap = {
 			accept = "<CR>",
 			jump_prev = "[[",
-		  jump_next = "]]",
+			jump_next = "]]",
 			refresh = "gr",
 			open = "<M-CR>",
 		},
@@ -29,17 +29,15 @@ copilot.setup {
 			dismiss = "<C-x>",
 		},
 	},
-  ft_disable = { "markdown" },
-  -- plugin_manager_path = vim.fn.stdpath "data" .. "/site/pack/packer",
-  server_opts_overrides = {
-    -- trace = "verbose",
-    settings = {
-      advanced = {
-        -- listCount = 10, -- #completions for panel
-        inlineSuggestCount = 3, -- #completions for getCompletions
-      },
-    },
-  },
-}
-
-
+	ft_disable = { "markdown", "beancount" },
+	-- plugin_manager_path = vim.fn.stdpath "data" .. "/site/pack/packer",
+	server_opts_overrides = {
+		-- trace = "verbose",
+		settings = {
+			advanced = {
+				-- listCount = 10, -- #completions for panel
+				inlineSuggestCount = 3, -- #completions for getCompletions
+			},
+		},
+	},
+})
