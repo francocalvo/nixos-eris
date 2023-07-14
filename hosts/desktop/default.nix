@@ -9,6 +9,7 @@ in {
     d = {
       terminal.alacritty = enable;
       theme.nord = enable;
+      finances = enable;
       displayServer = {
         lightdm.enable = false;
         sddm = {
@@ -68,9 +69,6 @@ in {
       nextcloud-client
       microsoft-edge-dev
       librecad
-      beancount
-      beancount-language-server
-
       # Monitoring
       amdgpu_top
     ];
