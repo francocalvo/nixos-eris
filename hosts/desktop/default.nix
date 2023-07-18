@@ -46,7 +46,7 @@ in {
       calibre
       discord
       firefox
-      libreoffice
+      libreoffice-fresh
       zulu
       spotify
       qbittorrent

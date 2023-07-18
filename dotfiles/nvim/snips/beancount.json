@@ -1,37 +1,29 @@
 {
-  "Simple ARG Balance": {
-    "prefix": "ba",
+  "Simple ARG Transfer": {
+    "prefix": "tr",
     "body": [
-      "${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} balance ${1:account} ${2:0} ARS"
-    }"
-  ],
-  "description": "Create balance instance"
-},
-"Simple ARG Transfer": {
-  "prefix": "tr",
-  "body": [
-    "${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} * \"Transferencia de ${1:MercadoPago} a ${2:PersonalPay}\"",
-    "  ${3}  ${4:0} ARS",
-    "  ${5}"
-  ],
-  "description": "Insert a transaction for a simple transfer between ARG accounts"
-},
-"Simple buy": {
-  "prefix": "e",
-  "body": [
-    "${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} * \"${1:Narration}\"",
-    "  ${4} -${5:0} ARS",
-    "  ${6}"
-  ],
-  "description": "Insert a transaction for a simple expense with a payee"
-},
-"Simple buy with payee": {
-  "prefix": "pe",
-  "body": [
-    "${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} * \"${2:Payee}\" \"${1:Narration}\"",
-    "  ${4} -${5:0} ARS",
-    "  ${6}"
-  ],
-  "description": "Insert a transaction for a simple expense with a payee"
-}
+      "${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} * \"Transferencia de ${1:MercadoPago} a ${2:PersonalPay}\"",
+      "  ${3}  ${4:0} ARS",
+      "  ${5}"
+    ],
+    "description": "Insert a transaction for a simple transfer between ARG accounts"
+  },
+  "Simple buy": {
+    "prefix": "e",
+    "body": [
+      "${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} * \"${1:Narration}\"",
+      "  ${4} -${5:0} ARS",
+      "  ${6}"
+    ],
+    "description": "Insert a transaction for a simple expense with a payee"
+  },
+  "Simple buy with payee": {
+    "prefix": "pe",
+    "body": [
+      "${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} * \"${2:Payee}\" \"${1:Narration}\"",
+      "  ${4} -${5:0} ARS",
+      "  ${6}"
+    ],
+    "description": "Insert a transaction for a simple expense with a payee"
+  }
 }
