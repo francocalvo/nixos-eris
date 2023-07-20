@@ -17,6 +17,7 @@ local servers = {
   "clangd",
   "tsserver",
   "marksman",
+  "sqls",
 }
 
 lsp_installer.setup({

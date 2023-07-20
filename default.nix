@@ -37,6 +37,7 @@ with lib; {
 
   # Set your time zone.
   time.timeZone = "America/Argentina/Cordoba";
+  services.ntp.enable = true;
 
   # Base packages
   environment.systemPackages = with pkgs; [

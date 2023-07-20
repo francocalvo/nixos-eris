@@ -11,7 +11,6 @@ end
 local servers = {
 	"eslint",
 	"jsonls",
-	"sqlls",
 	"lua_ls",
 	"yamlls",
 	"html",
@@ -22,6 +21,7 @@ local servers = {
 	"nil_ls",
 	"prismals",
 	"beancount",
+	"sqlls",
 }
 
 local settings = {
@@ -39,10 +39,10 @@ local settings = {
 }
 
 mason.setup(settings)
-mason_lspconfig.setup({
-	ensure_installed = servers,
-	automatic_installation = true,
-})
+--[[ mason_lspconfig.setup({ ]]
+--[[ 	ensure_installed = servers, ]]
+--[[ 	automatic_installation = false, ]]
+--[[ }) ]]
 
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_status_ok then

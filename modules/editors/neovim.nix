@@ -22,6 +22,16 @@ in {
 
           # Formatters and LSP
           nodePackages_latest.prettier
+          nodePackages_latest.eslint
+          nodePackages_latest.vscode-json-languageserver-bin
+          nodePackages_latest.yaml-language-server
+          nodePackages_latest.vscode-langservers-extracted
+          llvmPackages_15.clang-unwrapped
+          nodePackages_latest.typescript-language-server
+          vscode-extensions.prisma.prisma
+          beancount-language-server
+          marksman
+          lua-language-server
           stylua
           nil
           deadnix
@@ -29,6 +39,8 @@ in {
           rustc
           black
           pylint
+          sqls
+          sqlfluff
         ];
       };
 

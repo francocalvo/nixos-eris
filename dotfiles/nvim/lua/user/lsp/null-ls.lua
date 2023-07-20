@@ -46,6 +46,13 @@ null_ls.setup({
 
 		--# Beancount
 		formatting.bean_format,
+
+		--# Beancount
+		formatting.bean_format,
+
+		formatting.sqlfluff.with({
+			extra_args = { "--dialect", "T-SQL" }, -- change to your dialect
+		}),
 	},
 })
 
