@@ -87,6 +87,7 @@
 #custom-alsa,
 #custom-pacman,
 #custom-weather,
+#custom-gaming,
 #custom-gpu,
 #tray,
 #backlight,
@@ -183,6 +184,11 @@
 #bluetooth {
     background: @nord_bg_blue;
     font-size: 1.2em;
+    font-weight: bold;
+    padding: 0 0.6em;
+}
+#custom-gaming {
+    background: @nord_bg;
     font-weight: bold;
     padding: 0 0.6em;
 }

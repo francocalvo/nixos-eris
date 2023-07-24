@@ -41,6 +41,7 @@ with lib; {
 
   # Base packages
   environment.systemPackages = with pkgs; [
+    jq
     bind
     cached-nix-shell
     git

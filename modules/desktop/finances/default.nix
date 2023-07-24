@@ -12,7 +12,7 @@ in {
     # Implicitly enable Neovim with it's configs for Beancounter
     modules.editors.neovim.enable = true;
 
-    user = { packages = with pkgs; [ beancount-language-server fava ]; };
+    user = { packages = with pkgs; [ beancount-language-server ]; };
 
     environment.shellAliases = {
       bean = ''

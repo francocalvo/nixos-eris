@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 with lib;
 let cfg = config.modules.hardware.sound;
 in {
@@ -8,13 +8,18 @@ in {
 
   config = mkIf cfg.enable {
     # Enable sound.
-    services.pipewire = {
-      enable = true;
-      audio.enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-      jack.enable = true;
+    services = {
+      pipewire = {
+        enable = true;
+        audio.enable = true;
+        alsa.enable = true;
+        alsa.support32Bit = true;
+        pulse.enable = true;
+        jack.enable = true;
+      };
     };
+
+    user.packages = with pkgs; [ pulseaudio ];
+
   };
 }
