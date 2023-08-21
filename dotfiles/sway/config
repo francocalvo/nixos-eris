@@ -47,10 +47,6 @@ bar {
      swaybar_command waybar
 }
 
-# Flameshot
-exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
-exec hash dbus-update-activation-environment 2>/dev/null && \
-     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -226,3 +222,6 @@ assign [class="obs"] $ws8
 # Clases
 assign [class="microsoft teams - preview"] $ws9
 
+
+exec systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway DISPLAY WAYLAND_DISPLAY

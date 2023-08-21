@@ -15,17 +15,21 @@ in {
     xdg.portal = {
       enable = true;
       wlr.enable = true;
+      wlr.settings = {
+        screencast = {
+          output_name = "DP-1";
+          chooser_type = "simple";
+        };
+      };
       # gtk portal needed to make gtk apps happy
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-gtk
-        xdg-desktop-portal-wlr
-      ];
+      extraPortals = with pkgs; [ xdg-desktop-portal-wlr ];
     };
 
     programs = {
       sway = {
         enable = true;
         extraSessionCommands = ''
+          export SDL_VIDEODRIVER=wayland
           export _JAVA_AWT_WM_NONREPARENTING=1
           export QT_QPA_PLATFORM=wayland
           export XDG_CURRENT_DESKTOP=sway
@@ -43,7 +47,6 @@ in {
         wl-clipboard
         xwayland
         xdg-desktop-portal
-        xdg-desktop-portal-wlr
         grim
         wdisplays
       ];
