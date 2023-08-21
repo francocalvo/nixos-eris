@@ -20,6 +20,8 @@ with lib; {
     channel = "https://nixos.org/channels/nixos-unstable";
   };
 
+  security.rtkit.enable = true;
+
   # Use the GRUB 2 boot loader.
   boot = {
     kernelPackages = mkDefault pkgs.linuxPackages_latest;

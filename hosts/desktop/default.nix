@@ -12,7 +12,7 @@ in {
       finances = enable;
       displayServer = {
         lightdm.enable = false;
-        sddm = {
+        gdm = {
           enable = true;
           defaultSession = "sway";
         };
