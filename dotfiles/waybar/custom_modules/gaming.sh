@@ -51,26 +51,3 @@ if [ ${#output[@]} -gt 0 ]; then
     steam -bigpicture
   fi
 fi
-
-
-
-    # If HDMI output is not enabled, proceed with enabling it
-    # Assign the workspace 11 to the first HDMI output
-    swaymsg workspace 11 output "${hdmi_output}"
-
-    # Enable the first HDMI output
-    swaymsg output "${hdmi_output}" enable
-
-    # Focus the first HDMI output
-    swaymsg focus output "${hdmi_output}"
-
-    # Make main monitor for Xwayland
-    xrandr --output "${hdmi_output}" --primary
-
-
-    # Open Steam BigPicture in the first HDMI output
-    echo "opening steam"
-    steam -bigpicture
-  fi
-    disable_i3wm_rule
-fi
