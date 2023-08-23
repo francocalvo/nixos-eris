@@ -12,7 +12,7 @@ in {
       finances = enable;
       displayServer = {
         lightdm.enable = false;
-        gdm = {
+        sddm = {
           enable = true;
           defaultSession = "sway";
         };
@@ -20,6 +20,7 @@ in {
       windowManager = {
         xorg = enable;
         sway = enable;
+        plasma = enable;
       };
     };
     network = { network-manager = enable; };
