@@ -20,8 +20,6 @@ with lib; {
     channel = "https://nixos.org/channels/nixos-unstable";
   };
 
-  security.rtkit.enable = true;
-
   # Use the GRUB 2 boot loader.
   boot = {
     kernelPackages = mkDefault pkgs.linuxPackages_latest;
@@ -41,12 +39,19 @@ with lib; {
   time.timeZone = "America/Argentina/Cordoba";
   services.ntp.enable = true;
 
+  programs.git = {
+    enable = true;
+    config = {
+      user.name = "francocalvo";
+      user.email = "dev@francocalvo.ar";
+    };
+  };
+
   # Base packages
   environment.systemPackages = with pkgs; [
     jq
     bind
     cached-nix-shell
-    git
     curl
     vim
     neovim

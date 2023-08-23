@@ -20,7 +20,7 @@ in {
       windowManager = {
         xorg = enable;
         sway = enable;
-        plasma = enable;
+        # plasma = enable;
       };
     };
     network = { network-manager = enable; };
