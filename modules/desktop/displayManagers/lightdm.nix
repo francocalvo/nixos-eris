@@ -19,19 +19,23 @@ in {
         displayManager = {
           lightdm = {
             enable = true; # Wallpaper and GTK theme
+            extraConfig = ''
+              display-setup-script=xrandr --output HDMI-1 --primary
+            '';
             background =
               pkgs.nixos-artwork.wallpapers.nineish-dark-gray.gnomeFilePath;
             greeters = {
-              gtk = {
-                theme = {
-                  name = "Nordic";
-                  package = pkgs.nordic;
-                };
-                cursorTheme = {
-                  name = "Nordic-cursors";
-                  package = pkgs.nordic;
-                  size = 16;
-                };
+              slick = {
+                enable = true;
+                # theme = {
+                #   name = "Nordic";
+                #   package = pkgs.nordic;
+                # };
+                # cursorTheme = {
+                #   name = "Nordic-cursors";
+                #   package = pkgs.nordic;
+                #   size = 16;
+                # };
               };
             };
           };
