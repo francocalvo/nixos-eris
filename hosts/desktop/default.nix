@@ -11,8 +11,7 @@ in {
       theme.nord = enable;
       finances = enable;
       displayServer = {
-        lightdm.enable = false;
-        sddm = {
+        lightdm = {
           enable = true;
           defaultSession = "sway";
         };
@@ -20,7 +19,6 @@ in {
       windowManager = {
         xorg = enable;
         sway = enable;
-        # plasma = enable;
       };
     };
     network = { network-manager = enable; };
@@ -28,12 +26,12 @@ in {
     dev = {
       python = enable;
       nodejs = enable;
-      docker = enable;
+      docker = disable;
     };
     shell.zsh = enable;
     gaming = {
       enable = true;
-      performanceTweaks = disable;
+      performanceTweaks = enable;
       sunshine = disable;
     };
     editors = { neovim = enable; };
@@ -43,10 +41,8 @@ in {
   user = {
     packages = with pkgs; [
       bitwarden
-      brave
       calibre
       discord
-      firefox
       libreoffice-fresh
       zulu
       spotify
@@ -58,18 +54,24 @@ in {
       which
       git
       libsForQt5.kcalc
-      # latexrun
-      # texlive.combined.scheme-full
       teams
       thunderbird
       flameshot
-      cinnamon.nemo
       gnome.nautilus
       gnome.sushi
       libsForQt5.bluedevil
       nextcloud-client
+
+      obs-studio
+      texlive.combined.scheme-full
+
+      # Browsers
+      brave
+      firefox
+      firefox-unwrapped
       microsoft-edge-dev
-      librecad
+      chromium
+
       # Monitoring
       amdgpu_top
     ];

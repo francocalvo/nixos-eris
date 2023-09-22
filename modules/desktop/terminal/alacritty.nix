@@ -9,7 +9,7 @@ in {
 
   config = mkIf cfg.enable {
 
-    fonts.fonts = with pkgs; [ meslo-lgs-nf ];
+    fonts.packages = with pkgs; [ meslo-lgs-nf ];
 
     home._ = {
       programs.alacritty = {

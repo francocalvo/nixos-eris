@@ -8,7 +8,7 @@ in {
 
   # TODO: This should be improved
   config = mkIf cfg.enable {
-    fonts.fonts = with pkgs; [
+    fonts.packages = with pkgs; [
       font-awesome
       font-awesome_5 # Used for polybar
       corefonts
