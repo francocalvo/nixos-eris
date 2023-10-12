@@ -26,7 +26,7 @@ in {
     dev = {
       python = enable;
       nodejs = enable;
-      docker = disable;
+      docker = enable;
     };
     shell.zsh = enable;
     gaming = {
@@ -61,6 +61,7 @@ in {
       gnome.sushi
       libsForQt5.bluedevil
       nextcloud-client
+      tealdeer
 
       obs-studio
       texlive.combined.scheme-full
@@ -72,8 +73,13 @@ in {
       microsoft-edge-dev
       chromium
 
+      openconnect
+      gnome.networkmanager-openconnect
+      libsecret
+
       # Monitoring
       amdgpu_top
+      arandr
     ];
   };
 
@@ -100,6 +106,11 @@ in {
     openssh.enable = true;
     gvfs.enable = true; # MTP for Kindle, Android, etc
     gnome.gnome-keyring.enable = true;
+  };
+
+  programs = {
+    seahorse.enable = true;
+    dconf.enable = true;
   };
 
   system.stateVersion = "23.05";

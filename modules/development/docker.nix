@@ -11,7 +11,10 @@ in {
     # Implicitly enable dev base
     modules.dev.enable = true;
 
-    user = { packages = with pkgs; [ docker ]; };
+    user = {
+      packages = with pkgs; [ docker ];
+      extraGroups = [ "docker" ];
+    };
     virtualisation.docker.enable = true;
   };
 }
