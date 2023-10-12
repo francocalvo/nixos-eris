@@ -7,6 +7,8 @@ in {
     mkEnableOption "Xorg display server";
 
   config = mkIf cfg.enable {
+    security.polkit.enable = true;
+
     services = {
       xserver = {
         enable = true;
