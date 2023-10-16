@@ -11,7 +11,7 @@ in {
       theme.nord = enable;
       finances = enable;
       displayServer = {
-        lightdm = {
+        sddm = {
           enable = true;
           defaultSession = "sway";
         };
@@ -27,6 +27,7 @@ in {
       python = enable;
       nodejs = enable;
       docker = enable;
+      virt = enable;
     };
     shell.zsh = enable;
     gaming = {
@@ -62,6 +63,7 @@ in {
       libsForQt5.bluedevil
       nextcloud-client
       tealdeer
+      stremio
 
       obs-studio
       texlive.combined.scheme-full
