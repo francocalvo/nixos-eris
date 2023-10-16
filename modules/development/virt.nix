@@ -15,6 +15,7 @@ in {
     environment.systemPackages = with pkgs; [
       virt-manager
       virt-viewer
+      qemu_kvm
       spice
       spice-gtk
       spice-protocol

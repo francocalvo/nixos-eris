@@ -101,7 +101,7 @@ return packer.startup(function(use)
 	use("tamago324/nlsp-settings.nvim") -- language server settings defined in json for
 	use("lvimuser/lsp-inlayhints.nvim") -- adds inlay hints, markers in the editor
 	use("ray-x/lsp_signature.nvim") -- adds function signature when you type
-	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
+	use("nvimtools/none-ls.nvim") -- for formatters and linters
 	use("RRethy/vim-illuminate") -- For highlighting the same word under cursor
 	use({
 		"zbirenbaum/copilot.lua",

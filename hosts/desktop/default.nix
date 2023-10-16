@@ -11,7 +11,7 @@ in {
       theme.nord = enable;
       finances = enable;
       displayServer = {
-        sddm = {
+        lightdm = {
           enable = true;
           defaultSession = "sway";
         };
