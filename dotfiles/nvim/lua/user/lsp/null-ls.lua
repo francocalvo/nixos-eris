@@ -31,6 +31,8 @@ null_ls.setup({
 
 		--# C++
 		diagnostics.cpplint,
+    diagnostics.clang_check,
+    diagnostics.cppcheck,
 		formatting.clang_format,
 
 		--# NIX

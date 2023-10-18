@@ -22,6 +22,7 @@ local servers = {
 	"prismals",
 	"beancount",
 	"sqlls",
+	"pyright",
 }
 
 local settings = {
@@ -98,11 +99,6 @@ for _, server in pairs(servers) do
 	if server == "beancount" then
 		local beancount_opts = require("user.lsp.settings.beancount")
 		opts = vim.tbl_deep_extend("force", beancount_opts, opts)
-	end
-
-	if server == "pyright" then
-		local pyright_opts = require("user.lsp.settings.pyright")
-		opts = vim.tbl_deep_extend("force", pyright_opts, opts)
 	end
 
 	lspconfig[server].setup(opts)

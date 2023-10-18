@@ -18,6 +18,9 @@ in {
         llvm
         libcxx
         insomnia
+        cpplint
+        cppcheck
+        bear
       ];
     };
 

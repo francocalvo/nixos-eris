@@ -4,9 +4,9 @@ if vim.g.vscode then
 	vim.cmd([[ omap gc  <Plug>VSCodeCommentary ]])
 	vim.cmd([[ nmap gcc  <Plug>VSCodeCommentaryLine ]])
 else
-  -- This should make Mason work in NixOS.
-  -- https://github.com/williamboman/mason.nvim/issues/428
-  --
+	-- This should make Mason work in NixOS.
+	-- https://github.com/williamboman/mason.nvim/issues/428
+	--
 	require("user.plugins") -- OK - See below
 	--local mason_registry = require("mason-registry")
 	--mason_registry:on("package:install:success", function(pkg)
@@ -46,7 +46,6 @@ else
 	require("user.autotag") -- OK
 	require("user.comment") -- OK
 	require("user.gitsigns") -- OK
-	require("user.nvim-tree") -- OK - updated up to  5b240a9
 	require("user.lualine") -- OK - updated up to 5b240a9
 	require("user.toggleterm")
 	require("user.project") -- OK
@@ -64,6 +63,7 @@ else
 	require("user.cybu")
 	require("user.vimtex")
 	require("user.bufferline") -- OK - updated up to 2022/09/12
+	require("user.nvimtree") -- OK - updated up to  5b240a9
 	--[[ require "user.copilot" ]]
 end
 
