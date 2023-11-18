@@ -148,7 +148,8 @@ return packer.startup(function(use)
 	-- Personal
 	use("lervag/vimtex") -- LaTeX
 	use("vimwiki/vimwiki") -- Wiki
-  use("nathangrigg/vim-beancount")
+	use("itchyny/calendar.vim") -- Calendar
+	use("nathangrigg/vim-beancount")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

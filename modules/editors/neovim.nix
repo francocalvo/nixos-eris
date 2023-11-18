@@ -21,14 +21,18 @@ in {
           ripgrep # Telescope
 
           # Formatters and LSP
-          nodePackages_latest.prettier
+          nodePackages.prettier
           nodePackages_latest.eslint
           nodePackages_latest.vscode-json-languageserver-bin
           nodePackages_latest.yaml-language-server
           nodePackages_latest.vscode-langservers-extracted
-          llvmPackages_15.clang-unwrapped
+          nodePackages_latest.markdownlint-cli
           nodePackages_latest.typescript-language-server
+
+          llvmPackages_15.clang-unwrapped
+
           vscode-extensions.prisma.prisma
+
           beancount-language-server
           marksman
           lua-language-server

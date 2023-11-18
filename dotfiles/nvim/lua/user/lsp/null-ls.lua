@@ -11,12 +11,9 @@ local diagnostics = null_ls.builtins.diagnostics
 -- https://github.com/prettier-solidity/prettier-plugin-solidity
 -- npm install --save-dev prettier prettier-plugin-solidity
 null_ls.setup({
-	debug = false,
+	debug = true,
 	sources = {
-		formatting.prettier.with({
-			extra_filetypes = { "javascript", "toml", "solidity" },
-			--[[ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" }, ]]
-		}),
+		formatting.prettier,
 
 		formatting.stylua,
 		formatting.shfmt,
@@ -31,8 +28,8 @@ null_ls.setup({
 
 		--# C++
 		diagnostics.cpplint,
-    diagnostics.clang_check,
-    diagnostics.cppcheck,
+		diagnostics.clang_check,
+		diagnostics.cppcheck,
 		formatting.clang_format,
 
 		--# NIX
@@ -49,12 +46,14 @@ null_ls.setup({
 		--# Beancount
 		formatting.bean_format,
 
-		--# Beancount
-		formatting.bean_format,
-
+		--# SQL
 		formatting.sqlfluff.with({
-			extra_args = { "--dialect", "T-SQL" }, -- change to your dialect
+			extra_args = { "--dialect", "tsql" }, -- change to your dialect
 		}),
+
+		--# Markdown
+		--[[ diagnostics.markdownlint, ]]
+		--[[ formatting.markdownlint, ]]
 	},
 })
 
