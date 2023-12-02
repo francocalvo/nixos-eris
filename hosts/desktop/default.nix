@@ -11,7 +11,7 @@ in {
       theme.nord = enable;
       finances = enable;
       displayServer = {
-        lightdm = {
+        sddm = {
           enable = true;
           defaultSession = "sway";
         };
@@ -75,6 +75,7 @@ in {
       firefox-unwrapped
       microsoft-edge-dev
       chromium
+      google-chrome
 
       openconnect
       gnome.networkmanager-openconnect

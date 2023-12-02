@@ -112,6 +112,7 @@ return packer.startup(function(use)
 			end, 100)
 		end,
 	})
+	use("mrcjkb/rustaceanvim")
 
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
