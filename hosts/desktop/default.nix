@@ -27,6 +27,7 @@ in {
       python = enable;
       nodejs = enable;
       docker = enable;
+      distrobox = enable;
       virt = enable;
     };
     shell.zsh = enable;

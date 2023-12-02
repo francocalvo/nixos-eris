@@ -45,6 +45,7 @@ in {
           pylint
           sqls
           sqlfluff
+          rust-analyzer
         ];
       };
 

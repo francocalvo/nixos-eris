@@ -24,20 +24,7 @@ in {
             '';
             background =
               pkgs.nixos-artwork.wallpapers.nineish-dark-gray.gnomeFilePath;
-            greeters = {
-              slick = {
-                enable = true;
-                # theme = {
-                #   name = "Nordic";
-                #   package = pkgs.nordic;
-                # };
-                # cursorTheme = {
-                #   name = "Nordic-cursors";
-                #   package = pkgs.nordic;
-                #   size = 16;
-                # };
-              };
-            };
+            greeters = { slick = { enable = true; }; };
           };
           defaultSession = cfg.defaultSession;
         };

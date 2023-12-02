@@ -12,6 +12,7 @@ in {
         git
         remmina
         zathura
+        okular
         gcc
         dbeaver
         vscode

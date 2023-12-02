@@ -64,7 +64,7 @@ with lib.my; {
     in {
       inherit name;
       description = "The primary user account";
-      extraGroups = [ "wheel" "docker" "audio" ];
+      extraGroups = [ "wheel" "docker" "audio" "video" ];
       isNormalUser = true;
       home = "/home/${name}";
       group = "users";
