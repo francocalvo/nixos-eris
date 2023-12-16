@@ -9,7 +9,7 @@ in {
     d = {
       terminal.alacritty = enable;
       theme.nord = enable;
-      finances = enable;
+      finances = disable;
       displayServer = {
         sddm = {
           enable = true;
@@ -17,7 +17,7 @@ in {
         };
       };
       windowManager = {
-        xorg = enable;
+        xorg = disable;
         sway = enable;
       };
     };
@@ -25,15 +25,15 @@ in {
     hardware = { sound = enable; };
     dev = {
       python = enable;
-      nodejs = enable;
-      docker = enable;
-      distrobox = enable;
-      virt = enable;
+      nodejs = disable;
+      docker = disable;
+      distrobox = disable;
+      virt = disable;
     };
     shell.zsh = enable;
     gaming = {
       enable = true;
-      performanceTweaks = enable;
+      performanceTweaks = disable;
       sunshine = disable;
     };
     editors = { neovim = enable; };
@@ -56,7 +56,6 @@ in {
       which
       git
       libsForQt5.kcalc
-      teams
       thunderbird
       flameshot
       gnome.nautilus
@@ -66,24 +65,20 @@ in {
       tealdeer
       stremio
 
-      obs-studio
-      texlive.combined.scheme-full
+      #obs-studio
+      #texlive.combined.scheme-full
 
       # Browsers
       brave
       firefox
-      firefox-unwrapped
-      microsoft-edge-dev
-      chromium
       google-chrome
 
-      openconnect
-      gnome.networkmanager-openconnect
+      #openconnect
+      #gnome.networkmanager-openconnect
       libsecret
 
       # Monitoring
       amdgpu_top
-      arandr
     ];
   };
 
@@ -117,5 +112,5 @@ in {
     dconf.enable = true;
   };
 
-  system.stateVersion = "23.05";
+  system.stateVersion = "23.11";
 }

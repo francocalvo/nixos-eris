@@ -8,12 +8,12 @@ exec xrandr --output DP-1 --primary
 # Enable VSync
 output * {
   adaptive_sync on
-  render_bit_depth 10
+  render_bit_depth 8
   bg ./wal.jpg fill
 }
 
 output DP-2 {
-  mode 1920x1080@50.00Hz
+  mode 1920x1080@60.00Hz
   transform 270
   scale 1
   position 0 0
@@ -32,16 +32,22 @@ output DP-3 {
 }
 
 output HDMI-A-1 {
-  mode 3840x2160@59.98Hz
+  mode 3840x2160@60Hz
   scale 2
   adaptive_sync off
   position 5560 0
   disable
 }
 
-focus_follows_mouse no
+# From flameshot docs for Sway
+for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK DBUS_SESSION_BUS_ADDRESS XDG_CURRENT_DESKTOP XDG_SESSION_TYPE MOZ_ENABLE_WAYLAND NIXOS_OZONE_WL
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK DBUS_SESSION_BUS_ADDRESS XDG_CURRENT_DESKTOP XDG_SESSION_TYPE MOZ_ENABLE_WAYLAND NIXOS_OZONE_WL
+
 
 # Keyboard settings
+focus_follows_mouse no
 input * {
     xkb_layout "latam"
       xkb_options "caps:escape"
@@ -52,9 +58,7 @@ bar {
      swaybar_command waybar
 }
 
-# Flameshot
-exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK DBUS_SESSION_BUS_ADDRESS XDG_CURRENT_DESKTOP XDG_SESSION_TYPE MOZ_ENABLE_WAYLAND NIXOS_OZONE_WL
-exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK DBUS_SESSION_BUS_ADDRESS XDG_CURRENT_DESKTOP XDG_SESSION_TYPE MOZ_ENABLE_WAYLAND NIXOS_OZONE_WL
+
 
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
