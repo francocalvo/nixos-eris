@@ -3,9 +3,6 @@ exec --no-startup-id ~/.config/i3/feh.sh
 
 set $mod Mod1
 
-# Start picom
-exec_always --no-startup-id picom
-
 # Start polybar
 # exec_always --no-startup-id $HOME/polybar-collection/nord/launch.sh
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
