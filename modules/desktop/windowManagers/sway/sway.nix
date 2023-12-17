@@ -23,19 +23,19 @@ in {
         xdg-desktop-portal-gtk
       ];
 
-      config = {
-        sway = {
-          default = [ "gtk" ];
-          "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
-          "org.freedesktop.impl.portal.Screencast" = [ "wlr" ];
-        };
-
-        common = {
-          default = [ "gtk" ];
-          "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
-          "org.freedesktop.impl.portal.Screencast" = [ "wlr" ];
-        };
-      };
+      # config = {
+      #   sway = {
+      #     default = [ "gtk" ];
+      #     "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
+      #     "org.freedesktop.impl.portal.Screencast" = [ "wlr" ];
+      #   };
+      #
+      #   common = {
+      #     default = [ "gtk" ];
+      #     "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
+      #     "org.freedesktop.impl.portal.Screencast" = [ "wlr" ];
+      #   };
+      # };
     };
 
     programs = {

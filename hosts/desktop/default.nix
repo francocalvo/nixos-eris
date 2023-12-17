@@ -17,7 +17,7 @@ in {
         };
       };
       windowManager = {
-        xorg = disable;
+        # xorg = disable;
         sway = enable;
       };
     };
