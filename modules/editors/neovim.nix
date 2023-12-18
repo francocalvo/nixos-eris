@@ -18,6 +18,7 @@ in {
           vimPlugins.packer-nvim # Packer
           cargo # Packer
           xclip # System clipboard
+          wl-clipboard # System clipboard
           ripgrep # Telescope
 
           # Formatters and LSP

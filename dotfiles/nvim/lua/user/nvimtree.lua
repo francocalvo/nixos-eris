@@ -84,12 +84,12 @@ require("nvim-tree").setup({
 				none = " ",
 			},
 		},
-		update_focused_file = {
-			enable = true,
-			debounce_delay = 15,
-			update_root = true,
-			ignore_list = {},
-		},
+		--[[ update_focused_file = { ]]
+		--[[ 	enable = true, ]]
+		--[[ 	debounce_delay = 15, ]]
+		--[[ 	update_root = true, ]]
+		--[[ 	ignore_list = {}, ]]
+		--[[ }, ]]
 		icons = {
 			webdev_colors = true,
 			git_placement = "before",
