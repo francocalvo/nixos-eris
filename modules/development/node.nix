@@ -1,7 +1,7 @@
-{ pkgs, config, lib, ... }:
+{ inputs, pkgs, config, lib, ... }:
 with lib;
 with lib.my;
-let cfg = config.modules.dev.nodejs;
+let cfg = config.modules.dev.python;
 in {
   options.modules.dev.nodejs = {
     enable = mkEnableOption "Enable nodejs packages";
@@ -11,8 +11,6 @@ in {
     # Implicitly enable dev base
     modules.dev.enable = true;
 
-    user = {
-      packages = with pkgs; [ python3Full python310Packages.pip pipenv poetry ];
-    };
+    user = { packages = with pkgs; [ nodejs nodePackages_latest.npm yarn ]; };
   };
 }

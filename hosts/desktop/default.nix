@@ -57,6 +57,7 @@ in {
       git
       libsForQt5.kcalc
       thunderbird
+      libpng
       flameshot
       gnome.nautilus
       gnome.sushi
