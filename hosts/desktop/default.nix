@@ -9,7 +9,7 @@ in {
     d = {
       terminal.alacritty = enable;
       theme.nord = enable;
-      finances = disable;
+      finances = enable;
       displayServer = {
         sddm = {
           enable = true;
@@ -17,7 +17,7 @@ in {
         };
       };
       windowManager = {
-        # xorg = disable;
+        xorg = disable;
         sway = enable;
       };
     };
@@ -72,6 +72,7 @@ in {
       brave
       firefox
       google-chrome
+      teams-for-linux
 
       #openconnect
       #gnome.networkmanager-openconnect

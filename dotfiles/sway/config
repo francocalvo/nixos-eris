@@ -36,7 +36,6 @@ output HDMI-A-1 {
   scale 2
   adaptive_sync off
   position 5560 0
-  disable
 }
 
 # From flameshot docs for Sway

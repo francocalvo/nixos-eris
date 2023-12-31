@@ -38,7 +38,7 @@
       "interval": "once",
       "max-length": 2,
       "min-length": 2,
-      "exec": "sleep 0.5 & ~/.config/waybar/custom_modules/gaming-status.sh",
+      "exec": "sleep 1 & ~/.config/waybar/custom_modules/gaming-status.sh",
       "exec-on-event": true
   },
   "gamemode": {

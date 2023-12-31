@@ -2,7 +2,8 @@
 # Get the HDMI outputs
 
 enable_i3wm_rule() {
-  swaymsg 'for_window [instance="steam"] floating enable, resize set 3840 2160, move position 3000 0'
+  swaymsg 'for_window [instance="steam"] floating enable, resize set 3840 2160'
+  swaymsg 'for_window [instance="steam"] move position 3000 0'
 }
 
 # Function to disable the i3WM-specific rule for Steam BigPicture
@@ -46,7 +47,6 @@ if [ ${#output[@]} -gt 0 ]; then
     pactl set-default-sink "$hdmi_sink"
 
     # Open Steam BigPicture in the first HDMI output
-    echo "opening steam"
     enable_i3wm_rule
     steam -bigpicture
   fi
