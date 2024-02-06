@@ -1,7 +1,7 @@
 { inputs, pkgs, config, lib, ... }:
 with lib;
 with lib.my;
-let cfg = config.modules.dev.python;
+let cfg = config.modules.dev.nodejs;
 in {
   options.modules.dev.nodejs = {
     enable = mkEnableOption "Enable nodejs packages";
