@@ -16,7 +16,7 @@ in {
 
     environment.shellAliases = {
       bean = ''
-        vim ~/Nextcloud/Finanzas/Beans/journals/2023.bean ~/Nextcloud/Finanzas/Beans/accounts.bean ~/Nextcloud/Finanzas/Beans/prices/commodities.bean ~/Nextcloud/Finanzas/Beans/main.bean
+        vim ~/Nextcloud/Finanzas/Beans/journals/2024.bean ~/Nextcloud/Finanzas/Beans/accounts.bean ~/Nextcloud/Finanzas/Beans/prices/commodities.bean ~/Nextcloud/Finanzas/Beans/main.bean ~/Nextcloud/Finanzas/Beans/journals/2023.bean
       '';
     };
 

@@ -42,6 +42,7 @@ in {
           deadnix
           nixfmt
           rustc
+          pyright
           black
           pylint
           sqls
