@@ -9,8 +9,8 @@ copilot.setup({
 		method = "getCompletionsCycling",
 	},
 	panel = {
-		enabled = false,
-		auto_refresh = false,
+		enabled = true,
+		auto_refresh = true,
 		keymap = {
 			accept = "<CR>",
 			jump_prev = "[[",

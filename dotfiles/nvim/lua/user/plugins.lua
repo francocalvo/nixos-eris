@@ -103,15 +103,15 @@ return packer.startup(function(use)
 	use("ray-x/lsp_signature.nvim") -- adds function signature when you type
 	use("nvimtools/none-ls.nvim") -- for formatters and linters
 	use("RRethy/vim-illuminate") -- For highlighting the same word under cursor
-	use({
-		"zbirenbaum/copilot.lua",
-		event = { "VimEnter" },
-		config = function()
-			vim.defer_fn(function()
-				require("user.copilot")
-			end, 100)
-		end,
-	})
+	--[[ use({ ]]
+	--[[ 	"zbirenbaum/copilot.lua", ]]
+	--[[ 	event = { "VimEnter" }, ]]
+	--[[ 	config = function() ]]
+	--[[ 		vim.defer_fn(function() ]]
+	--[[ 			require("user.copilot") ]]
+	--[[ 		end, 100) ]]
+	--[[ 	end, ]]
+	--[[ }) ]]
 	use("mrcjkb/rustaceanvim")
 
 	-- Telescope
@@ -151,6 +151,7 @@ return packer.startup(function(use)
 	use("vimwiki/vimwiki") -- Wiki
 	use("itchyny/calendar.vim") -- Calendar
 	use("nathangrigg/vim-beancount")
+	use("goerz/jupytext.vim")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
