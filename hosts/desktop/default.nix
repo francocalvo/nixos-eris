@@ -11,24 +11,24 @@ in {
       theme.nord = enable;
       finances = enable;
       displayServer = {
-        sddm = {
+        gdm = {
           enable = true;
           defaultSession = "sway";
         };
       };
       windowManager = {
-        xorg = disable;
+        xorg = enable;
         sway = enable;
       };
     };
     network = { network-manager = enable; };
     hardware = { sound = enable; };
     dev = {
-      python = enable;
+      python.enable = true;
       nodejs = disable;
-      docker = disable;
+      docker = enable;
       distrobox = disable;
-      virt = disable;
+      virt = enable;
     };
     shell.zsh = enable;
     gaming = {
@@ -65,9 +65,10 @@ in {
       nextcloud-client
       tealdeer
       stremio
-
+      texliveFull
       #obs-studio
       #texlive.combined.scheme-full
+      drawio
 
       # Browsers
       brave

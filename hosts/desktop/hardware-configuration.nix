@@ -35,6 +35,11 @@
     fsType = "ext4";
   };
 
+  fileSystems."/orfeo" = {
+    device = "/dev/disk/by-uuid/49bc237a-bf72-4d17-be82-66ad05a3ac2b";
+    fsType = "ext4";
+    # options = ["mode=777"];
+  };
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/AE80-D3B1";
