@@ -46,8 +46,10 @@
         defaultSession = "none+i3";
       };
       windowManager.i3.enable = true;
-      layout = "latam";
-      xkbOptions = "caps:escape"; # map caps to escape.
+      xkb = {
+        layout = "latam";
+        options = "caps:escape"; # map caps to escape.
+      };
       videoDrivers = [ "amdgpu" ]; # Enable just if using real PC
     };
 

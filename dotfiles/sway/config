@@ -25,7 +25,7 @@ output * {
 # }
 #
 output DP-2 {
-  mode 1920x1080@60.00Hz
+  mode 1920x1080@50.00Hz
   transform 270
   scale 1
   position 0 0

@@ -48,6 +48,8 @@ in {
           sqls
           sqlfluff
           rust-analyzer
+          terraform-ls
+          trivy
         ];
       };
 

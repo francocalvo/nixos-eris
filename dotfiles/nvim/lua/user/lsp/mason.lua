@@ -23,6 +23,7 @@ local servers = {
 	"beancount",
 	"sqlls",
 	"pyright",
+	"terraformls",
 }
 
 local settings = {

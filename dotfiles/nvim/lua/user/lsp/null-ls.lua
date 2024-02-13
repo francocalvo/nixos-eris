@@ -54,6 +54,11 @@ null_ls.setup({
 		--# Markdown
 		--[[ diagnostics.markdownlint, ]]
 		--[[ formatting.markdownlint, ]]
+
+		--# Terraform
+		diagnostics.terraform_validate,
+		diagnostics.trivy,
+		formatting.terraform_fmt,
 	},
 })
 
