@@ -17,15 +17,15 @@ in {
         };
       };
       windowManager = {
-        xorg = enable;
+        # xorg = enable;
         sway = enable;
       };
     };
     network = { network-manager = enable; };
     hardware = { sound = enable; };
     dev = {
-      python.enable = true;
-      nodejs = disable;
+      python = enable;
+      nodejs = enable;
       docker = enable;
       distrobox = disable;
       virt = enable;

@@ -34,11 +34,12 @@ in {
 
           vscode-extensions.prisma.prisma
 
+          nil
+          mypy
           beancount-language-server
           marksman
           lua-language-server
           stylua
-          nil
           deadnix
           nixfmt
           rustc
@@ -50,6 +51,8 @@ in {
           rust-analyzer
           terraform-ls
           trivy
+          ruff
+          ruff-lsp
         ];
       };
 

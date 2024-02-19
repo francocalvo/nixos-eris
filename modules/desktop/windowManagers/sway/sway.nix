@@ -7,15 +7,18 @@ in {
     lib.mkEnableOption "Wayland display server";
 
   config = lib.mkIf cfg.enable {
-    # security.polkit.enable = true;
-    # security.rtkit.enable = true;
+    security.polkit.enable = true;
+    security.rtkit.enable = true;
 
     # Implicitly enable waybar
     modules.d.windowManager.sway.waybar.enable = true;
 
+    gtk.iconCache.enable = false;
+
     xdg.portal = {
       enable = true;
       wlr.enable = true;
+      xdgOpenUsePortal = true;
 
       # gtk portal needed to make gtk apps happy
       extraPortals = with pkgs; [
@@ -23,19 +26,19 @@ in {
         xdg-desktop-portal-gtk
       ];
 
-      # config = {
-      #   sway = {
-      #     default = [ "gtk" ];
-      #     "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
-      #     "org.freedesktop.impl.portal.Screencast" = [ "wlr" ];
-      #   };
-      #
-      #   common = {
-      #     default = [ "gtk" ];
-      #     "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
-      #     "org.freedesktop.impl.portal.Screencast" = [ "wlr" ];
-      #   };
-      # };
+      config = {
+        sway = {
+          default = [ "gtk" ];
+          "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
+          "org.freedesktop.impl.portal.Screencast" = [ "wlr" ];
+        };
+
+        common = {
+          default = [ "gtk" ];
+          "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
+          "org.freedesktop.impl.portal.Screencast" = [ "wlr" ];
+        };
+      };
     };
 
     programs = {
