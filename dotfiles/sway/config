@@ -24,7 +24,7 @@ output * {
 #   position 0 0
 # }
 #
-output DP-2 {
+output DP-1 {
   mode 1920x1080@50.00Hz
   transform 270
   scale 1
@@ -37,18 +37,18 @@ output DP-3 {
   position 1080 0
 }
 
-output DP-1 {
-  mode 2560x1080@75.00Hz
+output HDMI-A-1 {
+  mode 2560x1080@60.00Hz
   scale 1
   position 3000 0
 }
 
-output HDMI-A-1 {
-  mode 3840x2160@60Hz
-  scale 2
-  adaptive_sync off
-  position 5560 0
-}
+# output HDMI-A-1 {
+#   mode 3840x2160@60Hz
+#   scale 2
+#   adaptive_sync off
+#   position 5560 0
+# }
 
 # From flameshot docs for Sway
 for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
@@ -61,7 +61,7 @@ exec hash dbus-update-activation-environment 2>/dev/null && \
 focus_follows_mouse no
 input * {
     xkb_layout "latam"
-      xkb_options "caps:escape"
+    xkb_options "caps:escape"
 }
 
 # Waybar
@@ -80,7 +80,7 @@ exec --no-startup-id nm-applet
 floating_modifier $mod
 
 # start a wofi
-bindsym $mod+d exec wofi -H 400 -W 800 -c .config/wofi/config --show=drun 
+bindsym $mod+d exec wofi -H 400 -W 800 -c .config/wofi/config --show=run 
 
 # start a terminal
 bindsym $mod+Return exec alacritty
@@ -234,14 +234,14 @@ bindsym Control+Mod1+e exec --no-startup-id nemo
 # Take screenshots with Print
 bindsym Print exec --no-startup-id flameshot gui
 
-# Open applications on speceific workspaces
-
-# Comunicación
-assign [class="discord"] $ws10
-assign [class="whatsapp-nativefier-d40211"] $ws10
-
-# Grabación
-assign [class="obs"] $ws8
-
-# Clases
-assign [class="microsoft teams - preview"] $ws9
+# # Open applications on speceific workspaces
+#
+# # Comunicación
+# assign [class="discord"] $ws10
+# assign [class="whatsapp-nativefier-d40211"] $ws10
+#
+# # Grabación
+# assign [class="obs"] $ws8
+#
+# # Clases
+# assign [class="microsoft teams - preview"] $ws9

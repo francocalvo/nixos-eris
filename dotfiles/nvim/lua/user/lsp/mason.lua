@@ -23,7 +23,9 @@ local servers = {
 	"beancount",
 	"sqlls",
 	"pyright",
+	"mypy",
 	"terraformls",
+  "ruff_lsp"
 }
 
 local settings = {
