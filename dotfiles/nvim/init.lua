@@ -1,65 +1,38 @@
-require("user.alpha") -- OK
-require("user.nvim-webdev-icons") -- OK - updated up to 5b240a9
-require("user.whichkey") -- OK
-require("user.options") -- OK - updated up to 2022/09/12
-require("user.illuminate") -- Not updated
-require("user.colorscheme") -- OK
-require("user.cmp") -- OK - Pretty similar, without tabnine
-require("user.treesitter") -- OK - without textobjects part at the end
-require("user.keymaps") -- OK
-require("user.autopairs") -- OK
-require("user.telescope") -- OK - updated up to  5b240a9
-require("user.lsp") -- OK - updated up to 2022/09/12
-require("user.autotag") -- OK
-require("user.comment") -- OK
-require("user.gitsigns") -- OK
-require("user.lualine") -- OK - updated up to 5b240a9
-require("user.toggleterm")
-require("user.project") -- OK
-require("user.impatient") -- OK
-require("user.indentline") -- OK - updated up to 5b240a9
-require("user.autocommands") -- updated up to 2022/09/12
-require("user.neoscroll") -- OK
---[[ require "user.todo-comments"              -- NOT OK ]]
-require("user.numb") -- OK
-require("user.vimwiki") -- TODO: Finish setup
-require("user.functions") -- updated up to  5b240a9
-require("user.navic") -- updated up to  5b240a9
-require("user.winbar") -- OK - updated up to 2022/09/12
-require("user.dap")
-require("user.cybu")
-require("user.vimtex")
-require("user.bufferline") -- OK - updated up to 2022/09/12
-require("user.nvimtree") -- OK - updated up to  5b240a9
---[[ require "user.copilot" ]]
+require "user.launch"
+require "user.options"
+require "user.keymaps"
+require "user.autocmds"
 
--- Not added nor checked from his repo:
--- - lsp-inlayhints
--- - project
--- - hop
--- - matchup
--- - dial
--- - colorizer
--- - spectre
--- - zen-mode
--- - bookmark
--- - symbol-outline
--- - git-blame
--- - gitlinker
--- - notify
--- - ts-context
--- - registers
--- - sniprun
--- - lir
--- - bfs
--- - crates
--- - dressing
--- - tabout
--- - fidget
--- - browse
--- - auto-session
--- - jaq
--- - surround
--- - harpoon
--- - lab
--- - vim-slash
+spec "user.colorscheme"
+spec "user.devicons"
+spec "user.treesitter"
+spec "user.mason"
+spec "user.schemastore"
+spec "user.lspconfig"
+spec "user.cmp"
+spec "user.telescope"
+spec "user.none-ls"
+spec "user.illuminate"
+spec "user.gitsigns"
+spec "user.whichkey" -- revisar
+spec "user.nvimtree"
+spec "user.comment"
+spec "user.lualine"
+spec "user.navic"
+spec "user.harpoon"
+spec "user.neotest"
+spec "user.autopairs"
+spec "user.autotag"
+spec "user.neogit"
+spec "user.alpha"
+spec "user.project"
+spec "user.indentline"
+spec "user.toggleterm"
+spec "user.copilot"
+spec "user.neoscroll"
+spec "user.eyeliner"
+spec "user.neotab"
+spec "user.bufferline"
+spec "user.cybu"
+
+require "user.lazy"

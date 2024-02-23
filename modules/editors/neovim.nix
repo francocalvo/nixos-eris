@@ -6,6 +6,13 @@ in {
   options.modules.editors.neovim = { enable = mkEnableOption "Enable neovim"; };
 
   config = mkIf cfg.enable {
+
+    environment.shellAliases = {
+      wik = ''
+        vim ~/Nextcloud/Wiki/Personal/main.md
+      '';
+    };
+
     home._ = {
       programs.neovim = {
         enable = true;

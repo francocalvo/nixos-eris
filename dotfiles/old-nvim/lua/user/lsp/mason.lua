@@ -18,14 +18,13 @@ local servers = {
 	"clangd",
 	"tsserver",
 	"marksman",
-	"nil_ls",
 	"prismals",
 	"beancount",
 	"sqlls",
 	"pyright",
-	"mypy",
 	"terraformls",
   "ruff_lsp"
+	--[[ "nil_ls", ]]
 }
 
 local settings = {

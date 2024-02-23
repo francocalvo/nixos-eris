@@ -23,6 +23,7 @@ null_ls.setup({
 		-- Python
 		formatting.ruff,
 		diagnostics.ruff,
+		diagnostics.mypy,
 		--[[ diagnostics.pylint, ]]
 		--[[ formatting.black, ]]
 
