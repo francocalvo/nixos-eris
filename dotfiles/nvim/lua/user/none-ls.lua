@@ -19,31 +19,29 @@ function M.config()
       formatting.stylua,
       formatting.shfmt,
       formatting.google_java_format,
-      diagnostics.shellcheck,
+      --diagnostics.shellcheck,
 
       -- Python
-      formatting.ruff,
-      diagnostics.ruff,
-      diagnostics.mypy,
-      --[[ diagnostics.pylint, ]]
-      --[[ formatting.black, ]]
+      --formatting.ruff,
+      --diagnostics.ruff,
+      --diagnostics.mypy,
 
       --# C++
-      diagnostics.cpplint,
-      diagnostics.clang_check,
+      --diagnostics.cpplint,
+      --diagnostics.clang_check,
       diagnostics.cppcheck,
-      formatting.clang_format,
+      --formatting.clang_format,
 
       --# NIX
       formatting.nixfmt,
       diagnostics.deadnix,
 
       --# LaTeX
-      formatting.latexindent.with {
-        filetypes = { "tex", "bib" },
-        extra_args = { "-m", "-l=" .. vim.fn.stdpath "config" .. "/lua/user/lsp/settings/latexindent.yaml" },
-      },
-      diagnostics.chktex,
+      --formatting.latexindent.with {
+      --  filetypes = { "tex", "bib" },
+      --  extra_args = { "-m", "-l=" .. vim.fn.stdpath "config" .. "/lua/user/lsp/settings/latexindent.yaml" },
+      --},
+      --diagnostics.chktex,
 
       --# Beancount
       formatting.bean_format,

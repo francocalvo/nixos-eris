@@ -9,12 +9,17 @@ local M = {
 
 function M.config()
   require("copilot").setup {
+    cmp = {
+      enabled = true,
+      method = "getCompletionsCycling",
+    },
     panel = {
+      enable = true,
       keymap = {
-        accept = "<CR>",
-        jump_prev = "[[",
-        jump_next = "]]",
-        refresh = "gr",
+        jump_next = "<c-j>",
+        jump_prev = "<c-k>",
+        accept = "<c-l>",
+        refresh = "r",
         open = "<M-CR>",
       },
     },
@@ -22,29 +27,18 @@ function M.config()
       enabled = true,
       auto_trigger = true,
       keymap = {
-        accept = "<Tab>",
-        prev = "<C-a>",
-        next = "<C-s>",
-        dismiss = "<C-x>",
+        accept = "<c-l>",
+        next = "<c-j>",
+        prev = "<c-k>",
+        dismiss = "<c-h>",
       },
     },
-    filetypes = {
-      markdown = true,
-      help = false,
-      gitcommit = false,
-      gitrebase = false,
-      hgcommit = false,
-      svn = false,
-      cvs = false,
-      ["."] = false,
-    },
+    ft_disable = { "markdown", "beancount" },
     copilot_node_command = "node",
   }
 
   local opts = { noremap = true, silent = true }
   vim.api.nvim_set_keymap("n", "<c-s>", ":lua require('copilot.suggestion').toggle_auto_trigger()<CR>", opts)
-
-  -- require("copilot_cmp").setup()
 end
 
 return M

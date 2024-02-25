@@ -7,12 +7,10 @@ function M.config()
     q = { "<cmd>confirm q<CR>", "Quit" },
     h = { "<cmd>nohlsearch<CR>", "NOHL" },
     v = { "<cmd>vsplit<CR>", "Split" },
-    b = { name = "Buffers" },
-    d = { name = "Debug" },
+    -- b = { name = "Buffers" },
+    -- d = { name = "Debug" },
     e = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
-    f = { name = "Find" },
-    g = { name = "Git", g = { "<cmd>Neogit<CR>", "Neogit" } },
-    c = { "<cmd>Bdelete!<CR>", "Close Buffer" },
+    c = { "<cmd>bdelete!<CR>", "Close Buffer" },
     l = {
       name = "LSP",
       f = {
@@ -30,7 +28,6 @@ function M.config()
       a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action", mode = "v" },
     },
     p = { name = "Plugins" },
-    t = { name = "Test" },
     a = { "<cmd>Alpha<cr>", "Alpha" },
     w = {
       name = "Tab",
@@ -41,8 +38,77 @@ function M.config()
       h = { "<cmd>-tabmove<cr>", "Move Left" },
       l = { "<cmd>+tabmove<cr>", "Move Right" },
     },
-    T = { name = "Treesitter" },
+    t = {
+      name = "Terminal",
+      ["1"] = { ":1ToggleTerm<cr>", "1" },
+      ["2"] = { ":2ToggleTerm<cr>", "2" },
+      ["3"] = { ":3ToggleTerm<cr>", "3" },
+      ["4"] = { ":4ToggleTerm<cr>", "4" },
+      n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
+      u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" },
+      t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "Htop" },
+      p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" },
+      f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
+      h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
+      v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
+    },
+    T = {
+      name = "Testing",
+      t = { "<cmd>lua require'neotest'.run.run()<cr>", "Test Nearest" },
+      f = { "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", "Test File" },
+      d = { "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>", "Debug Test" },
+      s = { "<cmd>lua require('neotest').run.stop()<cr>", "Test Stop" },
+      a = { "<cmd>lua require('neotest').run.attach()<cr>", "Attach Test" },
+    },
+    w = {
+      name = "Vimwiki",
+      w = { "<cmd>VimwikiIndex<CR>", "Open Personal Wiki" },
+      i = { "<cmd>VimwikiUISelect<CR>", "Open wikis index" },
+      d = {
+        name = "Open diary index",
+        a = { "<cmd>VimwikiDiaryIndex 1<CR>", "In personal wiki" },
+        s = { "<cmd>VimwikiDiaryIndex 2<CR>", "In ReactO wiki" },
+      },
+      D = { "<cmd>VimwikiDiaryGenerateLinks<CR>", "Update links in diary" },
+      n = {
+        name = "New entry on diary",
+        a = { "<cmd>VimwikiMakeDiaryNote 1<CR>", "In personal wiki" },
+        s = { "<cmd>VimwikiMakeDiaryNote 2<CR>", "In ReactO wiki" },
+      },
+      X = { "<cmd>VimwikiDeleteFile<CR>", "Delete current file" },
+      r = { "<cmd>VimwikiRenameFile<CR>", "Rename current file" },
+      b = { "<cmd>VimwikiGoBackLink<CR>", "Go to backlink" },
+      H = { "<cmd>:Vimwiki2HTMLBrowse<CR>", "Convert to HTML and open it" },
+    },
+    g = {
+      name = "Git",
+      g = { "<cmd>Neogit<CR>", "Neogit" },
+      j = { "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>", "Next Hunk" },
+      k = { "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>", "Prev Hunk" },
+      p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
+      r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
+      l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
+      R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
+      s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
+      u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk" },
+      d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Git Diff" },
+    },
+    f = {
+      name = "Find",
+      b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+      c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+      f = { "<cmd>Telescope find_files<cr>", "Find files" },
+      p = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
+      t = { "<cmd>Telescope live_grep<cr>", "Find Text" },
+      h = { "<cmd>Telescope help_tags<cr>", "Help" },
+      l = { "<cmd>Telescope resume<cr>", "Last Search" },
+      r = { "<cmd>Telescope oldfiles<cr>", "Recent File" },
+    },
+    bb = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
   }
+
+  --  local mappings = {
+  --  }
 
   local which_key = require "which-key"
   which_key.setup {
