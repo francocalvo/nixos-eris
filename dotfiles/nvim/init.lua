@@ -34,5 +34,6 @@ spec "user.eyeliner"
 spec "user.neotab"
 spec "user.bufferline"
 spec "user.cybu"
+spec "user.vimwiki"
 
 require "user.lazy"

@@ -1,9 +1,8 @@
 local M = {
   "vimwiki/vimwiki",
-  depends = { "itchyny/calendar.vim" },
 }
 
-M.config = function()
+M.init = function()
   vim.g.vimwiki_global_ext = 0
   vim.g.vimwiki_listsyms = "     X" -- Sets the todo "icons"
   vim.g.vimwiki_autowriteall = 1
@@ -37,3 +36,5 @@ M.config = function()
     },
   }
 end
+
+return M
