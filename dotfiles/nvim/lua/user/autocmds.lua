@@ -1,47 +1,56 @@
 -- [[ VIMWIKI AUTOCOMANDS ]]
 vim.api.nvim_create_autocmd({ "FileType" }, {
-	pattern = { "vimwiki" },
-	callback = function()
-		vim.cmd([[
+  pattern = { "vimwiki" },
+  callback = function()
+    vim.cmd [[
       set filetype=markdown
-    ]])
-	end,
+    ]]
+  end,
 })
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	pattern = { "diary.wiki" },
-	callback = function()
-		vim.cmd([[
-      VimwikiDiaryGenerateLinks
-    ]])
-	end,
+  pattern = { "*.bean" },
+  callback = function()
+    vim.cmd [[
+      set filetype=beancount
+    ]]
+  end,
 })
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	pattern = { "diary.wiki" },
-	callback = function()
-		vim.cmd([[
+  pattern = { "diary.wiki" },
+  callback = function()
+    vim.cmd [[
       VimwikiDiaryGenerateLinks
-    ]])
-	end,
+    ]]
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "diary.wiki" },
+  callback = function()
+    vim.cmd [[
+      VimwikiDiaryGenerateLinks
+    ]]
+  end,
 })
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-	pattern = { "calendar" },
-	callback = function()
-		vim.cmd([[
+  pattern = { "calendar" },
+  callback = function()
+    vim.cmd [[
       nmap <buffer> <C-c> :<C-u>call vimwiki#diary#calendar_action(b:calendar.day().get_day(), b:calendar.day().get_month(), b:calendar.day().get_year(), b:calendar.day().week(), "V")<CR>
-    ]])
-	end,
+    ]]
+  end,
 })
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-	pattern = { "calendar" },
-	callback = function()
-		vim.cmd([[
+  pattern = { "calendar" },
+  callback = function()
+    vim.cmd [[
       nmap <buffer> <C-v> :<C-u>call vimwiki#diary#calendar_action(b:calendar.day().get_day(), b:calendar.day().get_month(), b:calendar.day().get_year(), b:calendar.day().week(), "")<CR>
-    ]])
-	end,
+    ]]
+  end,
 })
 
 -- [[ LAUNCH AUTOCOMANDS ]]

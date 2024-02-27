@@ -1,5 +1,8 @@
 local M = {
   "vimwiki/vimwiki",
+  dependencies = {
+    "itchyny/calendar.vim",
+  },
 }
 
 M.init = function()

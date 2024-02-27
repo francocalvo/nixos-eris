@@ -3,6 +3,10 @@ local M = {
   event = "InsertEnter",
   dependencies = {
     {
+      "crispgm/cmp-beancount",
+      event = "InsertEnter",
+    },
+    {
       "hrsh7th/cmp-nvim-lsp",
       event = "InsertEnter",
     },
@@ -119,6 +123,7 @@ function M.config()
           buffer = "",
           path = "",
           emoji = "",
+          bean = "",
         })[entry.source.name]
 
         if entry.source.name == "emoji" then
@@ -138,6 +143,9 @@ function M.config()
       { name = "copilot" },
       { name = "nvim_lsp" },
       { name = "luasnip" },
+      { name = "beancount", option = {
+        account = "~/Nextcloud/Finanzas/Beans/accounts.bean",
+      } },
       { name = "cmp_tabnine" },
       { name = "nvim_lua" },
       { name = "buffer" },
