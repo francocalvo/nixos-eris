@@ -8,11 +8,11 @@ in {
   };
 
   config = mkIf cfg.enable {
-
-    # Implicitly enable Neovim with it's configs for Beancounter
-    modules.editors.neovim.enable = true;
-
-    user = { packages = with pkgs; [ beancount-language-server ]; };
+    user.packages = [
+      pkgs.beancount
+      pkgs.beancount-language-server
+      pkgs.python311Packages.beancount
+    ];
 
     environment.shellAliases = {
       bean = ''
@@ -20,5 +20,7 @@ in {
       '';
     };
 
+    # Implicitly enable Neovim with it's configs for Beancounter
+    modules.editors.neovim.enable = true;
   };
 }

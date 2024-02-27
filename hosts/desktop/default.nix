@@ -9,7 +9,7 @@ in {
     d = {
       terminal.alacritty = enable;
       theme.nord = enable;
-      finances = enable;
+      finances.enable = true;
       displayServer = {
         gdm = {
           enable = true;
@@ -26,7 +26,7 @@ in {
     dev = {
       python = enable;
       nodejs = enable;
-      docker = enable;
+      docker = disable;
       distrobox = disable;
       virt = enable;
     };
