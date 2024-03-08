@@ -41,9 +41,9 @@ in {
 
           vscode-extensions.prisma.prisma
 
+          beancount-language-server
           nil
           mypy
-          beancount-language-server
           marksman
           lua-language-server
           stylua
@@ -55,6 +55,7 @@ in {
           pylint
           sqls
           sqlfluff
+          pgformatter
           rust-analyzer
           terraform-ls
           trivy

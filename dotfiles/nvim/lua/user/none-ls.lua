@@ -22,9 +22,9 @@ function M.config()
       --diagnostics.shellcheck,
 
       -- Python
-      --formatting.ruff,
+      formatting.ruff,
       --diagnostics.ruff,
-      --diagnostics.mypy,
+      diagnostics.mypy,
 
       --# C++
       --diagnostics.cpplint,
@@ -48,8 +48,10 @@ function M.config()
 
       --# SQL
       formatting.sqlfluff.with {
-        extra_args = { "--dialect", "tsql" }, -- change to your dialect
+        extra_args = { "--dialect", "postgres" }, -- change to your dialect
       },
+      formatting.pg_format,
+      formatting.sqlfmt,
 
       --# Markdown
       --[[ diagnostics.markdownlint, ]]

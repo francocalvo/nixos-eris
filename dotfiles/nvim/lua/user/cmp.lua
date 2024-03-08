@@ -2,10 +2,10 @@ local M = {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
   dependencies = {
-    {
-      "crispgm/cmp-beancount",
-      event = "InsertEnter",
-    },
+    -- {
+    --   "crispgm/cmp-beancount",
+    --   event = "InsertEnter",
+    -- },
     {
       "hrsh7th/cmp-nvim-lsp",
       event = "InsertEnter",
@@ -22,10 +22,10 @@ local M = {
       "hrsh7th/cmp-path",
       event = "InsertEnter",
     },
-    {
-      "hrsh7th/cmp-cmdline",
-      event = "InsertEnter",
-    },
+    -- {
+    --   "hrsh7th/cmp-cmdline",
+    --   event = "InsertEnter",
+    -- },
     {
       "saadparwaiz1/cmp_luasnip",
       event = "InsertEnter",
@@ -123,7 +123,7 @@ function M.config()
           buffer = "",
           path = "",
           emoji = "",
-          bean = "",
+          -- bean = "",
         })[entry.source.name]
 
         if entry.source.name == "emoji" then
@@ -143,9 +143,9 @@ function M.config()
       { name = "copilot" },
       { name = "nvim_lsp" },
       { name = "luasnip" },
-      { name = "beancount", option = {
-        account = "~/Nextcloud/Finanzas/Beans/accounts.bean",
-      } },
+      -- { name = "beancount", option = {
+      --   account = "~/Nextcloud/Finanzas/Beans/accounts.bean",
+      -- } },
       { name = "cmp_tabnine" },
       { name = "nvim_lua" },
       { name = "buffer" },

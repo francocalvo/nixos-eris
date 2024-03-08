@@ -35,5 +35,6 @@ spec "user.neotab"
 spec "user.bufferline"
 spec "user.cybu"
 spec "user.vimwiki"
+spec "user.beancount"
 
 require "user.lazy"
