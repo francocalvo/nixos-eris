@@ -7,8 +7,8 @@ exec xrandr --output DP-1 --primary
 
 # Enable VSync
 output * {
-  adaptive_sync on
-  render_bit_depth 8
+  # adaptive_sync on
+  # render_bit_depth 8
   bg ./wal.jpg fill
 }
 
@@ -25,22 +25,22 @@ output * {
 # }
 #
 output DP-1 {
-  mode 1920x1080@50.00Hz
-  transform 270
+  mode 1920x1080@144.00Hz
+  scale 1
+  position 2560 0
+}
+
+output DP-3 {
+  mode 2560x1080@60.00Hz
   scale 1
   position 0 0
 }
 
-output DP-3 {
-  mode 1920x1080@144.00Hz
+output DP-2 {
+  mode 1920x1080@50.00Hz
+  transform 90
   scale 1
-  position 1080 0
-}
-
-output HDMI-A-1 {
-  mode 2560x1080@60.00Hz
-  scale 1
-  position 3000 0
+  position 4480 0
 }
 
 # output HDMI-A-1 {
@@ -79,8 +79,8 @@ exec --no-startup-id nm-applet
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a wofi
-bindsym $mod+d exec wofi -H 400 -W 800 -c .config/wofi/config --show=run 
+# start a fuzzel
+bindsym $mod+d exec fuzzel
 
 # start a terminal
 bindsym $mod+Return exec alacritty
