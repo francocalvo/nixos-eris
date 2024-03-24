@@ -72,6 +72,7 @@ in {
         glib
         grim
         wlr-randr
+        xorg.libX11
         wdisplays
       ];
 
@@ -92,16 +93,38 @@ in {
 
       wayland.windowManager.sway = { xwayland = true; };
 
-      xdg.configFile = {
-        "wofi/config".text = ''
-          allow_images=true
-          insensitive=true
-          location=center
-        '';
-        "wofi/style.css".source = ./wofi.css;
+      programs.fuzzel = {
+        enable = true;
+        package = pkgs.fuzzel;
+        settings = {
+          "main" = {
+            font = "FiraCode Nerd Font:style=Regular";
+            prompt = "❯ ";
+            width = 70;
+            icon-theme = "Nordzy-green";
+            icons-enabled = true;
+            horizontal-pad = 30;
+            vertical-pad = 30;
+            inner-pad = 5;
+            line-height = 25;
+            letter-spacing = 0.5;
+          };
+          "colors" = {
+            background = "#2e3440f8";
+            text = "#e5e9f0f8";
+            match = "#88c0d0f8";
+            border = "#88c0d0f8";
+            selection = "#88c0d0f8";
+            selection-text = "#2e3440f8";
+            selection-match = "#2e3440f8";
+          };
+          "border" = {
+            width = 1;
+            radius = 0;
+          };
+        };
       };
 
-      programs = { wofi = enable; };
       home.file.".config/sway" = {
         source = builtins.toPath "${config.paths.dotsDir}/sway";
         recursive = true;
