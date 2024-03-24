@@ -7,6 +7,7 @@ in {
 
   modules = {
     d = {
+      obsstudio = enable;
       terminal.alacritty = enable;
       theme.nord = enable;
       finances.enable = true;
@@ -26,7 +27,7 @@ in {
     dev = {
       python = enable;
       nodejs = enable;
-      docker = disable;
+      docker = enable;
       distrobox = disable;
       virt = enable;
     };
@@ -38,6 +39,7 @@ in {
     };
     editors = { neovim = enable; };
     fonts = enable;
+    ps5 = enable;
   };
 
   user = {
@@ -69,9 +71,9 @@ in {
       #obs-studio
       #texlive.combined.scheme-full
       drawio
+      python311Packages.beancount
 
       # Browsers
-      brave
       firefox
       google-chrome
       teams-for-linux
