@@ -8,9 +8,25 @@ in {
   config = mkIf cfg.enable {
     programs.zsh.enable = true;
 
-    user = { shell = pkgs.zsh; };
+    user = {
+      shell = pkgs.zsh;
+      packages = with pkgs; [ atuin ];
+    };
 
     home._ = {
+      programs.atuin = {
+        enable = true;
+        enableZshIntegration = true;
+        flags = [ "--disable-up-arrow" ];
+        settings = {
+          auto_sync = true;
+          sync_frequency = "5m";
+          sync_address = "https://api.atuin.sh";
+          search_mode = "fuzzy";
+          search_mode_shell_up_key_binding = "prefix";
+        };
+      };
+
       programs.zsh = {
         enable = true;
         enableCompletion = true;

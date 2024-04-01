@@ -14,9 +14,7 @@
   boot.kernelParams = [
     "quiet"
     "splash"
-    "video=DP-3:2560x1080@60"
-    "video=DP-1:1920x1080@144"
-    "video=DP-2:1920x1080@60"
+    "drm.edid_firmware=DP-3:edid/uw_edid"
     "mitigations=off"
     "loglevel=3"
     "usbcore.autosuspend=-1"
