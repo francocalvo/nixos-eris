@@ -37,6 +37,16 @@ M.init = function()
       automatic_nested_syntaxes = 1,
       auto_tags = 1,
     },
+    {
+      path = "/orfeo/sirvana/sirvana-scraper/docs/",
+      syntax = "markdown",
+      ext = ".md",
+      auto_toc = 1,
+      index = "README",
+      link_space_char = "_",
+      automatic_nested_syntaxes = 1,
+      auto_tags = 1,
+    },
   }
 end
 

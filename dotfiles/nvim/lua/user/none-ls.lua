@@ -2,6 +2,7 @@ local M = {
   "nvimtools/none-ls.nvim",
   dependencies = {
     "nvim-lua/plenary.nvim",
+    "nvimtools/none-ls-extras.nvim",
   },
 }
 
@@ -22,9 +23,10 @@ function M.config()
       --diagnostics.shellcheck,
 
       -- Python
-      formatting.ruff,
+      require("none-ls.formatting.ruff"),
+      formatting.black,
       --diagnostics.ruff,
-      diagnostics.mypy,
+      -- diagnostics.mypy,
 
       --# C++
       --diagnostics.cpplint,
