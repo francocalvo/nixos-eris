@@ -75,6 +75,7 @@ in {
 
       # Browsers
       firefox
+      brave
       google-chrome
       teams-for-linux
 
