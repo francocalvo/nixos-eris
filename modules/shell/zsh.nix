@@ -10,10 +10,18 @@ in {
 
     user = {
       shell = pkgs.zsh;
-      packages = with pkgs; [ atuin ];
+      packages = with pkgs; [ atuin zsh-powerlevel10k ];
     };
 
     home._ = {
+      home.file."${config.user.home}/.oh-my-zsh/custom/themes/powerlevel10k" = {
+        source = lib.cleanSource (builtins.fetchGit {
+          url = "https://github.com/romkatv/powerlevel10k";
+          rev = "da9b03777c4f2390c7e3f5c720ee4689336f811b";
+        });
+        recursive = true;
+      };
+
       programs.atuin = {
         enable = true;
         enableZshIntegration = true;
@@ -29,8 +37,8 @@ in {
 
       programs.zsh = {
         enable = true;
+        envExtra = ''source "$HOME/.p10k.zsh"'';
         enableCompletion = true;
-        enableAutosuggestions = true;
         syntaxHighlighting.enable = true;
 
         history = {
@@ -39,21 +47,25 @@ in {
           size = 10000;
         };
 
-        oh-my-zsh = { enable = true; };
+        oh-my-zsh = {
+          enable = true;
+          # theme = "powerlevel10k/powerlevel10k";
+        };
 
-        # TODO: fix how the powerlevel10k-config is used
-        plugins = [
-          {
-            file = "/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-            name = "powerlevel10k";
-            src = pkgs.zsh-powerlevel10k;
-          }
-          {
-            file = "p10k.zsh";
-            name = "powerlevel10k-config";
-            src = builtins.toPath "${config.paths.dotsDir}/zsh";
-          }
-        ];
+        # promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+
+        # # TODO: fix how the powerlevel10k-config is used
+        plugins = [{
+          file = "/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+          name = "powerlevel10k";
+          src = pkgs.zsh-powerlevel10k;
+        }
+        # {
+        #   file = "p10k.zsh";
+        #   name = "powerlevel10k-config";
+        #   src = builtins.toPath "${config.paths.dotsDir}/zsh";
+        # }
+          ];
       };
     };
   };

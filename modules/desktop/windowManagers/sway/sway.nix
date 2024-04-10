@@ -7,8 +7,8 @@ in {
     lib.mkEnableOption "Wayland display server";
 
   config = lib.mkIf cfg.enable {
-    security.polkit.enable = true;
-    security.rtkit.enable = true;
+    # security.polkit.enable = true;
+    # security.rtkit.enable = true;
 
     # Implicitly enable waybar
     modules.d.windowManager.sway.waybar.enable = true;
