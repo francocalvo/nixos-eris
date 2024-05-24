@@ -39,7 +39,7 @@ in {
     };
     editors = { neovim = enable; };
     fonts = enable;
-    ps5 = enable;
+    ps5 = disable;
   };
 
   user = {
@@ -47,8 +47,7 @@ in {
       bitwarden
       calibre
       discord
-      libreoffice-fresh
-      zulu
+      onlyoffice-bin_latest
       spotify
       qbittorrent
       vlc
@@ -58,7 +57,6 @@ in {
       which
       git
       libsForQt5.kcalc
-      thunderbird
       libpng
       flameshot
       gnome.nautilus
@@ -67,16 +65,13 @@ in {
       nextcloud-client
       tealdeer
       stremio
-      texliveFull
-      #obs-studio
-      #texlive.combined.scheme-full
-      drawio
+
+      texlive.combined.scheme-full
       python311Packages.beancount
 
       # Browsers
       firefox
       brave
-      google-chrome
       teams-for-linux
 
       #openconnect
@@ -88,6 +83,15 @@ in {
     ];
   };
 
+  xdg.mime.defaultApplications = {
+    "application/pdf" = "firefox.desktop";
+    "text/html" = "firefox.desktop";
+    "x-scheme-handler/http" = "firefox.desktop";
+    "x-scheme-handler/https" = "firefox.desktop";
+    "x-scheme-handler/about" = "firefox.desktop";
+    "x-scheme-handler/unknown" = "firefox.desktop";
+  };
+
   # TODO: Autostart nextcloud-client
   home._ = {
     services.nextcloud-client = {
@@ -96,10 +100,7 @@ in {
     };
   };
 
-  nix = {
-    package = pkgs.nixFlakes;
-    extraOptions = "experimental-features = nix-command flakes";
-  };
+  nix = { extraOptions = "experimental-features = nix-command flakes"; };
 
   hardware = {
     bluetooth.enable = true;
@@ -111,6 +112,9 @@ in {
     openssh.enable = true;
     gvfs.enable = true; # MTP for Kindle, Android, etc
     gnome.gnome-keyring.enable = true;
+    udev.extraRules = ''
+      ACTION=="add", SUBSYSTEM=="pci", DRIVER=="pcieport", ATTR{power/wakeup}="disabled"
+    '';
   };
 
   programs = {
