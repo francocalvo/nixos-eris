@@ -7,6 +7,7 @@ with lib; {
   # Keep the system clean
   nix = {
     settings.auto-optimise-store = true;
+    package = pkgs.nixVersions.unstable;
     gc = {
       automatic = true;
       dates = "weekly";
@@ -49,14 +50,11 @@ with lib; {
 
   # Base packages
   environment.systemPackages = with pkgs; [
-    jq
-    bind
     cached-nix-shell
     curl
     vim
     neovim
     wget
-    gnumake
     unzip
   ];
 
