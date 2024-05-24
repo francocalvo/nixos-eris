@@ -11,7 +11,7 @@ in {
     modules.dev.enable = true;
 
     user = {
-      packages = with pkgs; [ python3 python310Packages.pip pipenv poetry ];
+      packages = with pkgs; [ python312 python312Packages.pip ];
     };
   };
 }

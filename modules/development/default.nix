@@ -22,8 +22,7 @@ in {
         cpplint
         cppcheck
         bear
-
-        terraform
+        pandoc
       ];
     };
 
