@@ -46,6 +46,7 @@ local M = {
 function M.config()
   local cmp = require "cmp"
   local luasnip = require "luasnip"
+  -- require("luasnip").filetype_extend("vimwiki", { "markdown" })
   require("luasnip/loaders/from_vscode").lazy_load()
   require("luasnip/loaders/from_vscode").lazy_load { paths = { "~/.config/nvim/snips/" } }
 

@@ -107,9 +107,9 @@ function M.config()
       opts = vim.tbl_deep_extend("force", settings, opts)
     end
 
-    if server == "lua_ls" then
-      require("neodev").setup {}
-    end
+    -- if server == "lua_ls" then
+    --   require("neodev").setup {}
+    -- end
 
 
     lspconfig[server].setup(opts)

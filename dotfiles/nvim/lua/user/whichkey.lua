@@ -29,7 +29,12 @@ function M.config()
     },
     p = { name = "Plugins" },
     a = { "<cmd>Alpha<cr>", "Alpha" },
-    w = {
+    s = {
+      name = "Aerial",
+      s = { "<cmd>AerialToggle<cr>", "Open right pane" },
+      a = { "<cmd>AerialOpen<cr>", "Open floating window" },
+    },
+    m = {
       name = "Tab",
       w = { "<cmd>tabnew | terminal<CR>", "Term" },
       n = { "<cmd>$tabnew<cr>", "New Empty Tab" },

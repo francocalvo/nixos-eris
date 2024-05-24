@@ -36,5 +36,8 @@ spec "user.bufferline"
 spec "user.cybu"
 spec "user.vimwiki"
 spec "user.beancount"
+spec "user.aerial"
+spec "user.markdown"
+spec "user.oil"
 
 require "user.lazy"

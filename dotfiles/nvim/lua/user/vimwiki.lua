@@ -28,7 +28,7 @@ M.init = function()
       auto_tags = 1,
     },
     {
-      path = "/orfeo/Courses/zoomcamp/",
+      path = "/orfeo/sirvana/sirvana-scraper/docs/",
       syntax = "markdown",
       ext = ".md",
       auto_toc = 1,
@@ -38,7 +38,7 @@ M.init = function()
       auto_tags = 1,
     },
     {
-      path = "/orfeo/sirvana/sirvana-scraper/docs/",
+      path = "/orfeo/Reacto/AGEA/docs",
       syntax = "markdown",
       ext = ".md",
       auto_toc = 1,

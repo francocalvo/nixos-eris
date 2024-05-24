@@ -47,6 +47,7 @@ in {
           marksman
           lua-language-server
           stylua
+          luajitPackages.luacheck
           deadnix
           nixfmt
           rustc

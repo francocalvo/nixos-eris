@@ -1,7 +1,0 @@
-SELECT
-    Client,
-    SUM(CASE WHEN Status = 'A' THEN 1 ELSE 0 END) AS A,
-    SUM(CASE WHEN Status = 'B' THEN 1 ELSE 0 END) AS B,
-    SUM(CASE WHEN Status = 'C' THEN 1 ELSE 0 END) AS C
-FROM T
-GROUP BY Client

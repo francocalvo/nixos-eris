@@ -3,6 +3,7 @@ local M = {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvimtools/none-ls-extras.nvim",
+    "gbprod/none-ls-luacheck.nvim"
   },
 }
 
@@ -18,6 +19,7 @@ function M.config()
       formatting.prettier,
 
       formatting.stylua,
+      require("none-ls-luacheck.diagnostics.luacheck"),
       formatting.shfmt,
       formatting.google_java_format,
       --diagnostics.shellcheck,
@@ -50,7 +52,7 @@ function M.config()
 
       --# SQL
       formatting.sqlfluff.with {
-        extra_args = { "--dialect", "postgres" }, -- change to your dialect
+        extra_args = { "--dialect", "mysql" }, -- change to your dialect
       },
       formatting.pg_format,
       formatting.sqlfmt,
