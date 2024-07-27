@@ -31,11 +31,9 @@ in {
           # Formatters and LSP
           nodePackages.prettier
           nodePackages_latest.eslint
-          nodePackages_latest.vscode-json-languageserver-bin
           nodePackages_latest.yaml-language-server
           nodePackages_latest.vscode-langservers-extracted
           nodePackages_latest.markdownlint-cli
-          nodePackages_latest.typescript-language-server
 
           llvmPackages_15.clang-unwrapped
 
@@ -49,7 +47,7 @@ in {
           stylua
           luajitPackages.luacheck
           deadnix
-          nixfmt
+          nixfmt-classic
           rustc
           pyright
           black

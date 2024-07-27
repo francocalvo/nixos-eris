@@ -14,14 +14,11 @@ in {
 
   config = mkIf cfg.enable {
     services = {
-      xserver = {
-        enable = true;
-        displayManager = {
-          sddm = {
-            enable = true; # Wallpaper and GTK theme
-          };
-          defaultSession = cfg.defaultSession;
+      displayManager = {
+        sddm = {
+          enable = true; # Wallpaper and GTK theme
         };
+        defaultSession = cfg.defaultSession;
       };
     };
   };

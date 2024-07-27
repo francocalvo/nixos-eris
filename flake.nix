@@ -23,14 +23,15 @@
 
   outputs = inputs@{ self, nixpkgs, unstable, home-manager, ... }:
     let
-      inherit (self) outputs;
+      inherit (lib.my) mapModulesRec mapHosts;
 
-      inherit (lib.my) mapModules mapModulesRec mapHosts;
-
-      lib = nixpkgs.lib.extend (self: super: {
+      # Overlay that extends the nixpkgs lib with my own lib
+      lib = nixpkgs.lib.extend (final: prev: {
+        # 'my' is a module that contains my own functions, and combines them with
+        # the functions from the nixpkgs lib.
         my = import ./lib {
           inherit pkgs inputs;
-          lib = self;
+          lib = final;
         };
       });
 

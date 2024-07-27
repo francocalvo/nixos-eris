@@ -59,8 +59,8 @@ in {
       libsForQt5.kcalc
       libpng
       flameshot
-      gnome.nautilus
-      gnome.sushi
+      nautilus
+      sushi
       libsForQt5.bluedevil
       nextcloud-client
       tealdeer
@@ -80,6 +80,8 @@ in {
 
       # Monitoring
       amdgpu_top
+
+      racket
     ];
   };
 
@@ -104,8 +106,12 @@ in {
 
   hardware = {
     bluetooth.enable = true;
-    opengl.enable = true;
-    opengl.driSupport32Bit = true; # Enable 32 bit support for Steam
+    # opengl.enable = true;
+    # opengl.driSupport32Bit = true; # Enable 32 bit support for Steam
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
   };
 
   services = {

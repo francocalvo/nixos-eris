@@ -14,6 +14,7 @@ in {
 
   config = mkIf cfg.enable {
     services = {
+      displayManager.defaultSession = cfg.defaultSession;
       xserver = {
         enable = true;
         displayManager = {
@@ -22,7 +23,6 @@ in {
             debug = true;
             wayland = true;
           };
-          defaultSession = cfg.defaultSession;
         };
       };
     };

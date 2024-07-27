@@ -14,6 +14,7 @@ in {
 
   config = mkIf cfg.enable {
     services = {
+      displayManager.defaultSession = cfg.defaultSession;
       xserver = {
         enable = true;
         displayManager = {
@@ -26,7 +27,6 @@ in {
               pkgs.nixos-artwork.wallpapers.nineish-dark-gray.gnomeFilePath;
             greeters = { slick = { enable = true; }; };
           };
-          defaultSession = cfg.defaultSession;
         };
       };
     };

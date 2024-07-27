@@ -7,7 +7,7 @@ with lib; {
   # Keep the system clean
   nix = {
     settings.auto-optimise-store = true;
-    package = pkgs.nixVersions.unstable;
+    package = pkgs.nixVersions.latest;
     gc = {
       automatic = true;
       dates = "weekly";

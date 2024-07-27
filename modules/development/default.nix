@@ -14,13 +14,11 @@ in {
         zathura
         okular
         gcc
-        dbeaver
+        dbeaver-bin
         vscode
         llvm
         libcxx
         insomnia
-        cpplint
-        cppcheck
         bear
         pandoc
       ];
