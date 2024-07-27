@@ -3,196 +3,263 @@ local M = {
 }
 
 function M.config()
-  local mappings = {
-    q = { "<cmd>confirm q<CR>", "Quit" },
-    h = { "<cmd>nohlsearch<CR>", "NOHL" },
-    v = { "<cmd>vsplit<CR>", "Split" },
-    -- b = { name = "Buffers" },
-    -- d = { name = "Debug" },
-    e = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
-    c = { "<cmd>bdelete!<CR>", "Close Buffer" },
-    l = {
-      name = "LSP",
-      f = {
-        "<cmd>lua vim.lsp.buf.format({async = true, filter = function(client) return client.name ~= 'typescript-tools' end})<cr>",
-        "Format",
-      },
-      i = { "<cmd>LspInfo<cr>", "Info" },
-      j = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Diagnostic" },
-      h = { "<cmd>lua require('user.lspconfig').toggle_inlay_hints()<cr>", "Hints" },
-      k = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Prev Diagnostic" },
-      l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-      q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
-      r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-      a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-      a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action", mode = "v" },
-    },
-    p = { name = "Plugins" },
-    a = { "<cmd>Alpha<cr>", "Alpha" },
-    s = {
-      name = "Aerial",
-      s = { "<cmd>AerialToggle<cr>", "Open right pane" },
-      a = { "<cmd>AerialOpen<cr>", "Open floating window" },
-    },
-    m = {
-      name = "Tab",
-      w = { "<cmd>tabnew | terminal<CR>", "Term" },
-      n = { "<cmd>$tabnew<cr>", "New Empty Tab" },
-      N = { "<cmd>tabnew %<cr>", "New Tab" },
-      o = { "<cmd>tabonly<cr>", "Only" },
-      h = { "<cmd>-tabmove<cr>", "Move Left" },
-      l = { "<cmd>+tabmove<cr>", "Move Right" },
-    },
-    t = {
-      name = "Terminal",
-      ["1"] = { ":1ToggleTerm<cr>", "1" },
-      ["2"] = { ":2ToggleTerm<cr>", "2" },
-      ["3"] = { ":3ToggleTerm<cr>", "3" },
-      ["4"] = { ":4ToggleTerm<cr>", "4" },
-      n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
-      u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" },
-      t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "Htop" },
-      p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" },
-      f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
-      h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
-      v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
-    },
-    T = {
-      name = "Testing",
-      t = { "<cmd>lua require'neotest'.run.run()<cr>", "Test Nearest" },
-      f = { "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", "Test File" },
-      d = { "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>", "Debug Test" },
-      s = { "<cmd>lua require('neotest').run.stop()<cr>", "Test Stop" },
-      a = { "<cmd>lua require('neotest').run.attach()<cr>", "Attach Test" },
-    },
-    w = {
-      name = "Vimwiki",
-      w = { "<cmd>VimwikiIndex<CR>", "Open Personal Wiki" },
-      i = { "<cmd>VimwikiUISelect<CR>", "Open wikis index" },
-      d = {
-        name = "Open diary index",
-        a = { "<cmd>VimwikiDiaryIndex 1<CR>", "In personal wiki" },
-        s = { "<cmd>VimwikiDiaryIndex 2<CR>", "In ReactO wiki" },
-      },
-      D = { "<cmd>VimwikiDiaryGenerateLinks<CR>", "Update links in diary" },
-      n = {
-        name = "New entry on diary",
-        a = { "<cmd>VimwikiMakeDiaryNote 1<CR>", "In personal wiki" },
-        s = { "<cmd>VimwikiMakeDiaryNote 2<CR>", "In ReactO wiki" },
-      },
-      X = { "<cmd>VimwikiDeleteFile<CR>", "Delete current file" },
-      r = { "<cmd>VimwikiRenameFile<CR>", "Rename current file" },
-      b = { "<cmd>VimwikiGoBackLink<CR>", "Go to backlink" },
-      H = { "<cmd>:Vimwiki2HTMLBrowse<CR>", "Convert to HTML and open it" },
-    },
-    g = {
-      name = "Git",
-      g = { "<cmd>Neogit<CR>", "Neogit" },
-      j = { "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>", "Next Hunk" },
-      k = { "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>", "Prev Hunk" },
-      p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
-      r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
-      l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
-      R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
-      s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
-      u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk" },
-      d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Git Diff" },
-    },
-    f = {
-      name = "Find",
-      b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-      c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
-      f = { "<cmd>Telescope find_files<cr>", "Find files" },
-      p = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
-      t = { "<cmd>Telescope live_grep<cr>", "Find Text" },
-      h = { "<cmd>Telescope help_tags<cr>", "Help" },
-      l = { "<cmd>Telescope resume<cr>", "Last Search" },
-      r = { "<cmd>Telescope oldfiles<cr>", "Recent File" },
-    },
-    bb = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
-  }
-
-  --  local mappings = {
-  --  }
-
   local which_key = require "which-key"
   which_key.setup {
-    plugins = {
-      marks = true,
-      registers = true,
-      spelling = {
-        enabled = true,
-        suggestions = 20,
-      },
-      presets = {
-        operators = false,
-        motions = true,
-        text_objects = false,
-        windows = true,
-        nav = true,
-        z = false,
-        g = false,
-      },
+    defaults = {
+      mode = "n", -- NORMAL mode
+      prefix = "<leader>",
     },
-    window = {
-      border = "rounded",
-      position = "bottom",
-      padding = { 2, 2, 2, 2 },
-    },
-    ignore_missing = true,
-    show_help = false,
-    show_keys = false,
-    disable = {
-      buftypes = {},
-      filetypes = { "TelescopePrompt" },
-    },
+    spec = {
+      { "<leader>q", "<cmd>confirm q<CR>", desc = "Quit" },
+      { "<leader>h", "<cmd>nohlsearch<CR>", desc = "NOHL" },
+      { "<leader>v", "<cmd>vsplit<CR>", desc = "Split" },
+      { "<leader>e", "<cmd>NvimTreeToggle<CR>", desc = "Explorer" },
+      { "<leader>c", "<cmd>bdelete!<CR>", desc = "Close Buffer" },
 
-    -- [[ Config for the UI ]]
-    icons = {
-      breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
-      separator = "➜", -- symbol used between a key and it's label
-      group = "+", -- symbol prepended to a group
-    },
-    popup_mappings = {
-      scroll_down = "<c-d>", -- binding to scroll down inside the popup
-      scroll_up = "<c-u>", -- binding to scroll up inside the popup
-    },
-    window = {
-      border = "rounded", -- none, single, double, shadow
-      position = "bottom", -- bottom, top
-      margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
-      padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
-      winblend = 0,
-    },
-    layout = {
-      height = { min = 4, max = 25 }, -- min and max height of the columns
-      width = { min = 20, max = 50 }, -- min and max width of the columns
-      spacing = 3, -- spacing between columns
-      align = "left", -- align columns left, center or right
-    },
-    hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
-    show_help = true, -- show help message on the command line when the popup is visible
-    triggers = "auto", -- automatically setup triggers
-    -- triggers = {"<leader>"} -- or specify a list manually
-    triggers_blacklist = {
-      -- list of mode / prefixes that should never be hooked by WhichKey
-      -- this is mostly relevant for key maps that start with a native binding
-      -- most people should not need to change this
-      i = { "j", "k" },
-      v = { "j", "k" },
+      { "<leader>l", group = "LSP" },
+      {
+        "<leader>lf",
+        function()
+          vim.lsp.buf.format {
+            async = true,
+            filter = function(client)
+              return client.name ~= "typescript-tools"
+            end,
+          }
+        end,
+        desc = "Format",
+      },
+      { "<leader>li", "<cmd>LspInfo<cr>", desc = "Info" },
+      {
+        "<leader>lj",
+        function()
+          vim.diagnostic.goto_next()
+        end,
+        desc = "Next Diagnostic",
+      },
+      {
+        "<leader>lh",
+        function()
+          require("user.lspconfig").toggle_inlay_hints()
+        end,
+        desc = "Hints",
+      },
+      {
+        "<leader>lk",
+        function()
+          vim.diagnostic.goto_prev()
+        end,
+        desc = "Prev Diagnostic",
+      },
+      {
+        "<leader>ll",
+        function()
+          vim.lsp.codelens.run()
+        end,
+        desc = "CodeLens Action",
+      },
+      {
+        "<leader>lq",
+        function()
+          vim.diagnostic.setloclist()
+        end,
+        desc = "Quickfix",
+      },
+      {
+        "<leader>lr",
+        function()
+          vim.lsp.buf.rename()
+        end,
+        desc = "Rename",
+      },
+      {
+        "<leader>la",
+        function()
+          vim.lsp.buf.code_action()
+        end,
+        desc = "Code Action",
+        mode = { "n", "v" },
+      },
+
+      { "<leader>p", group = "Plugins" },
+      { "<leader>a", "<cmd>Alpha<cr>", desc = "Alpha" },
+
+      { "<leader>s", group = "Aerial" },
+      { "<leader>ss", "<cmd>AerialToggle<cr>", desc = "Open right pane" },
+      { "<leader>sa", "<cmd>AerialOpen<cr>", desc = "Open floating window" },
+
+      { "<leader>m", group = "Tab" },
+      { "<leader>mw", "<cmd>tabnew | terminal<CR>", desc = "Term" },
+      { "<leader>mn", "<cmd>$tabnew<cr>", desc = "New Empty Tab" },
+      { "<leader>mN", "<cmd>tabnew %<cr>", desc = "New Tab" },
+      { "<leader>mo", "<cmd>tabonly<cr>", desc = "Only" },
+      { "<leader>mh", "<cmd>-tabmove<cr>", desc = "Move Left" },
+      { "<leader>ml", "<cmd>+tabmove<cr>", desc = "Move Right" },
+
+      { "<leader>t", group = "Terminal" },
+      { "<leader>t1", ":1ToggleTerm<cr>", desc = "1" },
+      { "<leader>t2", ":2ToggleTerm<cr>", desc = "2" },
+      { "<leader>t3", ":3ToggleTerm<cr>", desc = "3" },
+      { "<leader>t4", ":4ToggleTerm<cr>", desc = "4" },
+      {
+        "<leader>tn",
+        function()
+          _NODE_TOGGLE()
+        end,
+        desc = "Node",
+      },
+      {
+        "<leader>tu",
+        function()
+          _NCDU_TOGGLE()
+        end,
+        desc = "NCDU",
+      },
+      {
+        "<leader>tt",
+        function()
+          _HTOP_TOGGLE()
+        end,
+        desc = "Htop",
+      },
+      {
+        "<leader>tp",
+        function()
+          _PYTHON_TOGGLE()
+        end,
+        desc = "Python",
+      },
+      { "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", desc = "Float" },
+      { "<leader>th", "<cmd>ToggleTerm size=10 direction=horizontal<cr>", desc = "Horizontal" },
+      { "<leader>tv", "<cmd>ToggleTerm size=80 direction=vertical<cr>", desc = "Vertical" },
+
+      { "<leader>T", group = "Testing" },
+      {
+        "<leader>Tt",
+        function()
+          require("neotest").run.run()
+        end,
+        desc = "Test Nearest",
+      },
+      {
+        "<leader>Tf",
+        function()
+          require("neotest").run.run(vim.fn.expand "%")
+        end,
+        desc = "Test File",
+      },
+      {
+        "<leader>Td",
+        function()
+          require("neotest").run.run { strategy = "dap" }
+        end,
+        desc = "Debug Test",
+      },
+      {
+        "<leader>Ts",
+        function()
+          require("neotest").run.stop()
+        end,
+        desc = "Test Stop",
+      },
+      {
+        "<leader>Ta",
+        function()
+          require("neotest").run.attach()
+        end,
+        desc = "Attach Test",
+      },
+
+      { "<leader>w", group = "Vimwiki" },
+      { "<leader>ww", "<cmd>VimwikiIndex<CR>", desc = "Open Personal Wiki" },
+      { "<leader>wi", "<cmd>VimwikiUISelect<CR>", desc = "Open wikis index" },
+      { "<leader>wd", group = "Open diary index" },
+      { "<leader>wD", "<cmd>VimwikiDiaryGenerateLinks<CR>", desc = "Update links in diary" },
+      { "<leader>wn", group = "New entry on diary" },
+      { "<leader>wX", "<cmd>VimwikiDeleteFile<CR>", desc = "Delete current file" },
+      { "<leader>wr", "<cmd>VimwikiRenameFile<CR>", desc = "Rename current file" },
+      { "<leader>wb", "<cmd>VimwikiGoBackLink<CR>", desc = "Go to backlink" },
+      { "<leader>wH", "<cmd>:Vimwiki2HTMLBrowse<CR>", desc = "Convert to HTML and open it" },
+
+      { "<leader>g", group = "Git" },
+      { "<leader>gg", "<cmd>Neogit<CR>", desc = "Neogit" },
+      {
+        "<leader>gj",
+        function()
+          require("gitsigns").next_hunk { navigation_message = false }
+        end,
+        desc = "Next Hunk",
+      },
+      {
+        "<leader>gk",
+        function()
+          require("gitsigns").prev_hunk { navigation_message = false }
+        end,
+        desc = "Prev Hunk",
+      },
+      {
+        "<leader>gp",
+        function()
+          require("gitsigns").preview_hunk()
+        end,
+        desc = "Preview Hunk",
+      },
+      {
+        "<leader>gr",
+        function()
+          require("gitsigns").reset_hunk()
+        end,
+        desc = "Reset Hunk",
+      },
+      {
+        "<leader>gl",
+        function()
+          require("gitsigns").blame_line()
+        end,
+        desc = "Blame",
+      },
+      {
+        "<leader>gR",
+        function()
+          require("gitsigns").reset_buffer()
+        end,
+        desc = "Reset Buffer",
+      },
+      {
+        "<leader>gs",
+        function()
+          require("gitsigns").stage_hunk()
+        end,
+        desc = "Stage Hunk",
+      },
+      {
+        "<leader>gu",
+        function()
+          require("gitsigns").undo_stage_hunk()
+        end,
+        desc = "Undo Stage Hunk",
+      },
+      { "<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>", desc = "Git Diff" },
+
+      { "<leader>f", group = "Find" },
+      { "<leader>fb", "<cmd>Telescope git_branches<cr>", desc = "Checkout branch" },
+      { "<leader>fc", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme" },
+      { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
+      {
+        "<leader>fp",
+        function()
+          require("telescope").extensions.projects.projects()
+        end,
+        desc = "Projects",
+      },
+      { "<leader>ft", "<cmd>Telescope live_grep<cr>", desc = "Find Text" },
+      { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help" },
+      { "<leader>fl", "<cmd>Telescope resume<cr>", desc = "Last Search" },
+      { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File" },
+
+      { "<leader>bb", "<cmd>Telescope buffers previewer=false<cr>", desc = "Find" },
     },
   }
-
-  local opts = {
-    mode = "n", -- NORMAL mode
-    prefix = "<leader>",
-    buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-    silent = true, -- use `silent` when creating keymaps
-    noremap = true, -- use `noremap` when creating keymaps
-    nowait = true, -- use `nowait` when creating keymaps
-  }
-
-  which_key.register(mappings, opts)
 end
 
 return M

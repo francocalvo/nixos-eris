@@ -13,7 +13,7 @@ function M.config()
     backends = { "treesitter", "lsp", "markdown", "man" },
 
     layout = {
-      max_width = { 40, 0.2 },
+      max_width = { 70, 0.2 },
       width = nil,
       min_width = 10,
       resize_to_content = true,
