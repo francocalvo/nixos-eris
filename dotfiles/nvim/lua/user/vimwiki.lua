@@ -15,20 +15,7 @@ M.init = function()
 
   vim.g.vimwiki_list = {
     {
-      path = "~/Nextcloud/Work/54Cuatro/Wiki",
-      -- template_path = "~/Nextcloud/ReactOData/Wiki/templates/",
-      -- template_ext = ".md",
-      -- template_default = "unit",
-      syntax = "markdown",
-      ext = ".md",
-      auto_toc = 1,
-      index = "index",
-      link_space_char = "_",
-      automatic_nested_syntaxes = 1,
-      auto_tags = 1,
-    },
-    {
-      path = "/orfeo/sirvana/sirvana-scraper/docs/",
+      path = "/Users/francocalvo/draftea/notes/",
       syntax = "markdown",
       ext = ".md",
       auto_toc = 1,
@@ -37,8 +24,9 @@ M.init = function()
       automatic_nested_syntaxes = 1,
       auto_tags = 1,
     },
+
     {
-      path = "/orfeo/Reacto/AGEA/docs",
+      path = "/Users/francocalvo/facultad/",
       syntax = "markdown",
       ext = ".md",
       auto_toc = 1,
