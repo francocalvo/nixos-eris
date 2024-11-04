@@ -60,6 +60,7 @@ in {
           trivy
           ruff
           ruff-lsp
+          gopls
         ];
       };
 

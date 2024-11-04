@@ -39,5 +39,6 @@ spec "user.oil"
 -- spec "user.neotest"
 spec "user.whichkey" -- revisar
 spec "user.bufferline"
+spec "user.rainbow_csv"
 
 require "user.lazy"

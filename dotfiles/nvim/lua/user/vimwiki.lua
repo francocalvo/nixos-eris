@@ -7,7 +7,7 @@ local M = {
 
 M.init = function()
   vim.g.vimwiki_global_ext = 1
-  vim.g.vimwiki_listsyms = "     X" -- Sets the todo "icons"
+  vim.g.vimwiki_listsyms = " .oOX" -- Sets the todo "icons"
   vim.g.vimwiki_autowriteall = 1
 
   vim.g.jupytext_enable = 1

@@ -23,7 +23,7 @@ M.on_attach = function(client, bufnr)
   lsp_keymaps(bufnr)
 
   if client.supports_method "textDocument/inlayHint" then
-    vim.lsp.inlay_hint.enable(true, {  bufnr })
+    vim.lsp.inlay_hint.enable(true, { bufnr })
   end
 end
 
@@ -35,7 +35,7 @@ end
 
 M.toggle_inlay_hints = function()
   local bufnr = vim.api.nvim_get_current_buf()
-  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr }), { bufnr })
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr }, { bufnr })
 end
 
 function M.config()
@@ -50,7 +50,7 @@ function M.config()
     "html",
     "cssls",
     "clangd",
-    "tsserver",
+    "ts_ls",
     "marksman",
     "prismals",
     "beancount",
@@ -59,8 +59,8 @@ function M.config()
     "terraformls",
     "ruff_lsp",
     "nil_ls",
+    "gopls",
   }
-
 
   local default_diagnostic_config = {
     signs = {
@@ -110,7 +110,6 @@ function M.config()
     -- if server == "lua_ls" then
     --   require("neodev").setup {}
     -- end
-
 
     lspconfig[server].setup(opts)
   end
