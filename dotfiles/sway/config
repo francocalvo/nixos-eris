@@ -26,22 +26,21 @@ output * {
 #
 output DP-1 {
   mode 1920x1080@50.00Hz
-  transform 270
   scale 1
   position 0 0
 }
 
-output DP-3 {
+output DP-2 {
   mode 1920x1080@144.00Hz
   scale 1
-  position 1080 0
+  position 1920 0
 }
 
-output HDMI-A-1 {
-  mode 2560x1080@60.00Hz
-  scale 1
-  position 3000 0
-}
+# output HDMI-A-1 {
+#   mode 2560x1080@60.00Hz
+#   scale 1
+#   position 3000 0
+# }
 
 # output HDMI-A-1 {
 #   mode 3840x2160@60Hz

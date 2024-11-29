@@ -64,11 +64,11 @@ in {
         ];
       };
 
-      home.file.".config/nvim" = {
-        source =
-          lib.cleanSource (builtins.toPath "${config.paths.dotsDir}/nvim");
-        recursive = true;
-      };
+      # home.file.".config/nvim" = {
+      #   source =
+      #     lib.cleanSource (builtins.toPath "${config.paths.dotsDir}/nvim");
+      #   recursive = true;
+      # };
     };
   };
 }

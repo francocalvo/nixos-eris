@@ -57,7 +57,7 @@ function M.config()
     "sqlls",
     "pyright",
     "terraformls",
-    "ruff_lsp",
+    "ruff",
     "nil_ls",
     "gopls",
   }
