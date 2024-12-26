@@ -13,6 +13,11 @@ local M = {
   },
 }
 
+M.init = function()
+  vim.g["conjure#client#scheme#stdio#command"] = "petite"
+  vim.g["conjure#client#scheme#stdio#prompt_pattern"] = "> $?"
+end
+
 M.lazy = true
 
 return M

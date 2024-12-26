@@ -3,6 +3,7 @@ require "user.options"
 require "user.keymaps"
 require "user.autocmds"
 
+spec "user.surround"
 spec "user.eyeliner"
 spec "user.colorscheme"
 spec "user.devicons"

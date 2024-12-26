@@ -173,7 +173,7 @@ M.opts = {
     },
 
     { "<leader>w", group = "Vimwiki" },
-    { "<leader>ww", "<cmd>VimwikiIndex<CR>", desc = "Open Personal Wiki" },
+    { "<leader>ww", "<cmd>VimwikiIndex<CR>", desc = "Open Draftea Wiki" },
     { "<leader>wi", "<cmd>VimwikiUISelect<CR>", desc = "Open wikis index" },
     { "<leader>wd", group = "Open diary index" },
     { "<leader>wD", "<cmd>VimwikiDiaryGenerateLinks<CR>", desc = "Update links in diary" },
