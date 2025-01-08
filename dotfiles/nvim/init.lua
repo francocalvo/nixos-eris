@@ -42,5 +42,6 @@ spec "user.whichkey" -- revisar
 spec "user.bufferline"
 spec "user.rainbow_csv"
 spec "user.conjure"
+spec "user.codesnap"
 
 require "user.lazy"
