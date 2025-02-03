@@ -33,9 +33,10 @@ return {
         "!Split",
         "!Split sequence",
       },
-      -- schemas = {
-      --     'https://raw.githubusercontent.com/awslabs/goformation/v4.18.2/schema/cloudformation.schema.json: "/*"',
-      -- },
+      schemas = {
+        ["https://raw.githubusercontent.com/bitol-io/open-data-contract-standard/refs/heads/main/schema/odcs-json-schema-latest.json"] = "contract-*.{yml,yaml}",
+        --     'https://raw.githubusercontent.com/awslabs/goformation/v4.18.2/schema/cloudformation.schema.json: "/*"',
+      },
       -- schemaDownload = {
       --     enable = true
       -- },

@@ -43,5 +43,6 @@ spec "user.bufferline"
 spec "user.rainbow_csv"
 spec "user.conjure"
 spec "user.codesnap"
+spec "user.avante"
 
 require "user.lazy"
