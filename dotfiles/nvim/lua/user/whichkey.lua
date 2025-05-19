@@ -172,16 +172,18 @@ M.opts = {
       desc = "Attach Test",
     },
 
-    { "<leader>w", group = "Vimwiki" },
-    { "<leader>ww", "<cmd>VimwikiIndex<CR>", desc = "Open Draftea Wiki" },
-    { "<leader>wi", "<cmd>VimwikiUISelect<CR>", desc = "Open wikis index" },
-    { "<leader>wd", group = "Open diary index" },
-    { "<leader>wD", "<cmd>VimwikiDiaryGenerateLinks<CR>", desc = "Update links in diary" },
-    { "<leader>wn", group = "New entry on diary" },
-    { "<leader>wX", "<cmd>VimwikiDeleteFile<CR>", desc = "Delete current file" },
-    { "<leader>wr", "<cmd>VimwikiRenameFile<CR>", desc = "Rename current file" },
-    { "<leader>wb", "<cmd>VimwikiGoBackLink<CR>", desc = "Go to backlink" },
-    { "<leader>wH", "<cmd>:Vimwiki2HTMLBrowse<CR>", desc = "Convert to HTML and open it" },
+    -- { "<leader>w", group = "Vimwiki" },
+    -- { "<leader>ww", "<cmd>VimwikiIndex<CR>", desc = "Open Draftea Wiki" },
+    -- { "<leader>wi", "<cmd>VimwikiUISelect<CR>", desc = "Open wikis index" },
+    -- { "<leader>wX", "<cmd>VimwikiDeleteFile<CR>", desc = "Delete current file" },
+    -- { "<leader>wr", "<cmd>VimwikiRenameFile<CR>", desc = "Rename current file" },
+    -- { "<leader>wb", "<cmd>VimwikiGoBackLink<CR>", desc = "Go to backlink" },
+    -- { "<leader>wH", "<cmd>:Vimwiki2HTMLBrowse<CR>", desc = "Convert to HTML and open it" },
+    -- { "<leader>wD", "<cmd>VimwikiDiaryGenerateLinks<CR>", desc = "Update links in diary" },
+    --
+    -- { "<leader>wd", group = "Open diary index" },
+    --
+    -- { "<leader>wn", group = "New entry on diary" },
 
     { "<leader>g", group = "Git" },
     { "<leader>gg", "<cmd>Neogit<CR>", desc = "Neogit" },

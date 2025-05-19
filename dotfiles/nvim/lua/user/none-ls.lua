@@ -27,7 +27,7 @@ function M.config()
       -- Python
       require("none-ls.formatting.ruff"),
       require("none-ls.diagnostics.ruff"),
-      formatting.black,
+      -- formatting.black,
       --diagnostics.ruff,
       -- diagnostics.mypy,
 
