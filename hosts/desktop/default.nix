@@ -30,6 +30,7 @@ in {
       docker = enable;
       distrobox = disable;
       virt = enable;
+      scheme = enable;
     };
     shell.zsh = enable;
     gaming = {
@@ -72,7 +73,7 @@ in {
       # Browsers
       firefox
       brave
-      teams-for-linux
+      microsoft-edge
 
       #openconnect
       #gnome.networkmanager-openconnect
@@ -82,6 +83,10 @@ in {
       amdgpu_top
 
       racket
+
+      tmux
+      e2fsprogs
+      smartmontools
     ];
   };
 

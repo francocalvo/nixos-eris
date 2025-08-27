@@ -31,10 +31,10 @@
     fsType = "ext4";
   };
 
-  fileSystems."/giardino" = {
-    device = "/dev/disk/by-uuid/f08d0bb3-ac20-4936-a518-b60b61ad94e7";
-    fsType = "ext4";
-  };
+  # fileSystems."/giardino" = {
+  #   device = "/dev/disk/by-uuid/f08d0bb3-ac20-4936-a518-b60b61ad94e7";
+  #   fsType = "ext4";
+  # };
 
 #  fileSystems."/orfeo" = {
 #    device = "/dev/disk/by-uuid/49bc237a-bf72-4d17-be82-66ad05a3ac2b";
