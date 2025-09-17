@@ -115,10 +115,16 @@ with lib.my; {
     home-manager.useUserPackages = true;
     home-manager.users.${config.user.name} = mkAliasDefinitions options.home._;
 
-    nix.settings = let users = [ "root" config.user.name ];
+    nix.settings = let users = [ "root" config.user.name "nixos" ];
     in {
       trusted-users = users;
       allowed-users = users;
+
+      trusted-substituters = [ "https://nixos-raspberrypi.cachix.org" ];
+      trusted-public-keys = [
+        "nixos-raspberrypi.cachix.org-1:4iMO9LXa8BqhU+Rpg6LQKiGa2lsNh/j2oiYLNOQ5sPI="
+      ];
+
     };
 
     # must already begin with pre-existing PATH. Also, can't use binDir here,

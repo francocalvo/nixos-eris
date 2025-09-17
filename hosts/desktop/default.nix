@@ -49,7 +49,6 @@ in {
       calibre
       discord
       onlyoffice-bin_latest
-      spotify
       qbittorrent
       vlc
       unrar
@@ -66,27 +65,19 @@ in {
       nextcloud-client
       tealdeer
       stremio
+      cachix
 
       texlive.combined.scheme-full
       python311Packages.beancount
 
       # Browsers
       firefox
-      brave
-      microsoft-edge
-
-      #openconnect
-      #gnome.networkmanager-openconnect
       libsecret
 
       # Monitoring
       amdgpu_top
-
       racket
-
       tmux
-      e2fsprogs
-      smartmontools
     ];
   };
 
@@ -111,8 +102,6 @@ in {
 
   hardware = {
     bluetooth.enable = true;
-    # opengl.enable = true;
-    # opengl.driSupport32Bit = true; # Enable 32 bit support for Steam
     graphics = {
       enable = true;
       enable32Bit = true;
@@ -132,6 +121,8 @@ in {
     seahorse.enable = true;
     dconf.enable = true;
   };
+
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   system.stateVersion = "23.11";
 }
