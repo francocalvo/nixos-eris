@@ -12,7 +12,7 @@ in {
         git
         remmina
         zathura
-        okular
+        kdePackages.okular
         gcc
         dbeaver-bin
         vscode

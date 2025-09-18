@@ -56,15 +56,15 @@ in {
       zip
       which
       git
-      libsForQt5.kcalc
+      kdePackages.kcalc
       libpng
       flameshot
       nautilus
       sushi
-      libsForQt5.bluedevil
-      nextcloud-client
+      kdePackages.bluedevil
+      # nextcloud-client
       tealdeer
-      stremio
+      # stremio
       cachix
 
       texlive.combined.scheme-full

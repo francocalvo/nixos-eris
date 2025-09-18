@@ -59,7 +59,6 @@ in {
           terraform-ls
           trivy
           ruff
-          ruff-lsp
           gopls
         ];
       };
