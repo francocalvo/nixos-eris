@@ -1,8 +1,14 @@
-{ config, inputs, lib, pkgs, ... }:
+{
+  config,
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 
-with lib; {
-  imports = [ inputs.home-manager.nixosModules.home-manager ]
-    ++ my.mapModulesRec' ./modules import;
+with lib;
+{
+  imports = [ inputs.home-manager.nixosModules.home-manager ] ++ my.mapModulesRec' ./modules import;
 
   # Keep the system clean
   nix = {
@@ -56,13 +62,17 @@ with lib; {
     neovim
     wget
     unzip
+    toybox
+    jq
   ];
 
   systemd.services = {
     tune-usb-autosuspend = {
       description = "Disable USB autosuspend";
       wantedBy = [ "multi-user.target" ];
-      serviceConfig = { Type = "oneshot"; };
+      serviceConfig = {
+        Type = "oneshot";
+      };
       unitConfig.RequiresMountsFor = "/sys";
       script = ''
         echo -1 > /sys/module/usbcore/parameters/autosuspend
