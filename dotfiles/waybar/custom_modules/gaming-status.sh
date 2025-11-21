@@ -1,19 +1,15 @@
 #!/usr/bin/env bash
-# Get the HDMI outputs
+set -euo pipefail
 
-output=(
-  $(swaymsg -t get_outputs | jq -r 'sort_by(.rect.x) | .[].name' | grep 'HDMI')
-)
+sunshine_active() {
+  systemctl --user is-active --quiet sunshine 2>/dev/null || systemctl is-active --quiet sunshine 2>/dev/null
+}
 
-# Check if the output array is not empty
-if [ ${#output[@]} -gt 0 ]; then
-  status=$(swaymsg -t get_outputs | jq -r 'map(select(.name == "'"$output"'"))[0].active') # Get the status of the first HDMI output
+HEADLESS_OUT="$(swaymsg -t get_outputs | jq -r '.[] | select(.name|test("^HEADLESS-")) | select(.active) | .name' | head -n1)"
 
-  if [ "$status" = "true" ]; then
-	  echo '{"alt": "Enabled"}'
-  else
-	  echo '{"alt": "Disabled"}'
-  fi
+if [[ -n "${HEADLESS_OUT}" ]] && sunshine_active; then
+  echo '{"alt": "Enabled"}'
 else
-	echo '{"alt": "Disabled"}'
+  echo '{"alt": "Disabled"}'
 fi
+

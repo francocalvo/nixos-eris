@@ -1,9 +1,16 @@
 { lib, pkgs, ... }:
-let inherit (lib.my) enable disable;
-in {
+let
+  inherit (lib.my) enable disable;
+in
+{
   imports = [ ./hardware-configuration.nix ];
 
   boot.kernelPackages = pkgs.linuxPackages_zen;
+
+  networking.firewall = {
+    allowedTCPPorts = [ 5201 ];
+    allowedUDPPorts = [ 5201 ];
+  };
 
   modules = {
     d = {
@@ -22,8 +29,12 @@ in {
         sway = enable;
       };
     };
-    network = { network-manager = enable; };
-    hardware = { sound = enable; };
+    network = {
+      network-manager = enable;
+    };
+    hardware = {
+      sound = enable;
+    };
     dev = {
       python = enable;
       nodejs = enable;
@@ -36,9 +47,11 @@ in {
     gaming = {
       enable = true;
       performanceTweaks = disable;
-      sunshine = disable;
+      sunshine = enable;
     };
-    editors = { neovim = enable; };
+    editors = {
+      neovim = enable;
+    };
     fonts = enable;
     ps5 = disable;
   };
@@ -78,6 +91,15 @@ in {
       amdgpu_top
       racket
       tmux
+      vulkan-tools
+      gpu-viewer
+
+      mesa
+      libva
+      libva-utils
+      libavif
+
+      claude-code
     ];
   };
 
@@ -98,13 +120,21 @@ in {
     };
   };
 
-  nix = { extraOptions = "experimental-features = nix-command flakes"; };
+  nix = {
+    extraOptions = "experimental-features = nix-command flakes";
+  };
 
   hardware = {
     bluetooth.enable = true;
     graphics = {
       enable = true;
       enable32Bit = true;
+      extraPackages = with pkgs; [
+        mesa
+        libva
+        libva-utils
+        libavif
+      ];
     };
   };
 
