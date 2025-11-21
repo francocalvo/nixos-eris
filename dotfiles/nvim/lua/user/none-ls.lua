@@ -38,8 +38,8 @@ function M.config()
       --formatting.clang_format,
 
       --# NIX
-      formatting.nixfmt,
-      diagnostics.deadnix,
+      -- formatting.nixfmt,
+      -- diagnostics.deadnix,
 
       --# LaTeX
       --formatting.latexindent.with {
