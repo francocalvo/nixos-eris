@@ -16,7 +16,6 @@ in {
         gcc
         dbeaver-bin
         vscode
-        llvm
         libcxx
         insomnia
         bear

@@ -1,8 +1,15 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 with lib;
 with lib.my;
-let cfg = config.modules.dev.virt;
-in {
+let
+  cfg = config.modules.dev.virt;
+in
+{
   options.modules.dev.virt = {
     enable = mkEnableOption "Virtualisation support";
   };
@@ -29,8 +36,6 @@ in {
         enable = true;
         qemu = {
           swtpm.enable = true;
-          ovmf.enable = true;
-          ovmf.packages = [ pkgs.OVMFFull.fd ];
         };
       };
       spiceUSBRedirection.enable = true;

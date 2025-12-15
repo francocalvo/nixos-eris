@@ -40,7 +40,7 @@ in
       nodejs = enable;
       docker = enable;
       distrobox = disable;
-      virt = enable;
+      virt = disable;
       scheme = enable;
     };
     shell.zsh = enable;
@@ -58,10 +58,9 @@ in
 
   user = {
     packages = with pkgs; [
-      bitwarden
+      bitwarden-desktop
       calibre
-      discord
-      onlyoffice-bin_latest
+      onlyoffice-desktopeditors
       qbittorrent
       vlc
       unrar
@@ -75,13 +74,11 @@ in
       nautilus
       sushi
       kdePackages.bluedevil
-      # nextcloud-client
       tealdeer
-      # stremio
       cachix
 
-      texlive.combined.scheme-full
-      python311Packages.beancount
+      # texlive.combined.scheme-full
+      python312Packages.beancount
 
       # Browsers
       firefox
@@ -100,6 +97,7 @@ in
       libavif
 
       claude-code
+      gnumake
     ];
   };
 
@@ -110,14 +108,6 @@ in
     "x-scheme-handler/https" = "firefox.desktop";
     "x-scheme-handler/about" = "firefox.desktop";
     "x-scheme-handler/unknown" = "firefox.desktop";
-  };
-
-  # TODO: Autostart nextcloud-client
-  home._ = {
-    services.nextcloud-client = {
-      enable = true;
-      startInBackground = true;
-    };
   };
 
   nix = {

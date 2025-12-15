@@ -13,13 +13,13 @@ in {
         font-awesome
         font-awesome_5 # Used for polybar
         corefonts
-        fira-code
-        noto-fonts
-        roboto
+        # fira-code
+        # noto-fonts
+        # roboto
         source-code-pro
         material-icons
         material-design-icons
-        meslo-lgs-nf # Needed for OMZ+P10K
+        # meslo-lgs-nf # Needed for OMZ+P10K
         nordzy-icon-theme
       ] ++ builtins.filter lib.attrsets.isDerivation
       (builtins.attrValues pkgs.nerd-fonts);

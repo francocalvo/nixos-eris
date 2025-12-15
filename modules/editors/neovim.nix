@@ -35,7 +35,6 @@ in {
           nodePackages_latest.vscode-langservers-extracted
           nodePackages_latest.markdownlint-cli
 
-          llvmPackages_15.clang-unwrapped
 
           vscode-extensions.prisma.prisma
 
